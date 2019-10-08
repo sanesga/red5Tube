@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <title>Admin usuarios</title>
+  <style>
+    body {
+      font-family: arial;
+      margin: 0px 60px 20px 20px;
+      /*margen izquierdo de la página*/
+    }
+
+    h2,
+    span {
+      color: red;
+    }
+
+    #inputAlias {
+      width: 580px;
+      height: 30px;
+      border-radius: 6px;
+      border: 1px solid lightgrey;
+    }
+
+    #tablaBusqueda input[type="button"] {
+      background-color: #1777BB;
+      color: white;
+      width: 130px;
+      height: 30px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    #tablaBusqueda {
+      border: solid 1px lightgrey;
+      border-collapse: collapse;
+      width: 600px;
+      height: 200px;
+      text-align: left;
+    }
+
+    #tablaBusqueda thead th:first-child {
+      /*color gris para la primera celda*/
+      background-color: lightgrey;
+      padding: 15px;
+    }
+
+    #tablaBusqueda td {
+      padding-left: 15px;
+    }
+
+
+    #tablaUsuarios {
+      border: solid 1px lightgrey;
+      border-collapse: collapse;
+      width: 100%;
+      height: 200px;
+    }
+
+    #tablaUsuarios td,
+    th {
+      border: solid 1px grey;
+      padding: 8px
+    }
+
+    #tablaUsuarios tbody tr:nth-child(even) {
+      /*las celdas pares del body de la tabla azules*/
+      background-color: #E3ECF2;
+    }
+
+    #tablaUsuarios thead,
+    tfoot {
+      /*en gris los encabezados y el pie*/
+      background-color: lightgrey;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Administración de usuarios</h2>
+
+  <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
+
+  <table id="tablaBusqueda">
+    <thead>
+      <tr>
+        <th>Búsqueda de usuario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="subtitulo">Introduce parte del alias del usuario:</td>
+      </tr>
+      <tr>
+        <td>
+          <input id="inputAlias" type="text" placeholder=" Si no introduces nada se buscan todos los usuarios." />
+        </td>
+      </tr>
+      <tr>
+        <td><input type="button" value="Buscar"></td>
+      </tr>
+    </tbody>
+    <!--Esta tabla no tiene footer-->
+  </table>
+  <br>
+
+  <table id="tablaUsuarios">
+    <!--Tabla que aparece cuando hacemos click en el botón buscar usuario-->
+    <thead>
+      <tr>
+        <th colspan="6">Mantenimiento de usuarios</th>
+      </tr>
+      <tr>
+        <th>Alias</th>
+        <th>Email</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Rol</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>admin</td>
+        <td>jlluch16@alumno.uned.es</td>
+        <td>Joaquín</td>
+        <td>Lluch Quilis</td>
+        <td>ADMIN</td>
+        <td>
+          <i class="far fa-edit"></i>
+        </td>
+      </tr>
+      <tr>
+
+        <td>espectador</td>
+        <td>jlluch16@alumno.uned.es</td>
+        <td>Joaquín</td>
+        <td>Lluch Quilis</td>
+        <td>ESPECTADOR</td>
+        <td>
+          <i class="far fa-edit"></i> </td>
+        </td>
+      </tr>
+
+      <tr>
+        <td>jlluch16</td>
+        <td>jlluch16@alumno.uned.es</td>
+        <td>Joaquín</td>
+        <td>Lluch Quilis</td>
+        <td>PUBLICADOR</td>
+        <td>
+          <i class="far fa-edit"></i> </td>
+      </tr>
+
+      <tr>
+        <td>jlluc162</td>
+        <td>jlluch16@alumno.uned.es</td>
+        <td>Joaquín</td>
+        <td>Lluch Quilis</td>
+        <td>PUBLICADOR</td>
+        <td>
+          <i class="far fa-edit"></i> </td>
+      </tr>
+
+      <tr>
+        <td>joaquín</td>
+        <td>jlluch16@alumno.uned.es</td>
+        <td>Joaquín</td>
+        <td>Lluch Quilis</td>
+        <td>PUBLICADOR</td>
+        <td>
+          <i class="far fa-edit"></i> </td>
+      </tr>
+
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="6">
+          <select>
+            <!--Muestra las filas de la tabla a mostrar-->
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+
+          <!--botones de paginación-->
+          <button><i class="fas fa-step-backward"></i></button>
+          <button><i class="fas fa-backward"></i></button>
+          <label>&nbsp&nbsp(1 de 2)&nbsp&nbsp</label>
+          <button><i class="fas fa-forward"></i></button>
+          <button><i class="fas fa-step-forward"></i></button>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+
+
+
+</body>
+
+</html>
