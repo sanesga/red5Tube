@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"><!--Enlace a librería de iconos fontawesome-->
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <!--Enlace a librería de iconos fontawesome-->
   <title>Admin usuarios</title>
   <style>
     /*orden alfabético para facilitar la localización*/
@@ -16,20 +17,25 @@
       font-family: arial;
       margin: 0px 60px 20px 20px;
     }
+
     #bodyPag10 button {
       /*formato botones paginación*/
       height: 25px;
       width: 25px;
     }
-    #bodyPag10 h2,span {
+
+    #bodyPag10 h2,
+    span {
       /*span y h2 color rojo*/
       color: red;
     }
+
     #bodyPag10 select {
       /*formato select elección de número de páginas a la vista*/
       height: 25px;
       width: 40px;
     }
+
     #bodyPag10 #tablaBusquedaUsuario {
       /*formato tabla de búsqueda de usuario*/
       border: solid 1px #D5D5D5;
@@ -38,6 +44,7 @@
       height: 200px;
       text-align: left;
     }
+
     #bodyPag10 #tablaBusquedaUsuario input[type="button"] {
       /*botón de la tabla de búsqueda*/
       background-color: red;
@@ -47,6 +54,7 @@
       border-radius: 6px;
       border: none;
     }
+
     #bodyPag10 #tablaBusquedaUsuario input[type="text"] {
       /*input de búsqueda de usuario*/
       width: 580px;
@@ -54,14 +62,17 @@
       border-radius: 6px;
       border: 1px solid #D5D5D5;
     }
+
     #bodyPag10 #tablaBusquedaUsuario td {
       padding: 0px 15px 0px 15px;
     }
+
     #bodyPag10 #tablaBusquedaUsuario thead th:first-child {
       /*formato del encabezado de la tabla*/
       background-color: #D5D5D5;
       padding: 15px;
     }
+
     #bodyPag10 #tablaUsuarios {
       /*formato tabla de mantenimiento de usuarios*/
       border: solid 1px #D5D5D5;
@@ -69,18 +80,24 @@
       width: 100%;
       height: 200px;
     }
+
     #bodyPag10 #tablaUsuarios tbody tr:nth-child(even) {
       /*color de las celdas pares de la tabla usuarios*/
       background-color: #FFE4DC;
     }
-    #bodyPag10 #tablaUsuarios td,th {
+
+    #bodyPag10 #tablaUsuarios td,
+    th {
       border: solid 1px grey;
       padding: 8px
     }
-    #bodyPag10 #tablaUsuarios thead,tfoot {
+
+    #bodyPag10 #tablaUsuarios thead,
+    tfoot {
       /*color gris del encabezado y el pie de tabla*/
       background-color: #D5D5D5;
     }
+
     #bodyPag10 #tablaUsuarios thead th:last-child {
       /*tamaño diferente para la última columna de la tabla (icono editar)*/
       width: 25px;
@@ -89,9 +106,11 @@
 </head>
 
 <body id="bodyPag10">
-  <h2>Administración de usuarios</h2>
+  <header>
+    <h2>Administración de usuarios</h2>
 
-  <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
+    <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
+  </header>
 
   <table id="tablaBusquedaUsuario">
     <thead>
@@ -185,6 +204,7 @@
       </tr>
     </tbody>
     <tfoot>
+      <!--footer de la tabla-->
       <tr>
         <th colspan="6">
           <select>
@@ -205,6 +225,7 @@
       </tr>
     </tfoot>
   </table>
+  <!--Esta página no tiene footer-->
 </body>
 
 </html>
