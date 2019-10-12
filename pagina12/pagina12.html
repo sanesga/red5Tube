@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+  <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!--Enlace a librería de iconos fontawesome-->
   <title>Admin audios</title>
@@ -139,24 +139,26 @@
     <!--Tabla que aparece cuando hacemos click en el botón buscar usuario-->
     <thead>
       <tr>
-        <th colspan="6">Mantenimiento de audios&nbsp;&nbsp;&nbsp;<i class="fas fa-music"></i></th>
+        <th colspan="7">Mantenimiento de audios&nbsp;&nbsp;&nbsp;<i class="fas fa-music"></i></th>
       </tr>
       <tr>
         <th>Usuario</th>
-        <th>Nombre</th>
-        <th>Descripción</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Album</th>
         <th>Comentarios</th>
-        <th>Categoría</th>
+        <th>Género</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>red5tube</td>
-        <td>song1.mp3</td>
-        <td>Remix</td>
+        <td>Let_It_Be.mp3</td>
+        <td>The Beatles</td>
+        <td>Let It Be</td>
         <td>Awesome!</td>
-        <td>POP</td>
+        <td>ROCK</td>
         <td>
           <i class="far fa-edit "></i>
         </td>
@@ -164,18 +166,19 @@
 
       <tr>
         <td>red5tube</td>
-        <td>song2.mp3</td>
-        <td>Official version</td>
+        <td>Toda_la_noche_en_la_calle.mp3</td>
+        <td>Amaral</td>
+        <td>Estrella de mar</td>
         <td>Good song!</td>
-        <td>ROCK</td>
+        <td>POP</td>
         <td>
-          <i class="far fa-edit "></i> </td>
+          <i class="far fa-edit "></i>
         </td>
       </tr>
     </tbody>
     <tfoot> <!--footer de la tabla-->
       <tr>
-        <th colspan="6">
+        <th colspan="7">
           <select id="selectPaginacion">
             <!--permite seleccionar el número de filas que queremos mostrar-->
             <option value="5" selected>5</option>
