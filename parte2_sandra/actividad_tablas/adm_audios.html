@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+        <!-- La pagina tiene tres secciones principales, las cuales formataremos con tablas -->
+        <!-- En esta pagina veremos la funcionalidad del usuario administrador, para manegar los 
+        audios existentes en la pagina -->
+            <header>
+                <table>
+                    <tr>
+                        <th> <a href="index.html">Home</a></th>
+                        <th class="padding"></th>
+                        <th>
+                           <!-- Los botones de login y register activaran el action del form y nos llevaran
+                        a sus respectivas paginas -->
+                            <form action="login.html">
+                                <input type="submit" value="Login" />
+                            </form>
+                        </th>
+                        <th>
+                            <form action="register.html">
+                                <input type="submit" value="Register" />
+                            </form>
+                        </th>
+                    </tr>
+                </table>
+            </header>
+            <main>
+                <!-- Con una tabla dividiremos el main en dos, el menu y el articulo -->
+                <table>
+                    <tr>
+                        <td>
+                            <section >
+                                <nav>
+                                    <ul>
+                                        <li>
+                        <!-- Para buscar audio o video pulsaremos enter sobre el input y el action del 
+                            formulario nos llevara a la pagina marcada en el href -->
+                                            <form action="search.html">
+                                                <i class="fa fa-search"></i>
+                                                <input type="text" placeholder="Search">
+                                            </form>
+                                        </li>
+                                        <li>
+                                                <!-- Cada link redirigira a su pagina correspondiente -->
+                                                <!-- usamos el details para crear un dropdown con los links de cada categoria -->
+                                                <details>
+                                                        <summary><i class="fa fa-video"></i> See Videos</summary>
+                                                        <a href="videos.html">Todos</a><br>
+                                                        <a href="videos.html">Deportes</a><br>
+                                                        <a href="videos.html">Educación</a><br>
+                                                        <a href="videos.html">Humor</a><br>
+                                                        <a href="videos.html">Noticias</a><br>
+                                                        <a href="videos.html">Tiempo Libre</a><br>
+                                                        <a href="videos.html">Otros</a><br>
+                                                        <a href="videos.html">Aleatorio</a><br>
+                                                        
+                                                    </details>
+                                            </li>
+                                          <li>
+                                            <!-- Hay algunos iconos que desconozco por que no cargan -->
+                                            <!-- usamos el details para crear un dropdown con los links de cada categoria -->
+                                            <details>
+                                                    <summary><i class="fa fa-video"></i> Listen Audios</summary>
+                                                    <a href="audios.html">Todos</a><br>
+                                                    <a href="audios.html">Deportes</a><br>
+                                                    <a href="audios.html">Educación</a><br>
+                                                    <a href="audios.html">Humor</a><br>
+                                                    <a href="audios.html">Noticias</a><br>
+                                                    <a href="audios.html">Tiempo Libre</a><br>
+                                                    <a href="audios.html">Otros</a><br>
+                                                    <a href="audios.html">Aleatorio</a><br>
+                                                    
+                                                </details>
+                                        </li>
+                                         <li>
+                                            <i class="fa fa-file-video"></i>
+                                            <a href="streaming.html">Streaming Videos</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-upload"></i>
+                                            <a href="upload_video.html">Upload Video</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-upload"></i>
+                                            <a href="upload_audio.html">Upload Audio</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-video"></i>
+                                            <a href="my_videos.html">My Videos</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-volume-up"></i>
+                                            <a href="my_audios.html">My Audios</a>
+                                        </li>
+                                       <li>
+                                            <i class="fa fa-info"></i>
+                                            <a href="info.html">Info</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-user"></i>
+                                            <a href="adm_users.html">Administrate Users</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-video"></i>
+                                            <a href="adm_videos.html">Administrate Videos</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-sound"></i>
+                                            <a href="adm_audios.html">Administrate Audios</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </section>
+                        </td>
+                        <td>
+                            <section>
+                                <article>
+                            <div id="bodyPag12">        
+                                        <h2>Administración de audios</h2>
+                                        <p>Nombre usuario, bienvenido a <span>Web.</span></p>
+                                    <table id="tablaBusquedaUsuario">
+                                        <thead>
+                                        <tr>
+                                            <th>Búsqueda de usuario</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Introduce parte del alias del usuario:</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            <input id="inputAlias" type="text" placeholder=" red5tube" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="button" value="Buscar"></td>
+                                        </tr>
+                                        </tbody>
+                                        <!--Esta tabla no tiene footer-->
+                                    </table>
+                                    <br>
+                                    
+                                    <table id="tablaAudios">
+                                        <!--Tabla que aparece cuando hacemos click en el botón buscar usuario-->
+                                        <thead>
+                                        <tr>
+                                            <th colspan="7">Mantenimiento de audios&nbsp;&nbsp;&nbsp;<i class="fas fa-music"></i></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Usuario</th>
+                                            <th>Título</th>
+                                            <th>Autor</th>
+                                            <th>Album</th>
+                                            <th>Comentarios</th>
+                                            <th>Género</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>red5tube</td>
+                                            <td>Let_It_Be.mp3</td>
+                                            <td>The Beatles</td>
+                                            <td>Let It Be</td>
+                                            <td>Awesome!</td>
+                                            <td>ROCK</td>
+                                            <td>
+                                            <i class="far fa-edit "></i>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td>red5tube</td>
+                                            <td>Toda_la_noche_en_la_calle.mp3</td>
+                                            <td>Amaral</td>
+                                            <td>Estrella de mar</td>
+                                            <td>Good song!</td>
+                                            <td>POP</td>
+                                            <td>
+                                            <i class="far fa-edit "></i>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot> <!--footer de la tabla-->
+                                        <tr>
+                                            <th colspan="7">
+                                            <select id="selectPaginacion">
+                                                <!--permite seleccionar el número de filas que queremos mostrar-->
+                                                <option value="5" selected>5</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                            </select>
+                                    
+                                            <!--botones de paginación, iconos de fontawesome-->
+                                            <button class="botonesPaginacion"><i class="fas fa-step-backward"></i></button>
+                                            <button class="botonesPaginacion"><i class="fas fa-backward"></i></button>
+                                            <label>&nbsp;&nbsp;(1 de 1)&nbsp;&nbsp;</label>
+                                            <button class="botonesPaginacion"><i class="fas fa-forward"></i></button>
+                                            <button class="botonesPaginacion"><i class="fas fa-step-forward"></i></button>
+                                            </th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                    </div>
+                                </article>
+                            </section>
+                        </td>
+                    </tr>
+                </table>
+            </main>
+            <footer><p>Footer</p></footer>
+    </body>
+</html>

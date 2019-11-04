@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- La pagina tiene tres secciones principales, las cuales formataremos con tablas -->
+    <!-- En esta pagina veremos la funcionalidad del usuario administrador, para manegar los 
+    audios existentes en la pagina -->
+        <header>
+            <table>
+                <tr>
+                    <th> <a href="index.html">Home</a></th>
+                    <th class="padding"></th>
+                    <th>
+                       <!-- Los botones de login y register activaran el action del form y nos llevaran
+                    a sus respectivas paginas -->
+                        <form action="login.html">
+                            <input type="submit" value="Login" />
+                        </form>
+                    </th>
+                    <th>
+                        <form action="register.html">
+                            <input type="submit" value="Register" />
+                        </form>
+                    </th>
+                </tr>
+            </table>
+        </header>
+        <main>
+            <!-- Con una tabla dividiremos el main en dos, el menu y el articulo -->
+            <table>
+                <tr>
+                    <td>
+                        <section >
+                            <nav>
+                                <ul>
+                                    <li>
+                    <!-- Para buscar audio o video pulsaremos enter sobre el input y el action del 
+                        formulario nos llevara a la pagina marcada en el href -->
+                                        <form action="search.html">
+                                            <i class="fa fa-search"></i>
+                                            <input type="text" placeholder="Search">
+                                        </form>
+                                    </li>
+                                    <li>
+                                            <!-- Cada link redirigira a su pagina correspondiente -->
+                                            <!-- usamos el details para crear un dropdown con los links de cada categoria -->
+                                            <details>
+                                                    <summary><i class="fa fa-video"></i> See Videos</summary>
+                                                    <a href="videos.html">Todos</a><br>
+                                                    <a href="videos.html">Deportes</a><br>
+                                                    <a href="videos.html">Educación</a><br>
+                                                    <a href="videos.html">Humor</a><br>
+                                                    <a href="videos.html">Noticias</a><br>
+                                                    <a href="videos.html">Tiempo Libre</a><br>
+                                                    <a href="videos.html">Otros</a><br>
+                                                    <a href="videos.html">Aleatorio</a><br>
+                                                    
+                                                </details>
+                                        </li>
+                                      <li>
+                                        <!-- Hay algunos iconos que desconozco por que no cargan -->
+                                        <!-- usamos el details para crear un dropdown con los links de cada categoria -->
+                                        <details>
+                                                <summary><i class="fa fa-video"></i> Listen Audios</summary>
+                                                <a href="audios.html">Todos</a><br>
+                                                <a href="audios.html">Deportes</a><br>
+                                                <a href="audios.html">Educación</a><br>
+                                                <a href="audios.html">Humor</a><br>
+                                                <a href="audios.html">Noticias</a><br>
+                                                <a href="audios.html">Tiempo Libre</a><br>
+                                                <a href="audios.html">Otros</a><br>
+                                                <a href="audios.html">Aleatorio</a><br>
+                                                
+                                            </details>
+                                    </li>
+                                     <li>
+                                        <i class="fa fa-file-video"></i>
+                                        <a href="streaming.html">Streaming Videos</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-upload"></i>
+                                        <a href="upload_video.html">Upload Video</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-upload"></i>
+                                        <a href="upload_audio.html">Upload Audio</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-video"></i>
+                                        <a href="my_videos.html">My Videos</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-volume-up"></i>
+                                        <a href="my_audios.html">My Audios</a>
+                                    </li>
+                                   <li>
+                                        <i class="fa fa-info"></i>
+                                        <a href="info.html">Info</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-user"></i>
+                                        <a href="adm_users.html">Administrate Users</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-video"></i>
+                                        <a href="adm_videos.html">Administrate Videos</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-sound"></i>
+                                        <a href="adm_audios.html">Administrate Audios</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                      
+                            </section>
+                        </td>
+                        <td>
+                            <section>
+                                <article>
+                                        <h3>Bienvenido a la <span id="red">Web</span></h3>
+                                        <p>Estas viendo <span id="red">la seccion de 'Mis Videos'.</span><br>
+                                            Has seleccionado <span id="red">todos los videos</span> ordenados por <span id="red">los mas recientes.</span></p>
+                                    
+                                        <table>
+                                            <tr>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td class="tittle">Party</td>
+                                                <td class="tittle">Party</td>
+                                                <td class="tittle">Relax</td>
+                                                <td class="tittle">Relax</td>
+                                                
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">2 Preproducciones <b>Hace 0 Dias</b></td>
+                                                
+                                            </tr>
+                                            <!-- Fila2 -->
+                                            <tr>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td class="tittle">Party</td>
+                                                <td class="tittle">Party</td>
+                                                <td class="tittle">Relax</td>
+                                                <td class="tittle">Relax</td>
+                                                
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">2 Preproducciones <b>Hace 0 Dias</b></td>
+                                                
+                                            </tr>
+                                            <!-- Fila3 -->
+                                            <tr>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                <td class="video"><a href="detailed_video.html">VIDEO</a></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td class="tittle">Party</td>
+                                                <td class="tittle">Party</td>
+                                                <td class="tittle">Relax</td>
+                                                <td class="tittle">Relax</td>
+                                                
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">0 Preproducciones <b>Hace 0 Dias</b></td>
+                                                <td class="subtittle">2 Preproducciones <b>Hace 0 Dias</b></td>
+                                                
+                                            </tr>
+                                        </table>
+                                </article>
+                            </section>
+                        </td>
+                    </tr>
+                </table>
+            </main>
+            <footer><p>Footer</p></footer>
+    </body>
+</html>

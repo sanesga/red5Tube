@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+
+        ///////////////////////////////////////////////////////////////
+
+        //VARIABLES
+        var video = new Object();
+        var titleVideo = new String();
+        var viewsVideo = new String();
+        var daysVideo = new String();
+        var idVideo = new String();
+        var videos = new Array();
+
+        ///////////////////////////////////////////////////////////////
+
+        //esperamos a que toda la página esté cargada
+        window.onload = function () {
+
+            //coloreamos los iconos de agregar rojos, para poder obtener el color más tarde por javascript (si damos color por css, no podremos acceder a él).
+            colorearIconosRojo();
+
+            //vemos que vídeos están guardados en la lista de reproducción y los que estén añadidos, cambiamos el color del icono a gris.
+            recuperarDatos();
+        };
+
+        function colorearIconosRojo() {
+            var icons = document.getElementsByClassName("fa-plus-square");
+
+            for (var i = 0; i < icons.length; i++) {
+                icons[i].style.color = "red";
+            }
+        }
+
+        //al hacer click en el icono de añadir
+        function saveInformation(id) {
+
+            //creamos un nuevo objeto
+            video = new Object();
+
+            //obtenemos el elemento icono y su color
+            var iconElement = document.getElementById(id);
+            var color = iconElement.style.color;
+
+            //si el color del icono es rojo, es que no está agregado a la lista, agregamos:
+            if (color == "red") {
+
+                //cambiamos el color a gris
+                iconElement.style.color = "grey";
+
+                //obtenemos la información del vídeo 
+                getVideoInformation(id);
+
+                //añadimos atributos al objeto video
+                addAttributes();
+                //lo añadimos al array de vídeos
+                addToVideoList();
+                //guardamos el array de videos en local storage
+                saveVideos();
+
+            } else { //si no es rojo, es que está añadido, así que lo pasamos a rojo, lo borramos del array y guardamos la nueva lista en local storage.
+
+                iconElement.style.color = "red";
+
+                deleteFromList(id);
+
+                saveVideos();
+            }
+
+        }
+        function getVideoInformation(id) {
+            //los ids de los campos, son el id del vídeo más el nombre del atributo del objeto)
+            idVideo = id;
+            titleVideo = document.getElementById("title" + idVideo).innerText;
+            viewsVideo = document.getElementById("views" + idVideo).innerText;
+            daysVideo = document.getElementById("days" + idVideo).innerText;
+        }
+        function deleteFromList(id) {
+
+            //recorremos el array de vídeos, lo buscamos por id y lo borramos
+            for (var i = 0; i < videos.length; i++) {
+                if (videos[i].id == id) {
+                    //borramos 1 vídeo de la posición i.
+                    videos.splice(i, 1);
+                }
+            }
+        }
+
+        function addAttributes() {
+            //agregamos los atributos al objeto vídeo
+            video.id = idVideo;
+            video.title = titleVideo;
+            video.views = viewsVideo;
+            video.days = daysVideo;
+        }
+        function addToVideoList() {
+            //guardamos el vídeo en el array
+            videos.push(video);
+        }
+        function saveVideos() {
+            //comprobamos si el navegador admite web storage
+            if (typeof (Storage) !== "undefined") {
+                //pasamos el array a json para poder guardar
+                localStorage.setItem("videos", JSON.stringify(videos));
+            } else {
+                alert("Tu navegador no admite guardar datos localmente");
+            }
+        }
+
+        function recuperarDatos() {
+            var jsonVideos = localStorage.getItem("videos");
+            //verificamos que hay datos e imprimimos
+            if (jsonVideos != null) {
+                //recuperamos un json, hacemos parse a array
+                var videosRecuperados = JSON.parse(jsonVideos);
+
+                for (var v of videosRecuperados) {
+                    //obtenemos el icono del vídeo guardado
+                    var icon = document.getElementById(v.id);
+                    //como este vídeo está guardado, le cambiamos el color a gris.
+                    icon.style.color = "grey";
+                }
+            }
+        }
+        function guardarDetallesVideo(id) {
+            var videoDetail = new Object();
+            //obtenemos la información del vídeo y la guardamos como atributos
+            videoDetail.id = id;
+            videoDetail.title = document.getElementById("title" + id).innerText;
+            videoDetail.views = document.getElementById("views" + id).innerText;
+            videoDetail.days = document.getElementById("days" + id).innerText;
+
+            // //guardamos el vídeo en localStorage
+            saveVideo(videoDetail);
+        }
+        function saveVideo(videoDetail) {
+
+            var json = JSON.stringify(videoDetail);
+
+            if (typeof (Storage) !== "undefined") {
+
+                localStorage.setItem("video", json);
+            } else {
+                alert("Tu navegador no admite guardar datos localmente");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- La pagina tiene tres secciones principales, a las cuales, les damos formato con tablas -->
+    <!-- En esta página veremos la funcionalidad del usuario administrador, para manejar los audios existentes en la pagina -->
+    <header>
+        <table>
+            <tr>
+                <th> <a href="index.html">Home</a></th>
+                <th class="padding"></th>
+                <th>
+                    <!-- Los botones de login y register activarán el action del form y nos llevarán
+                    a sus respectivas páginas -->
+                    <form action="login.html">
+                        <input type="submit" value="Login" />
+                    </form>
+                </th>
+                <th>
+                    <form action="register.html">
+                        <input type="submit" value="Register" />
+                    </form>
+                </th>
+            </tr>
+        </table>
+    </header>
+    <main>
+        <!-- Con una tabla dividiremos el main en dos, el menú y el artículo -->
+        <table>
+            <tr>
+                <td>
+                    <section>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <!-- Para buscar audio o vídeo pulsaremos enter sobre el input y el action del formulario nos llevará a la página marcada en el href -->
+                                    <form action="search.html">
+                                        <i class="fa fa-search"></i>
+                                        <input type="text" placeholder="Search">
+                                    </form>
+                                </li>
+                                <li>
+                                    <!-- Cada link redirigirá a su página correspondiente -->
+                                    <!-- usamos el details para crear un dropdown con los links de cada categoría -->
+                                    <details>
+                                        <summary><i class="fa fa-video"></i> See Videos</summary>
+                                        <a href="videos.html">Todos</a><br>
+                                        <a href="videos.html">Deportes</a><br>
+                                        <a href="videos.html">Educación</a><br>
+                                        <a href="videos.html">Humor</a><br>
+                                        <a href="videos.html">Noticias</a><br>
+                                        <a href="videos.html">Tiempo Libre</a><br>
+                                        <a href="videos.html">Otros</a><br>
+                                        <a href="videos.html">Aleatorio</a><br>
+
+                                    </details>
+                                </li>
+                                <li>
+                                    <!-- Hay algunos iconos que desconozco porqué no cargan -->
+                                    <!-- usamos el details para crear un dropdown con los links de cada categoría -->
+                                    <details>
+                                        <summary><i class="fa fa-video"></i> Listen Audios</summary>
+                                        <a href="audios.html">Todos</a><br>
+                                        <a href="audios.html">Deportes</a><br>
+                                        <a href="audios.html">Educación</a><br>
+                                        <a href="audios.html">Humor</a><br>
+                                        <a href="audios.html">Noticias</a><br>
+                                        <a href="audios.html">Tiempo Libre</a><br>
+                                        <a href="audios.html">Otros</a><br>
+                                        <a href="audios.html">Aleatorio</a><br>
+
+                                    </details>
+                                </li>
+                                <li>
+                                    <i class="fa fa-file-video"></i>
+                                    <a href="streaming.html">Streaming Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-upload"></i>
+                                    <a href="upload_video.html">Upload Video</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-upload"></i>
+                                    <a href="upload_audio.html">Upload Audio</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-video"></i>
+                                    <a href="my_videos.html">My Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-volume-up"></i>
+                                    <a href="my_audios.html">My Audios</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info"></i>
+                                    <a href="info.html">Info</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-user"></i>
+                                    <a href="adm_users.html">Administrate Users</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-video"></i>
+                                    <a href="adm_videos.html">Administrate Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-sound"></i>
+                                    <a href="adm_audios.html">Administrate Audios</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </section>
+                </td>
+                <td id="#paginaSearch">
+                    <section>
+                        <article>
+                            <h3>Bienvenido a la <span class="red">Web</span></h3>
+                            <p>Estás viendo <span class="red">los resultados de tu búsqueda.</span><br>
+                                Has seleccionado <span class="red">los videos de deportes</span class="red"> ordenados
+                                por
+                                <span class="red">los más recientes.</span></p>
+
+                            <table>
+                                <tr>
+                                    <td></td>
+                                    <!--agregar al href="detailed_video.html"-->
+                                    <td class="video"><a onclick="guardarDetallesVideo('deportes1')" href="#"><img
+                                                src="./img/deportes1.jpg" alt="video1"></a>
+                                    </td>
+                                    <td></td>
+                                    <td class="video"><a onclick="guardarDetallesVideo('deportes2')" href="#"><img
+                                                src="./img/deportes2.jpg" alt="video2"></a>
+                                    </td>
+                                    <td></td>
+                                    <td class="video"><a onclick="guardarDetallesVideo('deportes3')" href="#"><img
+                                                src="./img/deportes3.jpg" alt="video3"></a>
+                                    </td>
+                                    <td></td>
+                                    <td class="video"><a onclick="guardarDetallesVideo('deportes4')" href="#"><img
+                                                src="./img/deportes4.jpg" alt="video4"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <!--Utilizamos el br para el salto de línea, el &nbsp para añadir espacios, el &middot para agregar un punto separador y el small para disminuir el tamaño de la letra-->
+                                    <!--Utilizamos las etiquetas span para poder recoger la información del vídeo asociado al botón-->
+                                    <td class="tittle">
+                                        <span id="titledeportes1">FOX SPORTS SOCCER</span>
+                                        <i onclick="saveInformation(id)" id="deportes1" class="far fa-plus-square "></i>
+                                        <br>
+                                        <small>
+                                            <span id="viewsdeportes1">26 Reproducciones</span>
+                                            &nbsp;<b>&middot;</b>&nbsp;
+                                            <span id="daysdeportes1">Hace 14 Días</span></small>
+                                    </td>
+
+                                    <td></td>
+
+                                    <td class="tittle"><span id="titledeportes2">NBA Crossovers and Ankle
+                                            Breakers</span><i onclick="saveInformation(id)" id="deportes2"
+                                            class="far fa-plus-square "></i><br><small><span id="viewsdeportes2">4
+                                                Reproducciones</span>&nbsp;<b>&middot;</b>&nbsp;<span
+                                                id="daysdeportes2">Hace 15 Días</span></small></td>
+                                    <td></td>
+
+                                    <td class="tittle"><span id="titledeportes3">Tenis. Abierto de Australia
+                                            2017</span><i onclick="saveInformation(id)" id="deportes3"
+                                            class="far fa-plus-square  "></i><br><small>7
+                                            <span id="viewsdeportes3"> Reproducciones</span>&nbsp;<b>&middot;</b>&nbsp;
+                                            <span id="daysdeportes3">Hace 15 Días</span></small></td>
+
+                                    <td></td>
+
+                                    <td class="tittle"> <span id="titledeportes4">Dos Sirenas al agua</span><i
+                                            onclick="saveInformation(id)" id="deportes4"
+                                            class="far fa-plus-square "></i><br><small> <span id="viewsdeportes4">5
+                                                Reproducciones></span&nbsp;<b>&middot;</b>&nbsp;<span
+                                                    id="daysdeportes4">Hace 17 Días</span></small></td>
+                                </tr>
+                            </table>
+                        </article>
+                    </section>
+                </td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <p>Footer</p>
+    </footer>
+</body>
+
+</html>

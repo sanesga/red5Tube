@@ -1,0 +1,571 @@
+/* general */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header table,
+th {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+/* Style the header */
+header {
+  text-align: left;
+  font-size: 35px;
+  color: white;
+}
+main {
+  background: #eee;
+}
+#header {
+  background-color: black;
+}
+#menu {
+  background: #ccc;
+  border-style: ridge;
+}
+#menu ul {
+  width: 100%;
+}
+.padding {
+  width: 90%;
+}
+/* Create two columns/boxes that floats next to each other */
+nav {
+  width: 90%;
+}
+/* Style the list inside the menu */
+article {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+/* Style the footer */
+footer {
+  background-color: #777;
+  text-align: center;
+  color: white;
+  height: 100px;
+}
+
+/* Auth forms */
+#auth_container {
+  margin-left: 38%;
+}
+#error_zone {
+  border-style: solid;
+  border-color: red;
+  border-width: thin;
+  background-color: #e1767666;
+}
+
+/* general */
+#table-1 {
+  border-collapse: collapse;
+  text-align: center;
+  border: 1px solid lightgray;
+}
+#table-1 tr td {
+  width: 1000px;
+}
+tr .top {
+  background-color: lightgray;
+  text-align: left;
+  height: 30px;
+}
+tr #center {
+  height: 100px;
+}
+#table-2 {
+  border-collapse: collapse;
+  width: 500px;
+  margin-left: 25%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 12px;
+}
+.titl {
+  background-color: deepskyblue;
+  color: blue;
+  border: 1px solid blue;
+}
+ /**************************************MODIFICADO SANDRA*********************************/
+/* #red {
+  color: red;
+} */
+.audio {
+  width: 150px;
+  height: 30px;
+  border: 1px solid lightgray;
+  text-align: center;
+}
+
+td.tittle {
+  font-size: 12px;
+}
+
+td.subtittle {
+  font-size: 8px;
+}
+#bodyPag10 {
+  /*margenes y fuente del body de la página*/
+  font-family: arial;
+  margin: 0px 60px 20px 20px;
+}
+
+#bodyPag10 button {
+  /*formato botones paginación*/
+  height: 25px;
+  width: 25px;
+}
+
+#bodyPag10 h2,
+.red {
+   /**************************************MODIFICADO SANDRA*********************************/
+  /*span y h2 color rojo*/
+  color: red;
+}
+
+#bodyPag10 select {
+  /*formato select elección de número de páginas a la vista*/
+  height: 25px;
+  width: 40px;
+}
+
+#bodyPag10 #tablaBusquedaUsuario {
+  /*formato tabla de búsqueda de usuario*/
+  border: solid 1px #d5d5d5;
+  border-collapse: collapse;
+  width: 600px;
+  height: 200px;
+  text-align: left;
+}
+
+#bodyPag10 #tablaBusquedaUsuario input[type="button"] {
+  /*botón de la tabla de búsqueda*/
+  background-color: red;
+  color: white;
+  width: 130px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+}
+
+#bodyPag10 #tablaBusquedaUsuario input[type="text"] {
+  /*input de búsqueda de usuario*/
+  width: 580px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #d5d5d5;
+}
+
+#bodyPag10 #tablaBusquedaUsuario td {
+  padding: 0px 15px 0px 15px;
+}
+
+#bodyPag10 #tablaBusquedaUsuario thead th:first-child {
+  /*formato del encabezado de la tabla*/
+  background-color: #d5d5d5;
+  padding: 15px;
+}
+
+#bodyPag10 #tablaUsuarios {
+  /*formato tabla de mantenimiento de usuarios*/
+  border: solid 1px #d5d5d5;
+  border-collapse: collapse;
+  width: 100%;
+  height: 200px;
+}
+
+#bodyPag10 #tablaUsuarios tbody tr:nth-child(even) {
+  /*color de las celdas pares de la tabla usuarios*/
+  background-color: #ffe4dc;
+}
+
+#bodyPag10 #tablaUsuarios td,
+th {
+  border: solid 1px grey;
+  padding: 8px;
+}
+
+#bodyPag10 #tablaUsuarios thead,
+tfoot {
+  /*color gris del encabezado y el pie de tabla*/
+  background-color: #d5d5d5;
+}
+
+#bodyPag10 #tablaUsuarios thead th:last-child {
+  /*tamaño diferente para la última columna de la tabla (icono editar)*/
+  width: 25px;
+}
+#bodyPag11 {
+  /*margenes y fuente del body de la página*/
+  font-family: arial;
+  margin: 0px 60px 20px 20px;
+}
+
+#bodyPag11 button {
+  /*formato botones paginación*/
+  height: 25px;
+  width: 25px;
+}
+
+#bodyPag11 h2,
+.red {
+   /**************************************MODIFICADO SANDRA*********************************/
+  /*span y h2 color rojo*/
+  color: red;
+}
+
+#bodyPag11 select {
+  /*formato select elección de número de páginas a la vista*/
+  height: 25px;
+  width: 40px;
+}
+
+#bodyPag11 #tablaBusquedaUsuario {
+  /*formato tabla de búsqueda de usuario*/
+  border: solid 1px #d5d5d5;
+  border-collapse: collapse;
+  width: 600px;
+  height: 200px;
+  text-align: left;
+}
+
+#bodyPag11 #tablaBusquedaUsuario input[type="button"] {
+  /*botón de la tabla de búsqueda de usuario*/
+  background-color: red;
+  color: white;
+  width: 130px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+}
+
+#bodyPag11 #tablaBusquedaUsuario input[type="text"] {
+  /*input de búsqueda de usuario*/
+  width: 580px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #d5d5d5;
+}
+
+#bodyPag11 #tablaBusquedaUsuario td {
+  padding: 0px 15px 0px 15px;
+}
+
+#bodyPag11 #tablaBusquedaUsuario thead th:first-child {
+  /*formato del encabezado de la tabla*/
+  background-color: #d5d5d5;
+  padding: 15px;
+}
+
+#bodyPag11 #tablaVideos {
+  /*formato tabla de mantenimiento de vídeos*/
+  border: solid 1px #d5d5d5;
+  border-collapse: collapse;
+  width: 100%;
+  height: 200px;
+}
+
+#bodyPag11 #tablaVideos tbody tr:nth-child(even) {
+  /*color de las celdas pares de la tabla vídeos*/
+  background-color: #ffe4dc;
+}
+
+#bodyPag11 #tablaVideos td,
+th {
+  border: solid 1px grey;
+  padding: 8px;
+}
+
+#bodyPag11 #tablaVideos thead,
+tfoot {
+  /*color gris del encabezado y el pie de tabla*/
+  background-color: #d5d5d5;
+}
+
+#bodyPag11 #tablaVideos thead th:last-child {
+  /*tamaño diferente para la última columna de la tabla (icono editar)*/
+  width: 25px;
+}
+.video img {
+  /**************************************MODIFICADO SANDRA*********************************/
+  width: 250px;
+  height: 130px;
+}
+#bodyPag16 {
+  /*márgenes y fuente de la página*/
+  font-family: Arial;
+  margin-left: 50%;
+}
+#bodyPag16 header .red {
+   /**************************************MODIFICADO SANDRA*********************************/
+  /*color de algunos textos*/
+  color: red;
+}
+#bodyPag16 img {
+  width: 500px;
+  height: 500px;
+}
+#bodyPag16 #reproducciones {
+  /*estilo texto visualizaciones*/
+  color: #f4928f;
+}
+#bodyPag16 #subtitle {
+  /*estilo subtítulo*/
+  text-align: justify;
+  color: grey;
+}
+#bodyPag16 table {
+  /*tamaño y estilo de la tabla*/
+  margin: 0 auto;
+  width: 50%;
+  height: 300px;
+  text-align: center;
+}
+#bodyPag16 #title {
+  /*tamaño letra título audio*/
+  font-size: 20px;
+}
+#bodyPag15 {
+  /*márgenes y fuente de la página*/
+  font-family: Arial;
+  margin: 20px;
+}
+#bodyPag15 header .red {
+  /**************************************MODIFICADO SANDRA*********************************/
+  /*color de algunos textos*/
+  color: red;
+}
+#bodyPag15 img {
+  width: 800px;
+  height: 500px;
+}
+#bodyPag15 #subtitle {
+  /*estilo subtítulo*/
+  text-align: justify;
+  color: grey;
+}
+#bodyPag15 table {
+  /*tamaño y estilo de la tabla*/
+  margin: 0 auto;
+  width: 50%;
+  height: 300px;
+}
+#bodyPag15 #title {
+  /*tamaño letra título vídeo*/
+  font-size: 20px;
+}
+#bodyPag15 #visualizaciones {
+  /*estilo texto visualizaciones*/
+  color: #f4928f;
+}
+#bodyPag14 {
+  /*márgenes y fuente de la página*/
+  font-family: Arial;
+  margin: 20px;
+}
+
+#bodyPag14 input[type="button"] {
+  /*formato del botón del footer*/
+  width: 500px;
+  height: 35px;
+  display: block;
+  margin: 0 auto;
+  background-color: red;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+}
+
+#bodyPag14 span {
+   /**************************************MODIFICADO SANDRA*********************************/
+  /*color de algunos textos*/
+  color: red;
+}
+
+#bodyPag14 table {
+  /*tamaño y estilo de la tabla*/
+  margin: 0 auto;
+  width: 50%;
+  height: 300px;
+  border: 1px solid lightgrey;
+  border-collapse: collapse;
+}
+
+#bodyPag14 table td:last-child {
+  /*tamaño diferente para la última columna de la tabla (iconos)*/
+  width: 3%;
+}
+
+#bodyPag14 td {
+  /*estilo de las celdas*/
+  border: 1px solid lightgrey;
+  padding: 10px;
+}
+
+#bodyPag14 tr:nth-child(even) {
+  /*color de las celdas pares de la tabla*/
+  background-color: #ffe4dc;
+}
+/*orden alfabético para facilitar la localización*/
+#bodyPag13 {
+  /*márgenes y fuente de la página*/
+  font-family: Arial;
+  margin: 20px;
+}
+
+#bodyPag13 span {
+  /*color de algunos textos*/
+  color: red;
+}
+
+#bodyPag13 table {
+  /*tamaño de la tabla*/
+  width: 100%;
+  height: 300px;
+}
+
+#bodyPag13 table td {
+  /*padding de las celdas*/
+  padding: 15px 0px 15px 0px;
+}
+
+#bodyPag13 img {
+  /*tamaño del vídeo*/
+  width: 250px;
+  height: 130px;
+}
+
+#bodyPag13 input[type="button"] {
+  /*formato del botón del footer*/
+  width: 500px;
+  height: 35px;
+  display: block;
+  margin: 0 auto;
+  background-color: red;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+}
+
+#bodyPag12 {
+  /*margenes y fuente del body de la página*/
+  font-family: arial;
+  margin: 0px 60px 20px 20px;
+}
+
+#bodyPag12 button {
+  /*formato botones paginación*/
+  height: 25px;
+  width: 25px;
+}
+
+#bodyPag12 h2,
+.red {
+  /*span y h2 color rojo*/
+  color: red;
+}
+
+#bodyPag12 select {
+  /*formato select elección de número de páginas a la vista*/
+  height: 25px;
+  width: 40px;
+}
+
+#bodyPag12 #tablaBusquedaUsuario {
+  /*formato tabla de búsqueda de usuario*/
+  border: solid 1px #d5d5d5;
+  border-collapse: collapse;
+  width: 600px;
+  height: 200px;
+  text-align: left;
+}
+
+#bodyPag12 #tablaBusquedaUsuario input[type="button"] {
+  /*botón de la tabla de búsqueda de usuario*/
+  background-color: red;
+  color: white;
+  width: 130px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+}
+
+#bodyPag12 #tablaBusquedaUsuario input[type="text"] {
+  /*input de búsqueda de usuario*/
+  width: 580px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #d5d5d5;
+}
+
+#bodyPag12 #tablaBusquedaUsuario td {
+  padding: 0px 15px 0px 15px;
+}
+
+#bodyPag12 #tablaBusquedaUsuario thead th:first-child {
+  /*formato del encabezado de la tabla*/
+  background-color: #d5d5d5;
+  padding: 15px;
+}
+
+#bodyPag12 #tablaAudios {
+  /*formato tabla de mantenimiento de audios*/
+  border: solid 1px #d5d5d5;
+  border-collapse: collapse;
+  width: 100%;
+  height: 200px;
+}
+
+#bodyPag12 #tablaAudios tbody tr:nth-child(even) {
+  /*color de las celdas pares de la tabla audios*/
+  background-color: #ffe4dc;
+}
+
+#bodyPag12 #tablaAudios td,
+th {
+  border: solid 1px grey;
+  padding: 8px;
+}
+
+#bodyPag12 #tablaAudios thead,
+tfoot {
+  /*color gris del encabezado y el pie de tabla*/
+  background-color: #d5d5d5;
+}
+
+#bodyPag12 #tablaAudios thead th:last-child {
+  /*tamaño diferente para la última columna de la tabla (icono editar)*/
+  width: 25px;
+}
+tr #top {
+  background-color: lightgray;
+  text-align: left;
+  height: 30px;
+}
+
+.titl {
+  background-color: deepskyblue;
+  color: blue;
+  border: 1px solid blue;
+}
+.but {
+  background-color: darkblue;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+}
+
+/*CSS AÑADIDO POR SANDRA*/
+
+/*PÁGINA SEARCH*/
+.fa-plus-square {
+  /*formato del botón añadir a la lista de reproducción de vídeos*/
+  font-size: 30px;
+  float: right;
+}
