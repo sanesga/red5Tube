@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script>
+
+        //empezamos la actividad cuando la página esté totalmente cargada
+        window.onload = function () {
+
+            //recuperamos los datos del local storage
+            recuperarDatos();
+        };
+        function recuperarDatos() {
+
+            //cargamos el array videos
+            var videos = cargarArray();
+
+            var tabla = document.getElementById("videosTable")
+
+            //por cada vídeo guardado, creamos las celdas de la tabla
+            for (var v of videos) {
+
+                //creamos los elementos
+                var tr = document.createElement("tr");
+                var tdImagen = document.createElement("td");
+                var img = document.createElement("img");
+                var tdInfo = document.createElement("td");
+                var spanTitulo = document.createElement("span");
+                var spanVisualizaciones = document.createElement("span");
+                var spanDias = document.createElement("span");
+                var aImagen = document.createElement("a");
+                var aTitulo = document.createElement("a");
+
+
+                //creamos los atributos
+                //la imagen en miniatura del vídeo tiene el mismo nombre que el id
+                img.setAttribute("src", "./img/" + v.id + ".jpg");
+                aImagen.setAttribute("onclick", "guardarDetallesVideo('" + v.id + "')");
+                aImagen.setAttribute("href", "detailed_video.html");
+                aTitulo.setAttribute("onclick", "guardarDetallesVideo('" + v.id + "')");
+                aTitulo.setAttribute("href", "detailed_video.html");
+
+                //les añadimos la información del vídeo
+                spanTitulo.innerHTML = v.title + "<br><br>";
+                spanVisualizaciones.innerHTML = v.views + "<br><br>";
+                spanDias.innerHTML = v.days;
+
+                //damos estilo a los elementos
+                spanTitulo.style.fontWeight = "bold";
+                spanDias.style.color = "red";
+
+                //unimos los elementos con sus padres
+                aTitulo.appendChild(spanTitulo);
+                aImagen.appendChild(img);
+                tdImagen.appendChild(aImagen);
+                tdInfo.appendChild(aTitulo);
+                tdInfo.appendChild(spanVisualizaciones);
+                tdInfo.appendChild(spanDias);
+                tr.appendChild(tdImagen);
+                tr.appendChild(tdInfo);
+
+                //y añadimos todo al elemento raíz
+                tabla.appendChild(tr);
+            }
+        }
+
+        function cargarArray() {
+            var jsonVideos = localStorage.getItem("videos");
+            //verificamos que hay datos
+            if (jsonVideos != null) {
+                //recuperamos un json, hacemos parse a array
+                var videos = JSON.parse(jsonVideos);
+                return videos;
+            }
+        }
+        function guardarDetallesVideo(id) {
+            //cargamos el array con los vídeos
+            var videos = cargarArray();
+            //buscamos el vídeo seleccionado en el array y enviamos sus datos a local storage
+            for (var i = 0; i < videos.length; i++) {
+                if (videos[i].id == id) {
+                    saveVideo(videos[i]);
+                }
+            }
+        }
+        function saveVideo(v) {
+            //pasamos el vídeo a formato JSON
+            var json = JSON.stringify(v);
+            //si el navegador soporta el local storage
+            if (typeof Storage !== "undefined") {
+                //guardamos
+                localStorage.setItem("video", json);
+            } else {
+                alert("Tu navegador no admite guardar datos localmente");
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- La pagina tiene tres secciones principales, las cuales formataremos con tablas -->
+    <!-- En esta pagina veremos la funcionalidad del usuario administrador, para manejar los 
+    audios existentes en la pagina -->
+    <header>
+        <table>
+            <tr>
+                <th> <a href="index.html">Home</a></th>
+                <th class="padding"></th>
+                <th>
+                    <!-- Los botones de login y register activaran el action del form y nos llevaran
+                    a sus respectivas paginas -->
+                    <form action="login.html">
+                        <input type="submit" value="Login" />
+                    </form>
+                </th>
+                <th>
+                    <form action="register.html">
+                        <input type="submit" value="Register" />
+                    </form>
+                </th>
+            </tr>
+        </table>
+    </header>
+    <main>
+        <!-- Con una tabla dividiremos el main en dos, el menu y el articulo -->
+        <table>
+            <tr>
+                <td>
+                    <section>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <!-- Para buscar audio o video pulsaremos enter sobre el input y el action del 
+                        formulario nos llevara a la pagina marcada en el href -->
+                                    <form action="search.html">
+                                        <i class="fa fa-search"></i>
+                                        <input type="text" placeholder="Search">
+                                    </form>
+                                </li>
+                                <li>
+                                    <!-- Cada link redirigira a su pagina correspondiente -->
+                                    <!-- usamos el details para crear un dropdown con los links de cada categoria -->
+                                    <details>
+                                        <summary><i class="fa fa-video"></i> See Videos</summary>
+                                        <a href="videos.html">Todos</a><br>
+                                        <a href="videos.html">Deportes</a><br>
+                                        <a href="videos.html">Educación</a><br>
+                                        <a href="videos.html">Humor</a><br>
+                                        <a href="videos.html">Noticias</a><br>
+                                        <a href="videos.html">Tiempo Libre</a><br>
+                                        <a href="videos.html">Otros</a><br>
+                                        <a href="videos.html">Aleatorio</a><br>
+
+                                    </details>
+                                </li>
+                                <li>
+                                    <!-- Hay algunos iconos que desconozco por que no cargan -->
+                                    <!-- usamos el details para crear un dropdown con los links de cada categoria -->
+                                    <details>
+                                        <summary><i class="fa fa-video"></i> Listen Audios</summary>
+                                        <a href="audios.html">Todos</a><br>
+                                        <a href="audios.html">Deportes</a><br>
+                                        <a href="audios.html">Educación</a><br>
+                                        <a href="audios.html">Humor</a><br>
+                                        <a href="audios.html">Noticias</a><br>
+                                        <a href="audios.html">Tiempo Libre</a><br>
+                                        <a href="audios.html">Otros</a><br>
+                                        <a href="audios.html">Aleatorio</a><br>
+
+                                    </details>
+                                </li>
+                                <li>
+                                    <i class="fa fa-file-video"></i>
+                                    <a href="streaming.html">Streaming Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-upload"></i>
+                                    <a href="upload_video.html">Upload Video</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-upload"></i>
+                                    <a href="upload_audio.html">Upload Audio</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-video"></i>
+                                    <a href="my_videos.html">My Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-volume-up"></i>
+                                    <a href="my_audios.html">My Audios</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info"></i>
+                                    <a href="info.html">Info</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-user"></i>
+                                    <a href="adm_users.html">Administrate Users</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-video"></i>
+                                    <a href="adm_videos.html">Administrate Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-sound"></i>
+                                    <a href="adm_audios.html">Administrate Audios</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </section>
+                </td>
+                <td>
+                    <section>
+                        <article>
+                            <div id="bodyPag17">
+                                <h2>Videos play list</h2>
+                                <table id="videosTable">
+                                    <!--Inyectamos los vídeos a través de javascript-->
+                                </table>
+                            </div>
+                        </article>
+                    </section>
+                </td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <p>Footer</p>
+    </footer>
+</body>
+
+</html>

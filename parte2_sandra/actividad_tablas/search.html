@@ -143,7 +143,6 @@
         }
         function saveVideo(videoDetail) {
             var json = JSON.stringify(videoDetail);
-
             if (typeof Storage !== "undefined") {
                 localStorage.setItem("video", json);
             } else {
@@ -342,7 +341,7 @@
                                     <td></td>
 
                                     <td class="tittle">
-                                        <a onclick="guardarDetallesVideo('deportes2')" href="detailed_video.html">
+                                        <a onclick="guardarDetallesVideo('deportes3')" href="detailed_video.html">
                                             <span id="titledeportes3">Tenis. Abierto de Australia 2017</span>
                                         </a>
                                         <i onclick="saveInformation(id)" id="deportes3" class="far fa-plus-square"></i>
@@ -358,7 +357,7 @@
                                     <td></td>
 
                                     <td class="tittle">
-                                        <a onclick="guardarDetallesVideo('deportes2')" href="detailed_video.html">
+                                        <a onclick="guardarDetallesVideo('deportes4')" href="detailed_video.html">
                                             <span id="titledeportes4">Alpine Skiing - Men's Super Combined</span>
                                         </a>
                                         <i onclick="saveInformation(id)" id="deportes4" class="far fa-plus-square "></i>

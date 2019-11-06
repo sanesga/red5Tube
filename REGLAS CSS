@@ -1,0 +1,104 @@
+REGLAS CSS MODIFICADAS
+
+REGLA ELIMINADA
+
+/* #red {
+  color: red;
+} */
+
+
+REGLAS MODIFICADAS
+
+#bodyPag10 h2,
+.red {
+  /*span y h2 color rojo*/
+  color: red;
+}
+
+
+#bodyPag11 h2,
+.red {
+  /*span y h2 color rojo*/
+  color: red;
+}
+
+
+.video img {
+  width: 250px;
+  height: 130px;
+}
+
+
+#bodyPag16 header .red {
+  /*color de algunos textos*/
+  color: red;
+}
+
+
+#bodyPag15 header .red {
+  /*color de algunos textos*/
+  color: red;
+}
+
+
+#bodyPag14 span {
+  /*color de algunos textos*/
+  color: red;
+}
+#bodyPag15 #title {
+  /*tamaño letra título vídeo*/
+  text-align: left;
+  font-size: 20px;
+}
+#bodyPag15 #visualizaciones {
+  /*estilo texto visualizaciones*/
+  color: red;
+  padding-top: 10px;
+  text-align: left;
+}
+#bodyPag15 #subtitle {
+  /*estilo subtítulo*/
+  text-align: justify;
+  color: grey;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+
+REGLAS AÑADIDAS
+
+/*PÁGINA SEARCH*/
+.fa-plus-square {
+  /*formato del botón añadir a la lista de reproducción de vídeos*/
+  font-size: 30px;
+  float: right;
+}
+/*PÁGINA DETAILED_VIDEO*/
+.description {
+  /*span description de los vídeos, no será visible, lo utilizamos para recoger información*/
+  display: none;
+}
+/*PÁGINA DETAILED_VIDEO*/
+.videoButtons{
+  /*formato de los botones del reproductor de vídeo*/
+  box-shadow: 2px 2px 10px #666; 
+  height: 60px;
+  width: 100px;
+  background-color:white;
+  color: red;
+  border-radius: 20px;
+  font-size: 14px;
+  border: 2px solid red;
+  stroke: #777;
+}
+
+/*PÁGINA VIDEO LIST*/
+#bodyPag17 h2{
+  color: red;
+}
+#bodyPag17 img{
+  width: 300px;
+  height: 150px;
+}
+
+
