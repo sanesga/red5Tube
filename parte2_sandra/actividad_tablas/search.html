@@ -18,9 +18,9 @@
         var viewsVideo = new String();
         var daysVideo = new String();
         var idVideo = new String();
-        var descriptionVideo= new String();
+        var descriptionVideo = new String();
         var videos = new Array();
-        
+
 
         ///////////////////////////////////////////////////////////////
 
@@ -80,7 +80,7 @@
             titleVideo = document.getElementById("title" + idVideo).innerText;
             viewsVideo = document.getElementById("views" + idVideo).innerText;
             daysVideo = document.getElementById("days" + idVideo).innerText;
-            descriptionVideo= document.getElementById("description"+idVideo).innerText;
+            descriptionVideo = document.getElementById("description" + idVideo).innerText;
         }
         function deleteFromList(id) {
             //recorremos el array de vídeos, lo buscamos por id y lo borramos
@@ -98,7 +98,7 @@
             video.title = titleVideo;
             video.views = viewsVideo;
             video.days = daysVideo;
-            video.description= descriptionVideo;
+            video.description = descriptionVideo;
         }
         function addToVideoList() {
             //guardamos el vídeo en el array
@@ -118,10 +118,10 @@
             var jsonVideos = localStorage.getItem("videos");
             //verificamos que hay datos e imprimimos
             if (jsonVideos != null) {
-                //recuperamos un json, hacemos parse a array
-                var videosRecuperados = JSON.parse(jsonVideos);
+                //recuperamos un json, hacemos parse a array y lo guardamos en nuestro array de vídeos, con el que trabajaremos en la página.
+                videos = JSON.parse(jsonVideos);
 
-                for (var v of videosRecuperados) {
+                for (var v of videos) {
                     //obtenemos el icono del vídeo guardado
                     var icon = document.getElementById(v.id);
                     //como este vídeo está guardado, le cambiamos el color a gris.
@@ -137,7 +137,7 @@
             videoDetail.views = document.getElementById("views" + id).innerText;
             videoDetail.days = document.getElementById("days" + id).innerText;
             videoDetail.description = document.getElementById("description" + id).innerText;
-            
+
             // //guardamos el vídeo en localStorage
             saveVideo(videoDetail);
         }
@@ -368,7 +368,9 @@
                                             <span id="daysdeportes4">Hace 17 Días</span>
 
                                         </small>
-                                        <span class="description" id="descriptiondeportes4">Daily Report - Highlights of Downhill event of the Men's Super Combined  from the Rosa Khutor Alpine Centre at the Sochi 2014 Winter Olympic Games.</span>
+                                        <span class="description" id="descriptiondeportes4">Daily Report - Highlights of
+                                            Downhill event of the Men's Super Combined from the Rosa Khutor Alpine
+                                            Centre at the Sochi 2014 Winter Olympic Games.</span>
                                     </td>
                                 </tr>
                             </table>
