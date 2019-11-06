@@ -1,170 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script>
+
+        //obtenemos el reproductor de vídeo del dom
+        var videos = document.getElementsByTagName('video');
+        //var time = 0;
+        //empezamos a hacer cosas cuando se carga totalmente la página
+        window.onload = function () {
+
+            /////////////////////////////////////////////////////////////////
+            //elementos del dom
+            var title = document.getElementById("title");
+            var subtitle = document.getElementById("subtitle");
+            var visualizaciones = document.getElementById("visualizaciones");
+
+            //variables
+            var video = null;
+            ////////////////////////////////////////////////////////////////
+
+            //cargamos los detalles del vídeo al que hemos hecho click
+            recuperarDatos();
+            //pasamos los datos a las respectivas celdas de la tabla
+            imprimirDatos();
+
+        }
+        function recuperarDatos() {
+
+            var jsonVideo = localStorage.getItem("video");
+            //verificamos que hay datos e imprimimos
+            if (jsonVideo != null) {
+                //recuperamos un json, hacemos parse a array
+                video = JSON.parse(jsonVideo);
+            }
+        }
+
+        function imprimirDatos() {
+
+            //creamos la etiqueta source
+            var source = document.createElement('source');
+            //añadimos la ruta del vídeo
+            source.setAttribute('src', 'videos/' + video.id + '.mp4');
+            //añadimos el atributo al reproductor
+            videos[0].appendChild(source);
+
+
+            //mostramos los datos del vídeo
+            title.innerHTML = video.title;
+            subtitle.innerHTML = video.description;
+            visualizaciones.innerHTML = video.views;
+        }
+        function play() {
+            videos[0].play();
+        }
+        function pause() {
+            videos[0].pause();
+        }
+        function stop() {
+            //el stop reinicia el vídeo sin ejecutarlo.
+            videos[0].load();
+        }
+        function back() {
+            //obtenemos el tiempo actual de reproducción del video
+            var tiempoActual = videos[0].currentTime;
+            //le restamos 10 segundos
+            tiempoActual -= 10;
+            //le indicamos al vídeo en qué tiempo tiene que posicionarse
+            videos[0].currentTime = tiempoActual;
+        }
+        function forward() {
+            //obtenemos el tiempo actual de reproducción del video
+            var tiempoActual = videos[0].currentTime;
+            //le sumamos 10 segundos
+            tiempoActual += 10;
+            //le indicamos al vídeo en qué tiempo tiene que posicionarse
+            videos[0].currentTime = tiempoActual;
+        }
+    </script>
 </head>
+
 <body>
-    <!-- La pagina tiene tres secciones principales, las cuales formataremos con tablas -->
-    <!-- En esta pagina veremos la funcionalidad del usuario administrador, para manegar los 
-    audios existentes en la pagina -->
-        <header>
-            <table>
-                <tr>
-                    <th> <a href="index.html">Home</a></th>
-                    <th class="padding"></th>
-                    <th>
-                       <!-- Los botones de login y register activaran el action del form y nos llevaran
-                    a sus respectivas paginas -->
-                        <form action="login.html">
-                            <input type="submit" value="Login" />
-                        </form>
-                    </th>
-                    <th>
-                        <form action="register.html">
-                            <input type="submit" value="Register" />
-                        </form>
-                    </th>
-                </tr>
-            </table>
-        </header>
-        <main>
-            <!-- Con una tabla dividiremos el main en dos, el menu y el articulo -->
-            <table>
-                <tr>
-                    <td>
-                        <section >
-                            <nav>
-                                <ul>
-                                    <li>
-                    <!-- Para buscar audio o video pulsaremos enter sobre el input y el action del 
-                        formulario nos llevara a la pagina marcada en el href -->
-                                        <form action="search.html">
-                                            <i class="fa fa-search"></i>
-                                            <input type="text" placeholder="Search">
-                                        </form>
-                                    </li>
-                                    <li>
-                                            <!-- Cada link redirigira a su pagina correspondiente -->
-                                            <!-- usamos el details para crear un dropdown con los links de cada categoria -->
-                                            <details>
-                                                    <summary><i class="fa fa-video"></i> See Videos</summary>
-                                                    <a href="videos.html">Todos</a><br>
-                                                    <a href="videos.html">Deportes</a><br>
-                                                    <a href="videos.html">Educación</a><br>
-                                                    <a href="videos.html">Humor</a><br>
-                                                    <a href="videos.html">Noticias</a><br>
-                                                    <a href="videos.html">Tiempo Libre</a><br>
-                                                    <a href="videos.html">Otros</a><br>
-                                                    <a href="videos.html">Aleatorio</a><br>
-                                                    
-                                                </details>
-                                        </li>
-                                      <li>
-                                        <!-- Hay algunos iconos que desconozco por que no cargan -->
-                                        <!-- usamos el details para crear un dropdown con los links de cada categoria -->
-                                        <details>
-                                                <summary><i class="fa fa-video"></i> Listen Audios</summary>
-                                                <a href="audios.html">Todos</a><br>
-                                                <a href="audios.html">Deportes</a><br>
-                                                <a href="audios.html">Educación</a><br>
-                                                <a href="audios.html">Humor</a><br>
-                                                <a href="audios.html">Noticias</a><br>
-                                                <a href="audios.html">Tiempo Libre</a><br>
-                                                <a href="audios.html">Otros</a><br>
-                                                <a href="audios.html">Aleatorio</a><br>
-                                                
-                                            </details>
-                                    </li>
-                                     <li>
-                                        <i class="fa fa-file-video"></i>
-                                        <a href="streaming.html">Streaming Videos</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-upload"></i>
-                                        <a href="upload_video.html">Upload Video</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-upload"></i>
-                                        <a href="upload_audio.html">Upload Audio</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-video"></i>
-                                        <a href="my_videos.html">My Videos</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-volume-up"></i>
-                                        <a href="my_audios.html">My Audios</a>
-                                    </li>
-                                   <li>
-                                        <i class="fa fa-info"></i>
-                                        <a href="info.html">Info</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-user"></i>
-                                        <a href="adm_users.html">Administrate Users</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-video"></i>
-                                        <a href="adm_videos.html">Administrate Videos</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-sound"></i>
-                                        <a href="adm_audios.html">Administrate Audios</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </section>
-                        </td>
-                        <td>
-                            <section>
-                                <article>
-                                        <div id="bodyPag15">
-                                                <!--Hay estilos añadidos con etiquetas html y no css, para trabajar lo que hemos visto en clase-->
-                                               
-                                                  <p>Bienvenido a <span>Web</span></p>
-                                                  <!--añadimos span para darle formato-->
-                                                
-                                                <br/><br/>
-                                                <table>
-                                                  <!--Esta tabla no contiene head ni foot-->
-                                                  <tr>
-                                                    <td>
-                                                      <img src="./img/video.jpg" alt="video">
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td id="title">
-                                                      <br><b>PS4 Remote Play</b>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td id="subtitle">
-                                                      <br> PS4 Remote Play es una herramienta con la que podrás transmitir en directo lo que sucede en tu Play Station
-                                                      directamente en tu terminal Android o a cualquier otra pantalla de tu casa de la manera más fácil. Con esta
-                                                      utilidad podrás disfrutar de tus juegos favoritos de la Play Station 4 a través de un dispositivo inalámbrico
-                                                      DUALSHOCK y tu cuenta de Sony.
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td id="visualizaciones">
-                                                      <br> 159 visualizaciones
-                                                    </td>
-                                                  </tr>
-                                                </table>
-                                                <!--Esta página no tiene footer-->
-                                            </div>
-                                </article>
-                            </section>
-                        </td>
-                    </tr>
-                </table>
-            </main>
-            <footer><p>Footer</p></footer>
-    </body>
+    <!-- La página tiene tres secciones principales, a las cuales damos formato con tablas -->
+    <!-- En esta página veremos la funcionalidad del usuario administrador, para manejar los 
+    audios existentes en la página -->
+    <header>
+        <table>
+            <tr>
+                <th> <a href="index.html">Home</a></th>
+                <th class="padding"></th>
+                <th>
+                    <!-- Los botones de login y register activarán el action del form y nos llevarán
+                    a sus respectivas páginas -->
+                    <form action="login.html">
+                        <input type="submit" value="Login" />
+                    </form>
+                </th>
+                <th>
+                    <form action="register.html">
+                        <input type="submit" value="Register" />
+                    </form>
+                </th>
+            </tr>
+        </table>
+    </header>
+    <main>
+        <!-- Con una tabla dividiremos el main en dos, el menú y el artículo -->
+        <table>
+            <tr>
+                <td>
+                    <section>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <!-- Para buscar audio o vídeo pulsaremos enter sobre el input, y el action del 
+                        formulario nos llevará a la página marcada en el href -->
+                                    <form action="search.html">
+                                        <i class="fa fa-search"></i>
+                                        <input type="text" placeholder="Search">
+                                    </form>
+                                </li>
+                                <li>
+                                    <!-- Cada link redirigirá a su página correspondiente -->
+                                    <!-- usamos el details para crear un dropdown con los links de cada categoría -->
+                                    <details>
+                                        <summary><i class="fa fa-video"></i> See Videos</summary>
+                                        <a href="videos.html">Todos</a><br>
+                                        <a href="videos.html">Deportes</a><br>
+                                        <a href="videos.html">Educación</a><br>
+                                        <a href="videos.html">Humor</a><br>
+                                        <a href="videos.html">Noticias</a><br>
+                                        <a href="videos.html">Tiempo Libre</a><br>
+                                        <a href="videos.html">Otros</a><br>
+                                        <a href="videos.html">Aleatorio</a><br>
+
+                                    </details>
+                                </li>
+                                <li>
+                                    <!-- Hay algunos iconos que desconozco porqué no cargan -->
+                                    <!-- usamos el details para crear un dropdown con los links de cada categoría -->
+                                    <details>
+                                        <summary><i class="fa fa-video"></i> Listen Audios</summary>
+                                        <a href="audios.html">Todos</a><br>
+                                        <a href="audios.html">Deportes</a><br>
+                                        <a href="audios.html">Educación</a><br>
+                                        <a href="audios.html">Humor</a><br>
+                                        <a href="audios.html">Noticias</a><br>
+                                        <a href="audios.html">Tiempo Libre</a><br>
+                                        <a href="audios.html">Otros</a><br>
+                                        <a href="audios.html">Aleatorio</a><br>
+
+                                    </details>
+                                </li>
+                                <li>
+                                    <i class="fa fa-file-video"></i>
+                                    <a href="streaming.html">Streaming Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-upload"></i>
+                                    <a href="upload_video.html">Upload Video</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-upload"></i>
+                                    <a href="upload_audio.html">Upload Audio</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-video"></i>
+                                    <a href="my_videos.html">My Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-volume-up"></i>
+                                    <a href="my_audios.html">My Audios</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info"></i>
+                                    <a href="info.html">Info</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-user"></i>
+                                    <a href="adm_users.html">Administrate Users</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-video"></i>
+                                    <a href="adm_videos.html">Administrate Videos</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-sound"></i>
+                                    <a href="adm_audios.html">Administrate Audios</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </section>
+                </td>
+                <td>
+                    <section>
+                        <article>
+                            <div id="bodyPag15">
+                                <!--Hay estilos añadidos con etiquetas html y no css, para trabajar lo que hemos visto en clase-->
+
+                                <p>Bienvenido a <span>Web</span></p>
+                                <!--añadimos span para darle formato-->
+
+                                <br /><br />
+                                <table>
+                                    <!--Esta tabla no contiene head ni foot-->
+                                    <tr>
+                                        <td>
+                                            <!--Añadimos el reproductor de vídeo-->
+                                            <video width="600" height="350">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            <button  class="videoButtons" onclick="play()" ><i class="fas fa-play"></i> Play</button>
+                                            <button  class="videoButtons" onclick="pause()"><i class="fas fa-pause"></i> Pause</button>
+                                            <button class="videoButtons" onclick="stop()"><i class="fas fa-stop"></i> Stop</button>
+                                            <button class="videoButtons" onclick="back()"><i class="fas fa-backward"></i> 10sc</button>
+                                            <button class="videoButtons" onclick="forward()"><i class="fas fa-forward"></i> 10sc</button>
+                                            <br><br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="title">
+                                            <br><b>PS4 Remote Play</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="subtitle">
+                                            <br> PS4 Remote Play es una herramienta con la que podrás transmitir en
+                                            directo lo que sucede en tu Play Station
+                                            directamente en tu terminal Android o a cualquier otra pantalla de tu casa
+                                            de la manera más fácil. Con esta
+                                            utilidad podrás disfrutar de tus juegos favoritos de la Play Station 4 a
+                                            través de un dispositivo inalámbrico
+                                            DUALSHOCK y tu cuenta de Sony.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="visualizaciones">
+                                            <br> 159 visualizaciones
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--Esta página no tiene footer-->
+                            </div>
+                        </article>
+                    </section>
+                </td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <p>Footer</p>
+    </footer>
+</body>
+
 </html>

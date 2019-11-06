@@ -2,15 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript">
-
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
         ///////////////////////////////////////////////////////////////
 
         //VARIABLES
@@ -19,13 +18,14 @@
         var viewsVideo = new String();
         var daysVideo = new String();
         var idVideo = new String();
+        var descriptionVideo= new String();
         var videos = new Array();
+        
 
         ///////////////////////////////////////////////////////////////
 
         //esperamos a que toda la página esté cargada
         window.onload = function () {
-
             //coloreamos los iconos de agregar rojos, para poder obtener el color más tarde por javascript (si damos color por css, no podremos acceder a él).
             colorearIconosRojo();
 
@@ -43,7 +43,6 @@
 
         //al hacer click en el icono de añadir
         function saveInformation(id) {
-
             //creamos un nuevo objeto
             video = new Object();
 
@@ -53,11 +52,10 @@
 
             //si el color del icono es rojo, es que no está agregado a la lista, agregamos:
             if (color == "red") {
-
                 //cambiamos el color a gris
                 iconElement.style.color = "grey";
 
-                //obtenemos la información del vídeo 
+                //obtenemos la información del vídeo
                 getVideoInformation(id);
 
                 //añadimos atributos al objeto video
@@ -66,8 +64,8 @@
                 addToVideoList();
                 //guardamos el array de videos en local storage
                 saveVideos();
-
-            } else { //si no es rojo, es que está añadido, así que lo pasamos a rojo, lo borramos del array y guardamos la nueva lista en local storage.
+            } else {
+                //si no es rojo, es que está añadido, así que lo pasamos a rojo, lo borramos del array y guardamos la nueva lista en local storage.
 
                 iconElement.style.color = "red";
 
@@ -75,7 +73,6 @@
 
                 saveVideos();
             }
-
         }
         function getVideoInformation(id) {
             //los ids de los campos, son el id del vídeo más el nombre del atributo del objeto)
@@ -83,9 +80,9 @@
             titleVideo = document.getElementById("title" + idVideo).innerText;
             viewsVideo = document.getElementById("views" + idVideo).innerText;
             daysVideo = document.getElementById("days" + idVideo).innerText;
+            descriptionVideo= document.getElementById("description"+idVideo).innerText;
         }
         function deleteFromList(id) {
-
             //recorremos el array de vídeos, lo buscamos por id y lo borramos
             for (var i = 0; i < videos.length; i++) {
                 if (videos[i].id == id) {
@@ -101,6 +98,7 @@
             video.title = titleVideo;
             video.views = viewsVideo;
             video.days = daysVideo;
+            video.description= descriptionVideo;
         }
         function addToVideoList() {
             //guardamos el vídeo en el array
@@ -108,7 +106,7 @@
         }
         function saveVideos() {
             //comprobamos si el navegador admite web storage
-            if (typeof (Storage) !== "undefined") {
+            if (typeof Storage !== "undefined") {
                 //pasamos el array a json para poder guardar
                 localStorage.setItem("videos", JSON.stringify(videos));
             } else {
@@ -138,16 +136,15 @@
             videoDetail.title = document.getElementById("title" + id).innerText;
             videoDetail.views = document.getElementById("views" + id).innerText;
             videoDetail.days = document.getElementById("days" + id).innerText;
-
+            videoDetail.description = document.getElementById("description" + id).innerText;
+            
             // //guardamos el vídeo en localStorage
             saveVideo(videoDetail);
         }
         function saveVideo(videoDetail) {
-
             var json = JSON.stringify(videoDetail);
 
-            if (typeof (Storage) !== "undefined") {
-
+            if (typeof Storage !== "undefined") {
                 localStorage.setItem("video", json);
             } else {
                 alert("Tu navegador no admite guardar datos localmente");
@@ -162,7 +159,7 @@
     <header>
         <table>
             <tr>
-                <th> <a href="index.html">Home</a></th>
+                <th><a href="index.html">Home</a></th>
                 <th class="padding"></th>
                 <th>
                     <!-- Los botones de login y register activarán el action del form y nos llevarán
@@ -191,7 +188,7 @@
                                     <!-- Para buscar audio o vídeo pulsaremos enter sobre el input y el action del formulario nos llevará a la página marcada en el href -->
                                     <form action="search.html">
                                         <i class="fa fa-search"></i>
-                                        <input type="text" placeholder="Search">
+                                        <input type="text" placeholder="Search" />
                                     </form>
                                 </li>
                                 <li>
@@ -199,15 +196,14 @@
                                     <!-- usamos el details para crear un dropdown con los links de cada categoría -->
                                     <details>
                                         <summary><i class="fa fa-video"></i> See Videos</summary>
-                                        <a href="videos.html">Todos</a><br>
-                                        <a href="videos.html">Deportes</a><br>
-                                        <a href="videos.html">Educación</a><br>
-                                        <a href="videos.html">Humor</a><br>
-                                        <a href="videos.html">Noticias</a><br>
-                                        <a href="videos.html">Tiempo Libre</a><br>
-                                        <a href="videos.html">Otros</a><br>
-                                        <a href="videos.html">Aleatorio</a><br>
-
+                                        <a href="videos.html">Todos</a><br />
+                                        <a href="videos.html">Deportes</a><br />
+                                        <a href="videos.html">Educación</a><br />
+                                        <a href="videos.html">Humor</a><br />
+                                        <a href="videos.html">Noticias</a><br />
+                                        <a href="videos.html">Tiempo Libre</a><br />
+                                        <a href="videos.html">Otros</a><br />
+                                        <a href="videos.html">Aleatorio</a><br />
                                     </details>
                                 </li>
                                 <li>
@@ -215,15 +211,14 @@
                                     <!-- usamos el details para crear un dropdown con los links de cada categoría -->
                                     <details>
                                         <summary><i class="fa fa-video"></i> Listen Audios</summary>
-                                        <a href="audios.html">Todos</a><br>
-                                        <a href="audios.html">Deportes</a><br>
-                                        <a href="audios.html">Educación</a><br>
-                                        <a href="audios.html">Humor</a><br>
-                                        <a href="audios.html">Noticias</a><br>
-                                        <a href="audios.html">Tiempo Libre</a><br>
-                                        <a href="audios.html">Otros</a><br>
-                                        <a href="audios.html">Aleatorio</a><br>
-
+                                        <a href="audios.html">Todos</a><br />
+                                        <a href="audios.html">Deportes</a><br />
+                                        <a href="audios.html">Educación</a><br />
+                                        <a href="audios.html">Humor</a><br />
+                                        <a href="audios.html">Noticias</a><br />
+                                        <a href="audios.html">Tiempo Libre</a><br />
+                                        <a href="audios.html">Otros</a><br />
+                                        <a href="audios.html">Aleatorio</a><br />
                                     </details>
                                 </li>
                                 <li>
@@ -264,74 +259,118 @@
                                 </li>
                             </ul>
                         </nav>
-
                     </section>
                 </td>
                 <td id="#paginaSearch">
                     <section>
                         <article>
                             <h3>Bienvenido a la <span class="red">Web</span></h3>
-                            <p>Estás viendo <span class="red">los resultados de tu búsqueda.</span><br>
-                                Has seleccionado <span class="red">los videos de deportes</span class="red"> ordenados
-                                por
-                                <span class="red">los más recientes.</span></p>
+                            <p>
+                                Estás viendo
+                                <span class="red">los resultados de tu búsqueda.</span>
+                                <br />
+                                Has seleccionado
+                                <span class="red">los videos de deportes</span>
+                                <span class="red"> ordenados por</span>
+                                <span class="red">los más recientes.</span>
+                            </p>
 
                             <table>
                                 <tr>
                                     <td></td>
-                                    <!--agregar al href="detailed_video.html"-->
-                                    <td class="video"><a onclick="guardarDetallesVideo('deportes1')" href="#"><img
-                                                src="./img/deportes1.jpg" alt="video1"></a>
+                                    <!--El método guardarDetallesVideo guarda el vídeo en localStorage para recuperarlo en el html del detalle-->
+                                    <td class="video">
+                                        <a onclick="guardarDetallesVideo('deportes1')" href="detailed_video.html"><img
+                                                src="./img/deportes1.jpg" alt="video1" /></a>
                                     </td>
                                     <td></td>
-                                    <td class="video"><a onclick="guardarDetallesVideo('deportes2')" href="#"><img
-                                                src="./img/deportes2.jpg" alt="video2"></a>
+                                    <td class="video">
+                                        <a onclick="guardarDetallesVideo('deportes2')" href="detailed_video.html"><img
+                                                src="./img/deportes2.jpg" alt="video2" /></a>
                                     </td>
                                     <td></td>
-                                    <td class="video"><a onclick="guardarDetallesVideo('deportes3')" href="#"><img
-                                                src="./img/deportes3.jpg" alt="video3"></a>
+                                    <td class="video">
+                                        <a onclick="guardarDetallesVideo('deportes3')" href="detailed_video.html"><img
+                                                src="./img/deportes3.jpg" alt="video3" /></a>
                                     </td>
                                     <td></td>
-                                    <td class="video"><a onclick="guardarDetallesVideo('deportes4')" href="#"><img
-                                                src="./img/deportes4.jpg" alt="video4"></a>
+                                    <td class="video">
+                                        <a onclick="guardarDetallesVideo('deportes4')" href="detailed_video.html"><img
+                                                src="./img/deportes4.jpg" alt="video4" /></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <!--Utilizamos el br para el salto de línea, el &nbsp para añadir espacios, el &middot para agregar un punto separador y el small para disminuir el tamaño de la letra-->
                                     <!--Utilizamos las etiquetas span para poder recoger la información del vídeo asociado al botón-->
+                                    <!-- La etiqueta <a> sirve de enlace hacia el detalle del vídeo, al hacer click en la imagen o en el título-->
                                     <td class="tittle">
-                                        <span id="titledeportes1">FOX SPORTS SOCCER</span>
+                                        <a onclick="guardarDetallesVideo('deportes1')" href="detailed_video.html">
+                                            <span id="titledeportes1">FOX SPORTS SOCCER</span>
+                                        </a>
                                         <i onclick="saveInformation(id)" id="deportes1" class="far fa-plus-square "></i>
-                                        <br>
+                                        <br />
                                         <small>
                                             <span id="viewsdeportes1">26 Reproducciones</span>
-                                            &nbsp;<b>&middot;</b>&nbsp;
-                                            <span id="daysdeportes1">Hace 14 Días</span></small>
+                                            &nbsp;
+                                            <b>
+                                                &middot;
+                                            </b>
+                                            &nbsp;
+                                            <span id="daysdeportes1">Hace 14 Días</span>
+                                        </small>
+                                        <!--Añadimos este span con la descripción del vídeo, que no se mostrará. Nos sirve para recoger la información, guardarla en local storage y recuperarla en la página de detalle vídeo-->
+                                        <span class="description" id="descriptiondeportes1">If you feel like you don’t
+                                            fit in anywhere or you want to play but you’re not sure, come to Soccer
+                                            Without Borders, we got you.- Shiham, SWB Oakland</span>
                                     </td>
 
                                     <td></td>
 
-                                    <td class="tittle"><span id="titledeportes2">NBA Crossovers and Ankle
-                                            Breakers</span><i onclick="saveInformation(id)" id="deportes2"
-                                            class="far fa-plus-square "></i><br><small><span id="viewsdeportes2">4
-                                                Reproducciones</span>&nbsp;<b>&middot;</b>&nbsp;<span
-                                                id="daysdeportes2">Hace 15 Días</span></small></td>
+                                    <td class="tittle">
+                                        <a onclick="guardarDetallesVideo('deportes2')" href="detailed_video.html"><span
+                                                id="titledeportes2">NBA Crossovers and Ankle Breakers</span></a><i
+                                            onclick="saveInformation(id)" id="deportes2"
+                                            class="far fa-plus-square "></i><br /><small><span id="viewsdeportes2">4
+                                                Reproducciones</span>&nbsp;<b>&middot;</b>&nbsp;
+                                            <span id="daysdeportes2">Hace 15 Días</span>
+                                        </small>
+                                        <span class="description" id="descriptiondeportes2">Check out the top 10 plays
+                                            of the night from around the league on Nov. 4 featuring James Harden, Devin
+                                            Booker, Ja Morant and more!</span>
+                                    </td>
                                     <td></td>
 
-                                    <td class="tittle"><span id="titledeportes3">Tenis. Abierto de Australia
-                                            2017</span><i onclick="saveInformation(id)" id="deportes3"
-                                            class="far fa-plus-square  "></i><br><small>7
-                                            <span id="viewsdeportes3"> Reproducciones</span>&nbsp;<b>&middot;</b>&nbsp;
-                                            <span id="daysdeportes3">Hace 15 Días</span></small></td>
+                                    <td class="tittle">
+                                        <a onclick="guardarDetallesVideo('deportes2')" href="detailed_video.html">
+                                            <span id="titledeportes3">Tenis. Abierto de Australia 2017</span>
+                                        </a>
+                                        <i onclick="saveInformation(id)" id="deportes3" class="far fa-plus-square"></i>
+                                        <br />
+                                        <small>
+                                            <span id="viewsdeportes3">7 Reproducciones</span>&nbsp;<b>&middot;</b>&nbsp;
+                                            <span id="daysdeportes3">Hace 15 Días</span>
+                                        </small>
+                                        <span class="description" id="descriptiondeportes3">Final: ROGER FEDERER - RAFA
+                                            NADAL</span>
+                                    </td>
 
                                     <td></td>
 
-                                    <td class="tittle"> <span id="titledeportes4">Dos Sirenas al agua</span><i
-                                            onclick="saveInformation(id)" id="deportes4"
-                                            class="far fa-plus-square "></i><br><small> <span id="viewsdeportes4">5
-                                                Reproducciones></span&nbsp;<b>&middot;</b>&nbsp;<span
-                                                    id="daysdeportes4">Hace 17 Días</span></small></td>
+                                    <td class="tittle">
+                                        <a onclick="guardarDetallesVideo('deportes2')" href="detailed_video.html">
+                                            <span id="titledeportes4">Alpine Skiing - Men's Super Combined</span>
+                                        </a>
+                                        <i onclick="saveInformation(id)" id="deportes4" class="far fa-plus-square "></i>
+                                        <br />
+                                        <small>
+                                            <span id="viewsdeportes4">5 Reproducciones</span>
+                                            &nbsp;<b>&middot;</b>&nbsp;
+                                            <span id="daysdeportes4">Hace 17 Días</span>
+
+                                        </small>
+                                        <span class="description" id="descriptiondeportes4">Daily Report - Highlights of Downhill event of the Men's Super Combined  from the Rosa Khutor Alpine Centre at the Sochi 2014 Winter Olympic Games.</span>
+                                    </td>
                                 </tr>
                             </table>
                         </article>

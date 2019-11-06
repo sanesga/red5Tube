@@ -90,7 +90,7 @@ tr #center {
   color: blue;
   border: 1px solid blue;
 }
- /**************************************MODIFICADO SANDRA*********************************/
+/**************************************MODIFICADO SANDRA*********************************/
 /* #red {
   color: red;
 } */
@@ -122,7 +122,7 @@ td.subtittle {
 
 #bodyPag10 h2,
 .red {
-   /**************************************MODIFICADO SANDRA*********************************/
+  /**************************************MODIFICADO SANDRA*********************************/
   /*span y h2 color rojo*/
   color: red;
 }
@@ -213,7 +213,7 @@ tfoot {
 
 #bodyPag11 h2,
 .red {
-   /**************************************MODIFICADO SANDRA*********************************/
+  /**************************************MODIFICADO SANDRA*********************************/
   /*span y h2 color rojo*/
   color: red;
 }
@@ -301,7 +301,7 @@ tfoot {
   margin-left: 50%;
 }
 #bodyPag16 header .red {
-   /**************************************MODIFICADO SANDRA*********************************/
+  /**************************************MODIFICADO SANDRA*********************************/
   /*color de algunos textos*/
   color: red;
 }
@@ -344,9 +344,12 @@ tfoot {
   height: 500px;
 }
 #bodyPag15 #subtitle {
+  /**************************************SEGUNDA MODIFICACIÓN*********************************/
   /*estilo subtítulo*/
   text-align: justify;
   color: grey;
+  padding-top: 10px;
+  font-size: 16px;
 }
 #bodyPag15 table {
   /*tamaño y estilo de la tabla*/
@@ -355,12 +358,17 @@ tfoot {
   height: 300px;
 }
 #bodyPag15 #title {
+   /**************************************SEGUNDA MODIFICACIÓN*********************************/
   /*tamaño letra título vídeo*/
+  text-align: left;
   font-size: 20px;
 }
 #bodyPag15 #visualizaciones {
+   /**************************************SEGUNDA MODIFICACIÓN*********************************/
   /*estilo texto visualizaciones*/
-  color: #f4928f;
+  color: red;
+  padding-top: 10px;
+  text-align: left;
 }
 #bodyPag14 {
   /*márgenes y fuente de la página*/
@@ -382,7 +390,7 @@ tfoot {
 }
 
 #bodyPag14 span {
-   /**************************************MODIFICADO SANDRA*********************************/
+  /**************************************MODIFICADO SANDRA*********************************/
   /*color de algunos textos*/
   color: red;
 }
@@ -568,4 +576,22 @@ tr #top {
   /*formato del botón añadir a la lista de reproducción de vídeos*/
   font-size: 30px;
   float: right;
+}
+/*PÁGINA DETAILED_VIDEO*/
+.description {
+  /*span description de los vídeos, no será visible, lo utilizamos para recoger información*/
+  display: none;
+}
+/*PÁGINA DETAILED_VIDEO*/
+.videoButtons{
+  /*formato de los botones del reproductor de vídeo*/
+  box-shadow: 2px 2px 10px #666; 
+  height: 60px;
+  width: 100px;
+  background-color:white;
+  color: red;
+  border-radius: 20px;
+  font-size: 14px;
+  border: 2px solid red;
+  stroke: #777;
 }
