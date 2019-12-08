@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial;
 }
@@ -440,8 +444,10 @@ body h1, body header p span {
 #detail-grid-container {
   margin-top: 30px;
   display: grid;
+  grid-template-columns: 70%;
   grid-row-gap: 20px;
   justify-content: center;
+  background-color: lightcyan;
 }
 #detail-grid-container #title {
   font-weight: bold;
@@ -450,8 +456,18 @@ body h1, body header p span {
   color: red;
 }
 #detail-grid-container img {
-  width: 500px;
-  height: 500px;
+  width: 40%;
+  height: auto;
+}
+#detail-grid-container video {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  #detail-grid-container {
+    grid-template-columns: 100%;
+  }
 }
 
 /*# sourceMappingURL=sandra.css.map */

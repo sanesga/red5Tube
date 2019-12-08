@@ -59,6 +59,10 @@ $colors: (
 /////////////////ESTILOS PÁGINAS 10, 11, 12, 15 Y 16///////////////////////////////////////////////
 //ordenado por número de página
 
+//incluimos todos los border y paddings en el tamaño total de los elementos
+*{
+    box-sizing: border-box;
+}
 //estilo del body
 body{
     font-family: $font;
@@ -262,10 +266,12 @@ body{
 #detail-grid-container{
     margin-top: 30px;
     display: grid;
+    grid-template-columns: 70%;
     grid-row-gap: 20px;
     //centramos el grid en la página horizontal y verticalmente
     justify-content: center;
-    
+    background-color: lightcyan;
+  
     #title{
         font-weight: bold;
     }
@@ -273,8 +279,20 @@ body{
         color: map-get($colors, rojo );
     }
     img{
-        width: 500px;
-        height: 500px;
+        width: 40%;
+        height: auto;
+    }
+    video{
+        width: 100%;
+        height: auto;
+    }
+}
+
+//media-querys (responsive)
+//en resoluciones menores de 1200px, se cambia el tamaño al 100% (para tablet y móvil)
+@media screen and (max-width: 1200px){
+    #detail-grid-container{
+        grid-template-columns: 100%;
     }
 }
 
