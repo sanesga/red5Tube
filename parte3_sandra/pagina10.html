@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin usuarios</title>
+    <link rel="stylesheet" href="./css/sandra.css">
+    <!--librería fontawesome-->
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+
+<!--Añadimos un id para añadir estilo por css-->
+
+<body id="pagina10">
+
+    <header>
+        <h1>Administración de usuarios</h1>
+        <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
+        <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
+    </header>
+
+    <!--tabla administración de usuarios-->
+    <!--utilizamos un grid-->
+    <div id="search-grid-container">
+        <div>Búsqueda de usuario</div>
+        <div>Introduce parte del alias del usuario:</div>
+        <div><input type="text" placeholder=" Si no introduces nada, se buscan todos los usuarios."></div>
+        <div><input type="button" value="Buscar"></div>
+    </div>
+
+    <!--tabla mantenimiento de usuarios-->
+    <!--utilizamos un grid-->
+    <div id="maintenance-grid-container">
+
+        <!--cabecera-->
+        <div id="head">Mantenimiento de usuarios</div>
+
+          <!--títulos-->
+        <div id="title1">Alias</div>
+        <div id="title2">Email</div>
+        <div id="title3">Nombre</div>
+        <div id="title4">Apellidos</div>
+        <div id="title5">Rol</div>
+        <div id="title6"></div>
+
+     
+        <!--items-->
+        <div id="item1">admin</div>
+        <div id="item2">jlluch16@alumno.uned.es</div>
+        <div id="item3">Joaquín</div>
+        <div id="item4">Lluch Quilis</div>
+        <div id="item5">ADMIN</div>
+        <div id="item6"><i class="far fa-edit "></i></div>
+
+        <div id="item7" class="even">espectador</div>
+        <div id="item8" class="even">jlluch16@alumno.uned.es</div>
+        <div id="item9" class="even">Joaquín</div>
+        <div id="item10" class="even">Lluch Quilis</div>
+        <div id="item11" class="even">ESPECTADOR</div>
+        <div id="item12" class="even"> <i class="far fa-edit "></i></div>
+
+        <div id="item13" >jlluch16</div>
+        <div id="item14" >jlluch16@alumno.uned.es</div>
+        <div id="item15" >Joaquín</div>
+        <div id="item16" >Lluch Quilis</div>
+        <div id="item17" >PUBLICADOR</div>
+        <div id="item18" > <i class="far fa-edit "></i></div>
+
+        <div id="item19" class="even">jlluch162</div>
+        <div id="item20" class="even">jlluch16@alumno.uned.es</div>
+        <div id="item21" class="even">Joaquín</div>
+        <div id="item22" class="even">Lluch Quilis</div>
+        <div id="item23" class="even">PUBLICADOR</div>
+        <div id="item24" class="even"> <i class="far fa-edit "></i></div>
+
+        <div id="item25" >joaquín</div>
+        <div id="item26" >jlluch16@alumno.uned.es</div>
+        <div id="item27" >Joaquín</div>
+        <div id="item28" >Lluch Quilis</div>
+        <div id="item29" >PUBLICADOR</div>
+        <div id="item30" > <i class="far fa-edit "></i></div>
+
+        <!--paginación-->
+        <div id="foot">
+            <select>
+                <!--permite seleccionar el número de filas que queremos mostrar-->
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+
+            <!--botones de paginación, iconos de fontawesome-->
+            <button><i class="fas fa-step-backward"></i></button>
+            <button><i class="fas fa-backward"></i></button>
+            <span>(1 de 2)</span>
+            <button><i class="fas fa-forward"></i></button>
+            <button><i class="fas fa-step-forward"></i></button>
+        </div>
+    </div>
+</body>
+
+</html>

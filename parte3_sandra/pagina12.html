@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin audios</title>
+    <link rel="stylesheet" href="./css/sandra.css">
+    <!--librería fontawesome-->
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+
+<!--Añadimos un id para añadir estilo por css-->
+
+<body id="pagina12">
+
+    <header>
+        <h1>Administración de vídeos</h1>
+        <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
+        <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
+    </header>
+
+    <!--tabla administración de usuarios-->
+    <!--utilizamos un grid-->
+    <div id="search-grid-container">
+        <div>Búsqueda de usuario</div>
+        <div>Introduce parte del alias del usuario:</div>
+        <div><input type="text" placeholder=" red5tube"></div>
+        <div><input type="button" value="Buscar"></div>
+    </div>
+
+    <!--tabla mantenimiento de audios-->
+    <!--utilizamos un grid-->
+    <div id="maintenance-grid-container">
+
+        <!--cabecera-->
+        <div id="head">Mantenimiento de audios<i class="fas fa-music"></i></div>
+          
+        <!--títulos-->
+        <div id="title1">Usuario</div>
+        <div id="title2">Título</div>
+        <div id="title3">Autor</div>
+        <div id="title4">Álbum</div>
+        <div id="title5">Comentarios</div>
+        <div id="title6">Género</div>
+        <div id="title7"></div>
+
+       <!--items-->
+        <div id="item1">red5tube</div>
+        <div id="item2">Let_It_Be.mp3</div>
+        <div id="item3">The Beatles</div>
+        <div id="item4">Let It Be</div>
+        <div id="item5">Awesome!</div>
+        <div id="item6">ROCK</div>
+        <div id="item7"><i class="far fa-edit"></i></div>
+
+        <div id="item8" class="even">red5tube</div>
+        <div id="item9" class="even">Toda_la_noche_en_la_calle.mp3</div>
+        <div id="item10" class="even">Amaral</div>
+        <div id="item11" class="even">Estrella de mar</div>
+        <div id="item12" class="even">Good song!</div>
+        <div id="item13" class="even">POP</div>
+        <div id="item14" class="even"><i class="far fa-edit"></i></div>
+
+        <!--paginación-->
+        <div id="foot">
+            <select>
+                <!--permite seleccionar el número de filas que queremos mostrar-->
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+
+            <!--botones de paginación, iconos de fontawesome-->
+            <button><i class="fas fa-step-backward"></i></button>
+            <button><i class="fas fa-backward"></i></button>
+            <span>(1 de 1)</span>
+            <button><i class="fas fa-forward"></i></button>
+            <button><i class="fas fa-step-forward"></i></button>
+        </div>
+    </div>
+</body>
+
+</html>

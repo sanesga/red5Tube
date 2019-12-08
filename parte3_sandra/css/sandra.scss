@@ -1,0 +1,287 @@
+//COMPILAR SASS
+//sass --watch sandra.scss:sandras.css
+
+//variables globales
+$font: #{"Arial"};
+
+
+//mapas (arrays)
+$colors: (
+    rojo:red,
+    gris:#D5D5D5,
+    gris-oscuro: grey,
+    blanco: white
+);
+
+//INFO
+//se puede anidar las etiquetas como en html
+//@extend .nombredelaclase para extender de un estilo
+//button{
+//  border:none
+//}
+//button-important{
+//  @extend .button;
+//  color: red;
+//}
+
+////////////////////MIXINS (módulos de estilo para poder reutilizarlos)
+
+@mixin formato-boton{
+    background-color:map-get($colors, rojo);
+    color: map-get($colors, blanco);
+    width: 130px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+}
+
+/////////////////ESTILOS///////////////////////////////////////////////
+
+//////PÁGINAS 10, 11, 12, 15 Y 16
+
+//estilo del body
+#pagina10, #pagina11, #pagina12{
+    font-family: $font;
+
+    //estilo del título y subtítulo de las páginas
+    h1, header p span{
+        color: map-get($colors, rojo); 
+    }
+}
+/////////grid de búsqueda de usuario (usamos selectores anidados) (pág. 10 y 11)
+#pagina10 #search-grid-container, #pagina11 #search-grid-container, #pagina12 #search-grid-container{
+    display: grid;
+    border: 1px solid map-get($colors, gris);
+    width: 600px;
+    height: 200px;
+    margin-bottom:20px;
+    
+    //formato del input del cuadro de búsqueda
+    div input[type="text"]{
+        width: 560px;
+        height: 30px;
+        border-radius: 6px;
+        border: 1px solid #D5D5D5;
+    }
+    //formato del botón buscar
+    div input[type="button"]{
+        @include formato-boton();
+    }
+
+    //formato del primer div
+    div:first-child{
+        border: 1px solid map-get($colors, gris-oscuro);
+        font-weight: bold;
+        background-color: map-get($colors, gris); 
+    }
+     //formato del resto de divs
+     //usamos display flex para alinear el contenido
+    div{
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+    }
+} 
+
+//grid de mantenimiento de usuario (página 10)
+#pagina10 #maintenance-grid-container{
+    display:grid;
+    width: 100%;
+    height: 200px;
+    //establecemos el orden de los ítems
+    grid-template-areas: "head head head head head head"
+                         "title1 title2 title3 title4 title5 title6"
+                         "item1 item2 item3 item4 item5 item6"
+                         "item7 item8 item9 item10 item11 item12"
+                         "item13 item14 item15 item16 item17 item18"
+                         "item19 item20 item21 item22 item23 item24"
+                         "item25 item26 item27 item28 item29 item30"
+                         "foot foot foot foot foot foot";
+    //damos tamaño a las columnas
+    grid-template-columns: auto auto auto auto auto 3.5%;
+    //formato de todos los divs
+    div{
+        border: 1px solid map-get($colors, gris-oscuro);
+        padding: 8px;
+    }
+    //cabecera de la tabla
+    #head{
+        background-color: map-get($colors, gris);
+        font-weight: bold;
+        text-align: center;
+        grid-area: head;
+    }
+    //pie de la tabla
+    #foot{
+        grid-area: foot;
+        background-color: map-get($colors, gris);
+        text-align: center;
+    }
+    //asignamos a cada título, su área, mediante un bucle
+    @for $i from 0 to 7{
+        #title#{$i}{
+            background-color: map-get($colors, gris);
+            font-weight: bold;
+            text-align: center;
+            grid-area: title#{$i};
+        }
+    }
+    //asignamos a cada ítem, su área, mediante otro bucle
+    @for $i from 0 to 30{
+        #item#{$i}{
+            grid-area: item#{$i};
+        }
+    }
+    //número de página actual
+    span{
+        font-weight: bold;
+        padding: 5px;
+    }
+    //color salmón para las filas pares
+    .even{
+        background-color:#FFE4DC ;
+    }
+}
+//icono vídeo página 11 y audio página 12
+.fa-video, .fa-music{
+    margin-left: 10px;
+    }
+//grid mantenimiento de vídeos (página 11)
+#pagina11 #maintenance-grid-container{
+    display:grid;
+    width: 100%;
+    height: 200px;
+    //establecemos el orden de los ítems
+    grid-template-areas: "head head head head head head"
+                         "title1 title2 title3 title4 title5 title6"
+                         "item1 item2 item3 item4 item5 item6"
+                         "item7 item8 item9 item10 item11 item12"
+                         "foot foot foot foot foot foot";
+    //damos tamaño a las columnas
+    grid-template-columns: auto auto auto auto auto 3.5%;
+    //formato de todos los divs
+    div{
+        border: 1px solid map-get($colors, gris-oscuro);
+        padding: 8px;
+    }
+    //cabecera de la tabla
+    #head{
+        background-color: map-get($colors, gris);
+        font-weight: bold;
+        text-align: center;
+        grid-area: head;
+    }
+    //pie de la tabla
+    #foot{
+        grid-area: foot;
+        background-color: map-get($colors, gris);
+        text-align: center;
+    }
+    //asignamos a cada título, su área, mediante un bucle
+    @for $i from 0 to 7{
+        #title#{$i}{
+            background-color: map-get($colors, gris);
+            font-weight: bold;
+            text-align: center;
+            grid-area: title#{$i};
+        }
+    }
+    //asignamos a cada ítem, su área, mediante otro bucle
+    @for $i from 0 to 13{
+        #item#{$i}{
+            grid-area: item#{$i};
+        }
+    }
+    //número de página actual
+    span{
+        font-weight: bold;
+        padding: 5px;
+    }
+    //color salmón para las filas pares
+    .even{
+        background-color:#FFE4DC ;
+    }
+}
+
+//grid mantenimiento de audios (página 12)
+#pagina12 #maintenance-grid-container{
+    display:grid;
+    width: 100%;
+    height: 200px;
+    //establecemos el orden de los ítems
+    grid-template-areas: "head head head head head head head"
+                         "title1 title2 title3 title4 title5 title6 title7"
+                         "item1 item2 item3 item4 item5 item6 item7"
+                         "item8 item9 item10 item11 item12 item13 item14"
+                         "foot foot foot foot foot foot foot";
+    //damos tamaño a las columnas
+    grid-template-columns: auto auto auto auto auto auto 3.5%;
+    //formato de todos los divs
+    div{
+        border: 1px solid map-get($colors, gris-oscuro);
+        padding: 8px;
+    }
+    //cabecera de la tabla
+    #head{
+        background-color: map-get($colors, gris);
+        font-weight: bold;
+        text-align: center;
+        grid-area: head;
+    }
+    //pie de la tabla
+    #foot{
+        grid-area: foot;
+        background-color: map-get($colors, gris);
+        text-align: center;
+    }
+    //asignamos a cada título, su área, mediante un bucle
+    @for $i from 0 to 8{
+        #title#{$i}{
+            background-color: map-get($colors, gris);
+            font-weight: bold;
+            text-align: center;
+            grid-area: title#{$i};
+        }
+    }
+    //asignamos a cada ítem, su área, mediante otro bucle
+    @for $i from 0 to 15{
+        #item#{$i}{
+            grid-area: item#{$i};
+        }
+    }
+    //número de página actual
+    span{
+        font-weight: bold;
+        padding: 5px;
+    }
+    //color salmón para las filas pares
+    .even{
+        background-color:#FFE4DC ;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
