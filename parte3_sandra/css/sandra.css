@@ -1,24 +1,24 @@
-#pagina10, #pagina11, #pagina12, #pagina15 {
+body {
   font-family: Arial;
 }
-#pagina10 h1, #pagina10 header p span, #pagina11 h1, #pagina11 header p span, #pagina12 h1, #pagina12 header p span, #pagina15 h1, #pagina15 header p span {
+body h1, body header p span {
   color: red;
 }
 
-#pagina10 #search-grid-container, #pagina11 #search-grid-container, #pagina12 #search-grid-container {
+#search-grid-container {
   display: grid;
   border: 1px solid #D5D5D5;
   width: 600px;
   height: 200px;
   margin-bottom: 20px;
 }
-#pagina10 #search-grid-container div input[type=text], #pagina11 #search-grid-container div input[type=text], #pagina12 #search-grid-container div input[type=text] {
+#search-grid-container div input[type=text] {
   width: 560px;
   height: 30px;
   border-radius: 6px;
   border: 1px solid #D5D5D5;
 }
-#pagina10 #search-grid-container div input[type=button], #pagina11 #search-grid-container div input[type=button], #pagina12 #search-grid-container div input[type=button] {
+#search-grid-container div input[type=button] {
   background-color: red;
   color: white;
   width: 130px;
@@ -26,12 +26,12 @@
   border-radius: 6px;
   border: none;
 }
-#pagina10 #search-grid-container div:first-child, #pagina11 #search-grid-container div:first-child, #pagina12 #search-grid-container div:first-child {
+#search-grid-container div:first-child {
   border: 1px solid grey;
   font-weight: bold;
   background-color: #D5D5D5;
 }
-#pagina10 #search-grid-container div, #pagina11 #search-grid-container div, #pagina12 #search-grid-container div {
+#search-grid-container div {
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -437,15 +437,21 @@
   background-color: #FFE4DC;
 }
 
-#pagina15 #detail-grid-container {
+#detail-grid-container {
+  margin-top: 30px;
   display: grid;
   grid-row-gap: 20px;
+  justify-content: center;
 }
-#pagina15 #detail-grid-container #title {
+#detail-grid-container #title {
   font-weight: bold;
 }
-#pagina15 #detail-grid-container #views {
+#detail-grid-container #views {
   color: red;
+}
+#detail-grid-container img {
+  width: 500px;
+  height: 500px;
 }
 
 /*# sourceMappingURL=sandra.css.map */
