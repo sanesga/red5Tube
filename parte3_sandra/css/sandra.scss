@@ -1,5 +1,5 @@
 //COMPILAR SASS
-//sass --watch sandra.scss:sandras.css
+//sass --watch sandra.scss:sandra.css
 
 //variables globales
 $font: #{"Arial"};
@@ -40,7 +40,7 @@ $colors: (
 //////PÁGINAS 10, 11, 12, 15 Y 16
 
 //estilo del body
-#pagina10, #pagina11, #pagina12{
+#pagina10, #pagina11, #pagina12, #pagina15{
     font-family: $font;
 
     //estilo del título y subtítulo de las páginas
@@ -257,6 +257,19 @@ $colors: (
     //color salmón para las filas pares
     .even{
         background-color:#FFE4DC ;
+    }
+}
+
+//grid detalle vídeo (página 15)
+#pagina15 #detail-grid-container{
+    display: grid;
+    grid-row-gap: 20px;
+    
+    #title{
+        font-weight: bold;
+    }
+    #views{
+        color: map-get($colors, rojo );
     }
 }
 

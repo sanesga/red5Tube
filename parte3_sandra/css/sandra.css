@@ -1,7 +1,7 @@
-#pagina10, #pagina11, #pagina12 {
+#pagina10, #pagina11, #pagina12, #pagina15 {
   font-family: Arial;
 }
-#pagina10 h1, #pagina10 header p span, #pagina11 h1, #pagina11 header p span, #pagina12 h1, #pagina12 header p span {
+#pagina10 h1, #pagina10 header p span, #pagina11 h1, #pagina11 header p span, #pagina12 h1, #pagina12 header p span, #pagina15 h1, #pagina15 header p span {
   color: red;
 }
 
@@ -435,6 +435,17 @@
 }
 #pagina12 #maintenance-grid-container .even {
   background-color: #FFE4DC;
+}
+
+#pagina15 #detail-grid-container {
+  display: grid;
+  grid-row-gap: 20px;
+}
+#pagina15 #detail-grid-container #title {
+  font-weight: bold;
+}
+#pagina15 #detail-grid-container #views {
+  color: red;
 }
 
 /*# sourceMappingURL=sandra.css.map */
