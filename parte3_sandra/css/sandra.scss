@@ -262,8 +262,8 @@ body{
     }
 }
 
-//grids detalle vídeo (página 15 y 16)
-#detail-grid-container{
+//grid detalle vídeo (página 15)
+#pagina15 #detail-grid-container{
     margin-top: 30px;
     display: grid;
     grid-template-columns: 70%;
@@ -278,23 +278,192 @@ body{
     #views{
         color: map-get($colors, rojo );
     }
-    img{
-        width: 40%;
-        height: auto;
-    }
     video{
         width: 100%;
         height: auto;
     }
 }
+//grid detalle audio (página 16)
+#pagina16 #detail-grid-container{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 30%;
+    grid-row-gap: 20px;
+    //centramos el grid en la página horizontal y verticalmente
+    justify-content: center;
+
+  
+    #title{
+        font-weight: bold;
+    }
+    #views{
+        color: map-get($colors, rojo );
+    }
+    //imagen de portada de disco
+    img{
+        width: 100%;
+        height: auto;
+    }
+    //controles de audio
+    audio{
+        width: 100%; 
+    }
+}
 
 //media-querys (responsive)
-//en resoluciones menores de 1200px, se cambia el tamaño al 100% (para tablet y móvil)
+
+//grids búsqueda usuarios (páginas 10, 11 y 12)
+//en resoluciones menores de 768, se adapta el tamaño (para tablet y móvil)
+@media screen and (max-width: 768px){
+   #search-grid-container{
+    width: 350px;
+    div input[type="text"]{
+        width: 310px;
+    }
+   }
+}
+
+//tabla de mantenimiento en vertical (página 10) (tablet y móvil)
+@media screen and (max-width:768px){
+    #pagina10 #maintenance-grid-container{
+        display: flex;
+        flex-direction: column;
+
+        //añadimos los títulos a cada ítem
+        div:nth-child(6n+8):before{
+            content: "Alias: ";
+            font-weight: bold;      
+        }
+        div:nth-child(6n+9):before{
+            content: "Email: ";
+            font-weight: bold;      
+        }
+        div:nth-child(6n+10):before{
+            content: "Nombre: ";
+            font-weight: bold;      
+        }
+        div:nth-child(6n+11):before{
+            content: "Apellidos: ";
+            font-weight: bold;      
+        }
+        div:nth-child(6n+12):before{
+            content: "Rol: ";
+            font-weight: bold;      
+        }
+        //eliminamos el último alias del footer
+        #foot:before{
+            content:none;
+        }
+       //ocultamos los títulos de la cabecera de la tabla
+       @for $i from 0 to 7{
+        #title#{$i}{
+            display: none;
+        }
+    } 
+    }
+}
+//tabla de mantenimiento en vertical (página 11) (tablet y móvil)
+@media screen and (max-width:768px){
+    #pagina11 #maintenance-grid-container{
+        display: flex;
+        flex-direction: column;
+
+        //añadimos los títulos a cada ítem
+        div:nth-child(6n+8):before{
+            content: "Usuario: ";
+            font-weight: bold;      
+        }
+        div:nth-child(6n+9):before{
+            content: "Nombre: ";
+            font-weight: bold;      
+        }
+        div:nth-child(6n+10):before{
+            content: "Título: ";
+            font-weight: bold;      
+        }
+        div:nth-child(6n+11):before{
+            content: "Comentarios: ";
+            font-weight: bold;      
+        }
+        div:nth-child(6n+12):before{
+            content: "Categoría: ";
+            font-weight: bold;      
+        }
+        //eliminamos el último usuario del footer
+        #foot:before{
+            content:none;
+        }
+       //ocultamos los títulos de la cabecera de la tabla
+       @for $i from 0 to 7{
+        #title#{$i}{
+            display: none;
+        }
+    } 
+    }
+}
+//tabla de mantenimiento en vertical (página 12) (tablet y móvil)
+@media screen and (max-width:768px){
+    #pagina12 #maintenance-grid-container{
+        display: flex;
+        flex-direction: column;
+
+        //añadimos los títulos a cada ítem
+        div:nth-child(7n+9):before{
+            content: "Usuario: ";
+            font-weight: bold;      
+        }
+        div:nth-child(7n+10):before{
+            content: "Título: ";
+            font-weight: bold;      
+        }
+        div:nth-child(7n+11):before{
+            content: "Autor: ";
+            font-weight: bold;      
+        }
+        div:nth-child(7n+12):before{
+            content: "Álbum: ";
+            font-weight: bold;      
+        }
+        div:nth-child(7n+13):before{
+            content: "Comentarios: ";
+            font-weight: bold;      
+        }
+        div:nth-child(7n+14):before{
+            content: "Género: ";
+            font-weight: bold;      
+        }
+        //eliminamos el último usuario del footer
+        #foot:before{
+            content:none;
+        }
+       //ocultamos los títulos de la cabecera de la tabla
+       @for $i from 0 to 8{
+        #title#{$i}{
+            display: none;
+        }
+    } 
+    }
+}
+
+//página 15
+//en resoluciones menores de 1200px, se adapta el tamaño (para tablet y móvil)
 @media screen and (max-width: 1200px){
-    #detail-grid-container{
+    #pagina15 #detail-grid-container{
         grid-template-columns: 100%;
     }
 }
+//página 16
+//en resoluciones menores de 1200px, se adapta el tamaño (para tablet y móvil)
+@media screen and (max-width: 1200px){
+    #pagina16 #detail-grid-container{
+        grid-template-columns: 60%;
+    }
+}
+
+
+
+
+
 
 
 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -441,7 +442,7 @@ body h1, body header p span {
   background-color: #FFE4DC;
 }
 
-#detail-grid-container {
+#pagina15 #detail-grid-container {
   margin-top: 30px;
   display: grid;
   grid-template-columns: 70%;
@@ -449,24 +450,211 @@ body h1, body header p span {
   justify-content: center;
   background-color: lightcyan;
 }
-#detail-grid-container #title {
+#pagina15 #detail-grid-container #title {
   font-weight: bold;
 }
-#detail-grid-container #views {
+#pagina15 #detail-grid-container #views {
   color: red;
 }
-#detail-grid-container img {
-  width: 40%;
-  height: auto;
-}
-#detail-grid-container video {
+#pagina15 #detail-grid-container video {
   width: 100%;
   height: auto;
 }
 
+#pagina16 #detail-grid-container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 30%;
+  grid-row-gap: 20px;
+  justify-content: center;
+}
+#pagina16 #detail-grid-container #title {
+  font-weight: bold;
+}
+#pagina16 #detail-grid-container #views {
+  color: red;
+}
+#pagina16 #detail-grid-container img {
+  width: 100%;
+  height: auto;
+}
+#pagina16 #detail-grid-container audio {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  #search-grid-container {
+    width: 350px;
+  }
+  #search-grid-container div input[type=text] {
+    width: 310px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #pagina10 #maintenance-grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #pagina10 #maintenance-grid-container div:nth-child(6n+8):before {
+    content: "Alias: ";
+    font-weight: bold;
+  }
+  #pagina10 #maintenance-grid-container div:nth-child(6n+9):before {
+    content: "Email: ";
+    font-weight: bold;
+  }
+  #pagina10 #maintenance-grid-container div:nth-child(6n+10):before {
+    content: "Nombre: ";
+    font-weight: bold;
+  }
+  #pagina10 #maintenance-grid-container div:nth-child(6n+11):before {
+    content: "Apellidos: ";
+    font-weight: bold;
+  }
+  #pagina10 #maintenance-grid-container div:nth-child(6n+12):before {
+    content: "Rol: ";
+    font-weight: bold;
+  }
+  #pagina10 #maintenance-grid-container #foot:before {
+    content: none;
+  }
+  #pagina10 #maintenance-grid-container #title0 {
+    display: none;
+  }
+  #pagina10 #maintenance-grid-container #title1 {
+    display: none;
+  }
+  #pagina10 #maintenance-grid-container #title2 {
+    display: none;
+  }
+  #pagina10 #maintenance-grid-container #title3 {
+    display: none;
+  }
+  #pagina10 #maintenance-grid-container #title4 {
+    display: none;
+  }
+  #pagina10 #maintenance-grid-container #title5 {
+    display: none;
+  }
+  #pagina10 #maintenance-grid-container #title6 {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  #pagina11 #maintenance-grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #pagina11 #maintenance-grid-container div:nth-child(6n+8):before {
+    content: "Usuario: ";
+    font-weight: bold;
+  }
+  #pagina11 #maintenance-grid-container div:nth-child(6n+9):before {
+    content: "Nombre: ";
+    font-weight: bold;
+  }
+  #pagina11 #maintenance-grid-container div:nth-child(6n+10):before {
+    content: "Título: ";
+    font-weight: bold;
+  }
+  #pagina11 #maintenance-grid-container div:nth-child(6n+11):before {
+    content: "Comentarios: ";
+    font-weight: bold;
+  }
+  #pagina11 #maintenance-grid-container div:nth-child(6n+12):before {
+    content: "Categoría: ";
+    font-weight: bold;
+  }
+  #pagina11 #maintenance-grid-container #foot:before {
+    content: none;
+  }
+  #pagina11 #maintenance-grid-container #title0 {
+    display: none;
+  }
+  #pagina11 #maintenance-grid-container #title1 {
+    display: none;
+  }
+  #pagina11 #maintenance-grid-container #title2 {
+    display: none;
+  }
+  #pagina11 #maintenance-grid-container #title3 {
+    display: none;
+  }
+  #pagina11 #maintenance-grid-container #title4 {
+    display: none;
+  }
+  #pagina11 #maintenance-grid-container #title5 {
+    display: none;
+  }
+  #pagina11 #maintenance-grid-container #title6 {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  #pagina12 #maintenance-grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #pagina12 #maintenance-grid-container div:nth-child(7n+9):before {
+    content: "Usuario: ";
+    font-weight: bold;
+  }
+  #pagina12 #maintenance-grid-container div:nth-child(7n+10):before {
+    content: "Título: ";
+    font-weight: bold;
+  }
+  #pagina12 #maintenance-grid-container div:nth-child(7n+11):before {
+    content: "Autor: ";
+    font-weight: bold;
+  }
+  #pagina12 #maintenance-grid-container div:nth-child(7n+12):before {
+    content: "Álbum: ";
+    font-weight: bold;
+  }
+  #pagina12 #maintenance-grid-container div:nth-child(7n+13):before {
+    content: "Comentarios: ";
+    font-weight: bold;
+  }
+  #pagina12 #maintenance-grid-container div:nth-child(7n+14):before {
+    content: "Género: ";
+    font-weight: bold;
+  }
+  #pagina12 #maintenance-grid-container #foot:before {
+    content: none;
+  }
+  #pagina12 #maintenance-grid-container #title0 {
+    display: none;
+  }
+  #pagina12 #maintenance-grid-container #title1 {
+    display: none;
+  }
+  #pagina12 #maintenance-grid-container #title2 {
+    display: none;
+  }
+  #pagina12 #maintenance-grid-container #title3 {
+    display: none;
+  }
+  #pagina12 #maintenance-grid-container #title4 {
+    display: none;
+  }
+  #pagina12 #maintenance-grid-container #title5 {
+    display: none;
+  }
+  #pagina12 #maintenance-grid-container #title6 {
+    display: none;
+  }
+  #pagina12 #maintenance-grid-container #title7 {
+    display: none;
+  }
+}
 @media screen and (max-width: 1200px) {
-  #detail-grid-container {
+  #pagina15 #detail-grid-container {
     grid-template-columns: 100%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #pagina16 #detail-grid-container {
+    grid-template-columns: 60%;
   }
 }
 
