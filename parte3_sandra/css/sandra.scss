@@ -4,7 +4,6 @@
 //variables globales
 $font: #{"Arial"};
 
-
 //mapas (arrays)
 $colors: (
     rojo:red,
@@ -14,20 +13,10 @@ $colors: (
     salmon: #FFE4DC
 );
 
-//INFO
-//se puede anidar las etiquetas como en html
-//@extend .nombredelaclase para extender de un estilo
-//button{
-//  border:none
-//}
-//button-important{
-//  @extend .button;
-//  color: red;
-//}
 
-////////////////////MIXINS (módulos de estilo para poder reutilizarlos)
+////////////////////MIXINS (módulos de estilo para poder reutilizarlos)///////////////////////
 
-//formato general de la tabla de mantenimiento
+//formato general de las tablas de mantenimiento
 @mixin grid-general-format{
     display:grid;
     width: 100%;
@@ -56,6 +45,7 @@ $colors: (
     font-weight: bold;
     padding: 5px;
 }
+
 /////////////////ESTILOS PÁGINAS 10, 11, 12, 15 Y 16///////////////////////////////////////////////
 //ordenado por número de página
 
@@ -96,7 +86,6 @@ body{
         border-radius: 6px;
         border: none;
     }
-
     //formato del primer div
     div:first-child{
         border: 1px solid map-get($colors, gris-oscuro);
@@ -162,10 +151,11 @@ body{
         background-color: map-get($colors, salmon );
     }
 }
-//icono vídeo página 11 y audio página 12
+//icono vídeo página 11 e icono audio página 12
 .fa-video, .fa-music{
     margin-left: 10px;
     }
+
 //grid mantenimiento de vídeos (página 11)
 #pagina11 #maintenance-grid-container{
     @include grid-general-format();
@@ -270,14 +260,16 @@ body{
     grid-row-gap: 20px;
     //centramos el grid en la página horizontal y verticalmente
     justify-content: center;
-    background-color: lightcyan;
-  
+
+    //título
     #title{
         font-weight: bold;
     }
+    //texto de visualizaciones
     #views{
         color: map-get($colors, rojo );
     }
+    //controles de vídeo
     video{
         width: 100%;
         height: auto;
@@ -292,10 +284,11 @@ body{
     //centramos el grid en la página horizontal y verticalmente
     justify-content: center;
 
-  
+    //título
     #title{
         font-weight: bold;
     }
+    //texto de visualizaciones
     #views{
         color: map-get($colors, rojo );
     }
@@ -310,10 +303,10 @@ body{
     }
 }
 
-//media-querys (responsive)
+/////////////////////////////////////////////MEDIA QUERYS/////////////////////////////////
 
 //grids búsqueda usuarios (páginas 10, 11 y 12)
-//en resoluciones menores de 768, se adapta el tamaño (para tablet y móvil)
+//en resoluciones menores de 768, se adapta el tamaño (para tablet y móvil sirve la misma regla)
 @media screen and (max-width: 768px){
    #search-grid-container{
     width: 350px;
@@ -323,9 +316,10 @@ body{
    }
 }
 
-//tabla de mantenimiento en vertical (página 10) (tablet y móvil)
+//tabla de mantenimiento, pasa de horizontal a vertical (página 10) (tablet y móvil sirve la misma regla)
 @media screen and (max-width:768px){
     #pagina10 #maintenance-grid-container{
+        //pasamos de display grid a flex
         display: flex;
         flex-direction: column;
 
@@ -350,7 +344,7 @@ body{
             content: "Rol: ";
             font-weight: bold;      
         }
-        //eliminamos el último alias del footer
+        //eliminamos el contenido sobrante del footer
         #foot:before{
             content:none;
         }
@@ -362,9 +356,10 @@ body{
     } 
     }
 }
-//tabla de mantenimiento en vertical (página 11) (tablet y móvil)
+//tabla de mantenimiento, pasa de horizontal a vertical (página 11) (para tablet y móvil sirve la misma regla)
 @media screen and (max-width:768px){
     #pagina11 #maintenance-grid-container{
+        //pasamos de display grid a flex
         display: flex;
         flex-direction: column;
 
@@ -389,7 +384,7 @@ body{
             content: "Categoría: ";
             font-weight: bold;      
         }
-        //eliminamos el último usuario del footer
+        //eliminamos el contenido sobrante del footer
         #foot:before{
             content:none;
         }
@@ -401,9 +396,10 @@ body{
     } 
     }
 }
-//tabla de mantenimiento en vertical (página 12) (tablet y móvil)
+//tabla de mantenimiento, pasamos de horizontal a vertical(página 12) (para tablet y móvil sirve la misma regla)
 @media screen and (max-width:768px){
     #pagina12 #maintenance-grid-container{
+        //pasamos de display grid a flex
         display: flex;
         flex-direction: column;
 
@@ -432,7 +428,7 @@ body{
             content: "Género: ";
             font-weight: bold;      
         }
-        //eliminamos el último usuario del footer
+        //eliminamos el contenido sobrante del footer
         #foot:before{
             content:none;
         }
@@ -444,16 +440,15 @@ body{
     } 
     }
 }
-
 //página 15
-//en resoluciones menores de 1200px, se adapta el tamaño (para tablet y móvil)
+//en resoluciones menores de 1200px, se adapta el tamaño (para tablet y móvil sirve la misma regla)
 @media screen and (max-width: 1200px){
     #pagina15 #detail-grid-container{
         grid-template-columns: 100%;
     }
 }
 //página 16
-//en resoluciones menores de 1200px, se adapta el tamaño (para tablet y móvil)
+//en resoluciones menores de 1200px, se adapta el tamaño (para tablet y móvil sirve la misma regla)
 @media screen and (max-width: 1200px){
     #pagina16 #detail-grid-container{
         grid-template-columns: 60%;

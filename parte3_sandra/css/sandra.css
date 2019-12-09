@@ -448,7 +448,6 @@ body h1, body header p span {
   grid-template-columns: 70%;
   grid-row-gap: 20px;
   justify-content: center;
-  background-color: lightcyan;
 }
 #pagina15 #detail-grid-container #title {
   font-weight: bold;
