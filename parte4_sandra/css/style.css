@@ -1,0 +1,21 @@
+.pagina10 .form-control{
+    /*tamaño del select*/
+    width: 6% !important;
+    /*display para el select, por defecto es display inline*/
+    display:inline-block !important;
+}
+.pagina10 .table-bordered, .pagina10 tr, .pagina10 th, .pagina10 td{
+    /*para cambiar el color y grosor del borde de la tabla y su contenido*/
+    border: 2px solid grey !important;
+}
+.pagina10 tr:nth-child(even){
+    /*poner color salmón en filas pares*/
+    background-color: #FFE4DC;
+}
+ .pagina10 .card{
+    /*separación entre la tabla de búsqueda de usuario y la tabla de mantenimiento y margen izquierdo con el navegador*/
+    margin: 20px 0px 20px 0px;
+} 
+
+
+

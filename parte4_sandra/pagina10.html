@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin usuarios</title>
+    <!--enlace a css-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--librería fontawesome-->
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./style/img/favicon.png" type="image/x-icon">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="pagina10">
+
+    <!--utilizamos un sistema de grid para organizar la página y el responsive-->
+    <!--container fluid para que tenga un width de base del 100%-->
+    <div class="container-fluid">
+   <!--en resoluciones de >1200px ocupará la mitad de la pantalla-->
+    <div class="col-lg-6">
+         <!--card para la tabla de búsqueda de usuario-->
+    <div class="card ">
+        <h5 class="card-header">Búsqueda de usuario</h5>
+        <div class="card-body">
+          <h5 class="card-title">Introduce parte del álias del usuario:</h5>
+          <p class="card-text"> <input type="text" class="form-control .col-lg" placeholder="Si no introduces nada, se buscan todos los usuarios."></p>
+          <a href="#" class="btn btn-danger">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+
+ <!--en resoluciones de >1200px ocupará la totalidad de la pantalla por defecto (por el container-fluid)-->
+    <div></div>
+    <!--tabla administración de usuarios-->
+    <table class="table table-bordered">
+        <!--texto del thead centrado con la clase text-center-->
+        <thead class="text-center">
+            <tr class="table-secondary">
+                <!--fusionamos la fila con las 6 columnas-->
+                <th scope="col" colspan="6">Mantenimiento de usuarios</th>
+            </tr>
+            <tr class="table-secondary">
+                <th scope="col">Alias</th>
+                <th scope="col">Email</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Rol</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">admin</td>
+                <td>jlluch16@alumno.uned.es</td>
+                <td>Joaquín</td>
+                <td>Lluch Quilis</td>
+                <td>ADMIN</td>
+                <td><i class="far fa-edit "></i></td>
+            </tr>
+            <tr >
+                <td scope="row">espectador</td>
+                <td>jlluch16@alumno.uned.es</td>
+                <td>Joaquín</td>
+                <td>Lluch Quilis</td>
+                <td>ESPECTADOR</td>
+                <td><i class="far fa-edit "></i></td>
+            </tr>
+            <tr>
+                <td scope="row">jlluch16</td>
+                <td>jlluch16@alumno.uned.es</td>
+                <td>Joaquín</td>
+                <td>Lluch Quilis</td>
+                <td>PUBLICADOR</td>
+                <td><i class="far fa-edit "></i></td>
+            </tr>
+            <tr >
+                <td scope="row">jlluch162</td>
+                <td>jlluch16@alumno.uned.es</td>
+                <td>Joaquín</td>
+                <td>Lluch Quilis</td>
+                <td>PUBLICADOR</td>
+                <td><i class="far fa-edit "></i></td>
+            </tr>
+            <tr>
+                <td scope="row">joaquín</td>
+                <td>jlluch16@alumno.uned.es</td>
+                <td>Joaquín</td>
+                <td>Lluch Quilis</td>
+                <td>PUBLICADOR</td>
+                <td><i class="far fa-edit "></i></td>
+            </tr>
+        </tbody>
+        <!--centramos los elementos del footer con la clase text-center-->
+        <tfoot class="text-center">
+            <tr class="table-secondary">
+                <!--fusionamos la fila con las 6 columnas-->
+                <td scope="col" colspan="6">
+                    <!--select de paginación-->
+                    <!--clase form-control para el formato-->
+                    <select class="form-control">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+
+                    <!--botones de paginación, iconos de fontawesome-->
+                    <!--clase btn btn-light para la forma del botón y el color-->
+                    <button type="button" class="btn btn-light"><i class="fas fa-step-backward"></i></button>
+                    <button type="button" class="btn btn-light"><i class="fas fa-backward"></i></button>
+                    <span>(1 de 2)</span>
+                    <button type="button" class="btn btn-light"><i class="fas fa-forward"></i></button>
+                    <button type="button" class="btn btn-light"><i class="fas fa-step-forward"></i></button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
+</body>
+
+</html>
