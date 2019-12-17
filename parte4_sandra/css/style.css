@@ -1,4 +1,8 @@
-.pagina10 .form-control{
+.pagina10{
+    /*fuente de toda la página*/
+    font-family: Arial, Helvetica, sans-serif;
+}
+.pagina10 select{
     /*tamaño del select*/
     width: 6% !important;
     /*display para el select, por defecto es display inline*/
@@ -16,6 +20,13 @@
     /*separación entre la tabla de búsqueda de usuario y la tabla de mantenimiento y margen izquierdo con el navegador*/
     margin: 20px 0px 20px 0px;
 } 
-
+.pagina10 .card-header{
+    /*color de fondo del título de la card de búsqueda de usuario*/
+    background-color: lightgrey;
+}
+.pagina10 header{
+    /*márgenes del header*/
+    margin: 3%;
+}
 
 

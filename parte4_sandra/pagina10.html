@@ -20,6 +20,13 @@
 
 <body class="pagina10">
 
+    <header>
+        <!--la clase text-danger da el color rojo al texto y font-weight-bold la negrita-->
+        <h2 class="text-danger font-weight-bold">Administración de usuarios</h2>
+        <!--utilizamos la etiqueta span para darle el color rojo al texto que contiene-->
+        <p>Nombre usuario, bienvenido a <span class="text-danger">Red5Tube.</span></p>
+    </header>
+
     <!--utilizamos un sistema de grid para organizar la página y el responsive-->
     <!--container fluid para que tenga un width de base del 100%-->
     <div class="container-fluid">
@@ -27,11 +34,12 @@
     <div class="col-lg-6">
          <!--card para la tabla de búsqueda de usuario-->
     <div class="card ">
-        <h5 class="card-header">Búsqueda de usuario</h5>
+        <!--la clase font-weight-bold pone el texto en negrita-->
+        <h5 class="card-header font-weight-bold">Búsqueda de usuario</h5>
         <div class="card-body">
           <h5 class="card-title">Introduce parte del álias del usuario:</h5>
-          <p class="card-text"> <input type="text" class="form-control .col-lg" placeholder="Si no introduces nada, se buscan todos los usuarios."></p>
-          <a href="#" class="btn btn-danger">Go somewhere</a>
+          <p class="card-text"> <input type="text" class="form-control" placeholder="Si no introduces nada, se buscan todos los usuarios."></p>
+          <a href="#" class="btn btn-danger">Buscar</a>
         </div>
       </div>
     </div>
@@ -43,10 +51,12 @@
     <table class="table table-bordered">
         <!--texto del thead centrado con la clase text-center-->
         <thead class="text-center">
+            <!--color de fondo gris con la clase table-secondary para los títulos-->
             <tr class="table-secondary">
                 <!--fusionamos la fila con las 6 columnas-->
                 <th scope="col" colspan="6">Mantenimiento de usuarios</th>
             </tr>
+              <!--color de fondo gris con la clase table-secondary para los títulos-->
             <tr class="table-secondary">
                 <th scope="col">Alias</th>
                 <th scope="col">Email</th>
@@ -100,6 +110,7 @@
         </tbody>
         <!--centramos los elementos del footer con la clase text-center-->
         <tfoot class="text-center">
+              <!--color de fondo gris con la clase table-secondary para el footer de la tabla-->
             <tr class="table-secondary">
                 <!--fusionamos la fila con las 6 columnas-->
                 <td scope="col" colspan="6">
