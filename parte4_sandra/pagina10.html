@@ -12,131 +12,231 @@
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./style/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
+<!--añado un id a la página para poder usar un css único para todas las páginas sin que se mezclen estilos-->
+
 <body class="pagina10">
 
+    <!--*********************************************************-->
+    <!--LEYENDA DE TAMAÑOS RESPONSIVE DE BOOTSTRAP-->
+    <!--.co-xl: >=1200px-->
+    <!--.col-lg: >=992px)-->
+    <!--.col-md: >=768px-->
+    <!--.col-sm: >=576px -->
+    <!--.col: <576px -->
+    <!--*********************************************************-->
+
+    <!--HEADER de la página, que contiene el título y el subtítulo-->
     <header>
+        <!--TÍTULO-->
         <!--la clase text-danger da el color rojo al texto y font-weight-bold la negrita-->
         <h2 class="text-danger font-weight-bold">Administración de usuarios</h2>
+        <!--SUBTÍTULO-->
         <!--utilizamos la etiqueta span para darle el color rojo al texto que contiene-->
         <p>Nombre usuario, bienvenido a <span class="text-danger">Red5Tube.</span></p>
     </header>
 
-    <!--utilizamos un sistema de grid para organizar la página y el responsive-->
+    <!--TABLA DE BÚSQUEDA DE USUARIO-->
     <!--container fluid para que tenga un width de base del 100%-->
-    <div class="container-fluid ">
-        <!--en resoluciones >768, ocupará la mitad de la pantalla y en menores, la pantalla entera-->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <!--card para la tabla de búsqueda de usuario-->
-            <div class="card ">
-                <!--la clase font-weight-bold pone el texto en negrita-->
-                <h5 class="card-header font-weight-bold bg-secondary text-white">Búsqueda de usuario</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Introduce parte del alias del usuario:</h5>
-                    <p class="card-text"> <input type="text" class="form-control"
-                            placeholder="Si no introduces nada, se buscan todos los usuarios."></p>
-                    <a href="#" class="btn btn-danger">Buscar</a>
+    <div class="container-fluid">
+        <!--creamos un sistema de grid que englobará la card, para poder hacerla responsive-->
+        <!--class row: crea la fila-->
+        <div class="row">
+             <!--class col: crea la columna-->
+            <!--la card siempre ocupará la mitad del tamaño del navegador, menos en tamaños pequeños, que ocupará la pantalla entera-->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <!--utilizamos el formato card-->
+                <div class="card ">
+                    <!--clase card-header: cabecera de la card-->
+                    <!--clase font-weight-bold: texto en negrita-->
+                    <!--clase bg-secondary: color de fondo-->
+                    <!--clase text-white: color de la fuente-->
+                    <h5 class="card-header font-weight-bold bg-secondary text-white">Búsqueda de usuario</h5>
+                    <!--clase card-body: cuerpo de la card-->
+                    <div class="card-body">
+                        <!--clase card-title: título de la card-->
+                        <h5 class="card-title">Introduce parte del alias del usuario:</h5>
+                        <div class="card-body">
+                            <!--clase card-text: texto de la card-->
+                            <p class="card-text">
+                                <!--clase form-control: da formato a un elemento de formulario-->
+                                <input type="text" class="form-control"
+                                    placeholder="Si no introduces nada, se buscan todos los usuarios."></p>
+                            <!--clase btn: da formato a un botón-->
+                            <!--clase btn-danger: botón de color rojo-->
+                            <a href="#" class="btn btn-danger">Buscar</a>
+                        </div>
+                        <!--fin del card body-->
+                    </div>
+                    <!--fin de la clase card-->
                 </div>
+                <!--fin del col-->
             </div>
+            <!--fin del row-->
         </div>
+        <!--fin del container-fluid-->
     </div>
 
-    <!--tabla administración de usuarios-->
+    <!--TABLA DE ADMINISTRACIÓN DE USUARIOS-->
+    <!--container fluid para que tenga un width de base del 100%-->
+    <!--class administration-table para darle márgenes desde css-->
+    <div class="container-fluid administration-table ">
+        <!--para maquetar esta tabla, se utiliza el sistema de grid de bootstrap con las clases row para filas y col para columnas-->
 
-    <div class="container-fluid ">
-        <!--título-->
-        <div class="row bg-secondary font-weight-bold  text-white">
-            <div class="title col col-lg-12 border d-flex justify-content-center ">Mantenimiento de usuarios</div>
+        <!--TÍTULO DE LA TABLA-->
+        <!--class row: forma una fila-->
+        <!--class bg-secondary: color de fondo, class text-white: color del texto-->
+        <div class="row bg-secondary text-white">
+            <!--cambiamos el div por un h6 para darle tamaño al título de la tabla-->
+            <!--DE AHORA EN ADELANTE, SE FORMATEA LA TABLA CON LAS SIGUIENTES CLASES:-->
+            <!--class col: para darle altura a las columnas por css-->
+            <!--class d-flex: damos display flex a través de bootstrap para centrar el texto horizontal y verticalmente-->
+            <!--class justify-content-center: centra el texto horizontalmente-->
+            <!--class align-items-center: centra el texto verticalmente-->
+            <!--class font-weight-bold: texto en negrita-->
+            <h6 class="col d-flex justify-content-center align-items-center font-weight-bold">Mantenimiento de
+                usuarios</h6>
         </div>
 
-        <!--subtítulos-->
-        <div class="row text-center bg-secondary text-white font-weight-bold  ">
-            <div class=" col col-lg-2 border  d-flex justify-content-center ">Alias</div>
-            <div class=" col col-lg-3 border d-flex justify-content-center ">Email</div>
-            <div class="col col-lg-2  border d-flex justify-content-center ">Nombre</div>
-            <div class=" col col-lg-2  border d-flex justify-content-center ">Apellidos</div>
-            <div class="col col-lg-2  border d-flex justify-content-center  ">Rol</div>
-            <div class="col col-lg-1  border d-flex justify-content-center "></div>
+        <!--SUBTÍTULOS DE LA TABLA-->
+        <div class="row bg-secondary text-white font-weight-bold">
+            <!--los tamaños responsive están explicados en la leyenda al principio del documento-->
+            <!--esta tabla estará expandida en resoluciones grandes y apilada en resoluciones pequeñas-->
+            <!--class border: añade borde a las columnas-->
+            <div
+                class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border  d-flex justify-content-center align-items-center">
+                Alias</div>
+            <!--esta columna será más amplia que el resto-->
+            <div
+                class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
+                Email</div>
+            <div
+                class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
+                Nombre</div>
+            <div
+                class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
+                Apellidos</div>
+            <div
+                class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
+                Rol</div>
+            <!--esta columna será más estrecha que el resto-->
+            <div
+                class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
+            </div>
         </div>
 
-        <!--contenido-->
+        <!--CONTENIDO-->
         <div class="row ">
-            <div class="col col-lg-2 border d-flex">admin</div>
-            <div class="col col-lg-3 border d-flex">jlluch16@alumno.uned.es</div>
-            <div class="col col-lg-2 border d-flex">Joaquín</div>
-            <div class="col col-lg-2 border d-flex">Lluch Quilis</div>
-            <div class="col col-lg-2 border  d-flex">ADMIN</div>
-            <div class="col col-lg-1 border d-flex"><i class="far fa-edit "></i></div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">admin
+            </div>
+            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
+                jlluch16@alumno.uned.es</div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
+                Quilis
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">ADMIN
+            </div>
+            <!--añadimos el icono editar a través de fontawesome-->
+            <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
+                    class="far fa-edit "></i></div>
         </div>
 
 
-        <div class="row row-striped">
-            <div class="col col-lg-2 border d-flex">espectador</div>
-            <div class="col col-lg-3 border d-flex">jlluch16@alumno.uned.es</div>
-            <div class="col col-lg-2 border d-flex">Joaquín</div>
-            <div class="col col-lg-2 border d-flex">Lluch Quilis</div>
-            <div class="col col-lg-2 border d-flex">ESPECTADOR</div>
-            <div class="col col-lg-1 border d-flex"><i class="far fa-edit "></i></div>
+        <div class="row">
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">espectador
+            </div>
+            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
+                jlluch16@alumno.uned.es</div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
+                Quilis
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">ESPECTADOR
+            </div>
+            <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
+                    class="far fa-edit "></i></div>
         </div>
 
         <div class="row">
-            <div class="col col-lg-2 border d-flex">jlluch16</div>
-            <div class="col col-lg-3 border d-flex">jlluch16@alumno.uned.es</div>
-            <div class="col col-lg-2 border d-flex">Joaquín</div>
-            <div class="col col-lg-2 border d-flex">Lluch Quilis</div>
-            <div class="col col-lg-2 border d-flex">PUBLICADOR</div>
-            <div class="col col-lg-1 border d-flex"><i class="far fa-edit "></i></div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">jlluch16
+            </div>
+            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
+                jlluch16@alumno.uned.es</div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
+                Quilis
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">PUBLICADOR
+            </div>
+            <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
+                    class="far fa-edit "></i></div>
         </div>
 
         <div class="row">
-            <div class="col col-lg-2 border d-flex">jlluch162</div>
-            <div class="col col-lg-3 border d-flex">jlluch16@alumno.uned.es</div>
-            <div class="col col-lg-2 border d-flex">Joaquín</div>
-            <div class="col col-lg-2 border d-flex">Lluch Quilis</div>
-            <div class="col col-lg-2 border d-flex">PUBLICADOR</div>
-            <div class="col col-lg-1 border d-flex"><i class="far fa-edit "></i></div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">jlluch162
+            </div>
+            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
+                jlluch16@alumno.uned.es</div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
+                Quilis
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">PUBLICADOR
+            </div>
+            <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
+                    class="far fa-edit "></i></div>
         </div>
 
         <div class="row">
-            <div class="col col-lg-2 border d-flex">joaquín</div>
-            <div class="col col-lg-3 border d-flex">jlluch16@alumno.uned.es</div>
-            <div class="col col-lg-2 border d-flex">Joaquín</div>
-            <div class="col col-lg-2 border d-flex">Lluch Quilis</div>
-            <div class="col col-lg-2 border d-flex">PUBLICADOR</div>
-            <div class="col col-lg-1 border d-flex"><i class="far fa-edit "></i></div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">joaquín
+            </div>
+            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
+                jlluch16@alumno.uned.es</div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
+                Quilis
+            </div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">PUBLICADOR
+            </div>
+            <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
+                    class="far fa-edit "></i></div>
         </div>
 
-        <!--footer del grid-->
+        <!--FOOTER DE LA TABLA-->
         <div class="row border bg-secondary text-white font-weight-bold">
-            <!--fusionamos la fila con las 6 columnas-->
-            <div class="col col-lg-12 text-center d-flex justify-content-center ">
+            <div class="col d-flex justify-content-center align-items-center">
                 <!--select de paginación-->
-                <!--clase form-control para el formato-->
+                <!--class form-control para el formato-->
                 <select class="form-control">
                     <option>5</option>
                     <option>10</option>
                     <option>15</option>
                     <option>20</option>
                 </select>
-                <!--botones de paginación, iconos de fontawesome-->
+                <!--botones de paginación con iconos de fontawesome-->
                 <!--clase btn btn-light para la forma del botón y el color-->
                 <button type="button" class="btn btn-light"><i class="fas fa-step-backward"></i></button>
                 <button type="button" class="btn btn-light"><i class="fas fa-backward"></i></button>
                 <span>(1 de 2)</span>
                 <button type="button" class="btn btn-light"><i class="fas fa-forward"></i></button>
                 <button type="button" class="btn btn-light"><i class="fas fa-step-forward"></i></button>
+                <!--fin del col del footer-->
             </div>
-            <!--fin del col-->
+            <!--fin del row del footer-->
         </div>
-        <!--fin del row-->
-
+        <!--fin del container fluid-->
     </div>
-    <!--fin del container fluid-->
 </body>
 
 </html>

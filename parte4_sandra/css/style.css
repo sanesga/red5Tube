@@ -1,35 +1,44 @@
+/*css ordenado alfabéticamente*/
+
 .pagina10{
-    /*fuente de toda la página*/
+    /*tipo de fuente y tamaño de toda la página*/
     font-family: Arial, Helvetica, sans-serif;
+    font-size:15px;
 }
-.pagina10 select{
-    /*tamaño del select*/
-    width: 6% !important;
-    /*display para el select, por defecto es display inline*/
-    display:inline-block !important;
-    height: 35px;
+.pagina10 .administration-table{
+    /*márgenes de la tabla de mantenimiento de usuarios*/
+    margin: 0px 20px 0px 27px;
 }
- .pagina10 .card{
+.pagina10 button{
+    /*altura y margen de los botones del footer de la tabla de mantenimiento de usuarios*/
+    height: auto;
+    margin: 5px;
+}
+.pagina10 .card{
     /*separación entre la tabla de búsqueda de usuario y la tabla de mantenimiento y margen izquierdo con el navegador*/
     margin: 20px 0px 20px 0px;
 } 
+.pagina10 .col{
+    /*altura de las columnas*/
+    height: 50px;
+}
 .pagina10 header{
     /*márgenes del header*/
     margin: 3%;
 }
 .pagina10 .row:nth-child(even){
+    /*colores pares de la tabla en color salmón*/
     background-color: #FFE4DC;
 }
-.pagina10 button{
-    height: 30px;
+.pagina10 select{
+    /*tamaño y márgen derecho del select*/
+    width: 70px;
+    height: 40px;
+    margin-right: 5px;
 }
-.pagina10 .col{
-    height: 50px;
-    align-items: center;
-}
-.pagina10 .title{
-    font-size: 20px;
-}
+
+
+
 
 
 
