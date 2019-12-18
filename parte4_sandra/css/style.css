@@ -7,26 +7,29 @@
     width: 6% !important;
     /*display para el select, por defecto es display inline*/
     display:inline-block !important;
-}
-.pagina10 .table-bordered, .pagina10 tr, .pagina10 th, .pagina10 td{
-    /*para cambiar el color y grosor del borde de la tabla y su contenido*/
-    border: 2px solid grey !important;
-}
-.pagina10 tr:nth-child(even){
-    /*poner color salmón en filas pares*/
-    background-color: #FFE4DC;
+    height: 35px;
 }
  .pagina10 .card{
     /*separación entre la tabla de búsqueda de usuario y la tabla de mantenimiento y margen izquierdo con el navegador*/
     margin: 20px 0px 20px 0px;
 } 
-.pagina10 .card-header{
-    /*color de fondo del título de la card de búsqueda de usuario*/
-    background-color: lightgrey;
-}
 .pagina10 header{
     /*márgenes del header*/
     margin: 3%;
 }
+.pagina10 .row:nth-child(even){
+    background-color: #FFE4DC;
+}
+.pagina10 button{
+    height: 30px;
+}
+.pagina10 .col{
+    height: 50px;
+    align-items: center;
+}
+.pagina10 .title{
+    font-size: 20px;
+}
+
 
 
