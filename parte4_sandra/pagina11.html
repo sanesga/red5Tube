@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin usuarios</title>
+    <title>Admin vídeos</title>
     <!--enlace a css-->
     <link rel="stylesheet" href="./css/style.css">
     <!--librería fontawesome-->
@@ -19,7 +19,7 @@
 </head>
 
 <!--añado un id a la página para poder usar un css único para todas las páginas sin que se mezclen estilos-->
-<body class="pagina10">
+<body class="pagina11">
 
     <!--*********************************************************-->
     <!--LEYENDA DE TAMAÑOS RESPONSIVE DE BOOTSTRAP-->
@@ -34,7 +34,7 @@
     <header>
         <!--TÍTULO-->
         <!--la clase text-danger da el color rojo al texto y font-weight-bold la negrita-->
-        <h2 class="text-danger font-weight-bold">Administración de usuarios</h2>
+        <h2 class="text-danger font-weight-bold">Administración de vídeos</h2>
         <!--SUBTÍTULO-->
         <!--utilizamos la etiqueta span para darle el color rojo al texto que contiene-->
         <p>Nombre usuario, bienvenido a <span class="text-danger">Red5Tube.</span></p>
@@ -61,12 +61,13 @@
                     <div class="card-body">
                         <!--clase card-title: título de la card-->
                         <h5 class="card-title">Introduce parte del alias del usuario:</h5>
+                         <!--clase card-body: cuerpo de la card-->
                         <div class="card-body">
                             <!--clase card-text: texto de la card-->
                             <p class="card-text">
                                 <!--clase form-control: da formato a un elemento de formulario-->
                                 <input type="text" class="form-control"
-                                    placeholder="Si no introduces nada, se buscan todos los usuarios."></p>
+                                    placeholder="red5Tube"></p>
                             <!--clase btn: da formato a un botón-->
                             <!--clase btn-danger: botón de color rojo-->
                             <a href="#" class="btn btn-danger">Buscar</a>
@@ -82,10 +83,10 @@
         <!--fin del container-->
     </div>
 
-    <!--TABLA DE ADMINISTRACIÓN DE USUARIOS-->
-    <!--class container: para agregar márgenes y permitirnos maquetar con un sistema de grid y hacer el diseño responsive utilizando las clases row y col-->
+    <!--TABLA DE ADMINISTRACIÓN DE VÍDEOS-->
+      <!--class container: para agregar márgenes y permitirnos maquetar con un sistema de grid y hacer el diseño responsive utilizando las clases row y col-->
     <div class="container">
-
+        
         <!--TÍTULO DE LA TABLA-->
         <!--class row: forma una fila-->
         <!--class bg-secondary: color de fondo, class text-white: color del texto-->
@@ -97,8 +98,9 @@
             <!--class justify-content-center: centra el texto horizontalmente-->
             <!--class align-items-center: centra el texto verticalmente-->
             <!--class font-weight-bold: texto en negrita-->
+              <!--añadimos un icono decorativo de vídeo con la etiqueta i a través de font-awesome-->
             <h6 class="col d-flex justify-content-center align-items-center font-weight-bold">Mantenimiento de
-                usuarios</h6>
+                vídeos<i class="fas fa-video"></i></h6>
         </div>
 
         <!--SUBTÍTULOS DE LA TABLA-->
@@ -108,20 +110,20 @@
             <!--class border: añade borde a las columnas-->
             <div
                 class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border  d-flex justify-content-center align-items-center">
-                Alias</div>
-            <!--esta columna será más amplia que el resto-->
-            <div
-                class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
-                Email</div>
+                Usuario</div>
             <div
                 class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
                 Nombre</div>
             <div
                 class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
-                Apellidos</div>
+                Título</div>
+            <!--esta columna será más amplia que el resto-->
+            <div
+                class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
+                Comentarios</div>
             <div
                 class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
-                Rol</div>
+                Categoría</div>
             <!--esta columna será más estrecha que el resto-->
             <div
                 class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex justify-content-center align-items-center">
@@ -130,16 +132,15 @@
 
         <!--CONTENIDO-->
         <div class="row ">
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">admin
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">red5tube
             </div>
-            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
-                jlluch16@alumno.uned.es</div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">
+                red5tube.mp4</div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Party
             </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
-                Quilis
+            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">Great!
             </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">ADMIN
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">TIEMPO LIBRE
             </div>
             <!--añadimos el icono editar a través de fontawesome-->
             <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
@@ -148,64 +149,15 @@
 
 
         <div class="row">
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">espectador
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">red5tube
             </div>
-            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
-                jlluch16@alumno.uned.es</div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">
+                red5tube.mp4</div>
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Party
             </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
-                Quilis
+            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">A great summer!
             </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">ESPECTADOR
-            </div>
-            <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
-                    class="far fa-edit "></i></div>
-        </div>
-
-        <div class="row">
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">jlluch16
-            </div>
-            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
-                jlluch16@alumno.uned.es</div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
-            </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
-                Quilis
-            </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">PUBLICADOR
-            </div>
-            <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
-                    class="far fa-edit "></i></div>
-        </div>
-
-        <div class="row">
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">jlluch162
-            </div>
-            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
-                jlluch16@alumno.uned.es</div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
-            </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
-                Quilis
-            </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">PUBLICADOR
-            </div>
-            <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
-                    class="far fa-edit "></i></div>
-        </div>
-
-        <div class="row">
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">joaquín
-            </div>
-            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 border d-flex align-items-center">
-                jlluch16@alumno.uned.es</div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Joaquín
-            </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">Lluch
-                Quilis
-            </div>
-            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">PUBLICADOR
+            <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 border d-flex align-items-center">TIEMPO LIBRE
             </div>
             <div class="col col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12 border d-flex align-items-center"><i
                     class="far fa-edit "></i></div>

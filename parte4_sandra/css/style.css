@@ -1,42 +1,39 @@
 /*css ordenado alfabéticamente*/
 
-.pagina10{
+.pagina10 .pagina11{
     /*tipo de fuente y tamaño de toda la página*/
     font-family: Arial, Helvetica, sans-serif;
     font-size:15px;
 }
-.pagina10 .administration-table{
-    /*márgenes de la tabla de mantenimiento de usuarios*/
-    margin: 0px 20px 0px 27px;
-}
-.pagina10 button{
+.pagina10 button, .pagina11 button{
     /*altura y margen de los botones del footer de la tabla de mantenimiento de usuarios*/
     height: auto;
     margin: 5px;
 }
-.pagina10 .card{
-    /*separación entre la tabla de búsqueda de usuario y la tabla de mantenimiento y margen izquierdo con el navegador*/
-    margin: 20px 0px 20px 0px;
-} 
-.pagina10 .col{
+.pagina10 .col, .pagina11 .col{
     /*altura de las columnas*/
     height: 50px;
 }
-.pagina10 header{
+.pagina10 header, .pagina11 header{
     /*márgenes del header*/
     margin: 3%;
 }
-.pagina10 .row:nth-child(even){
+.pagina10 .row:nth-child(even), .pagina11 .row:nth-child(even){
     /*colores pares de la tabla en color salmón*/
     background-color: #FFE4DC;
 }
-.pagina10 select{
+.pagina10 select, .pagina11 select{
     /*tamaño y márgen derecho del select*/
     width: 70px;
     height: 40px;
     margin-right: 5px;
 }
 
+/*PÁGINA 11*/
+.pagina11 .fa-video{
+    /*espacio entre el icono de vídeo y el texto*/
+    margin-left: 10px;
+}
 
 
 
