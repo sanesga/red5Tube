@@ -9,10 +9,6 @@
     /*altura de las columnas*/
     height: 70px;  
 }
-.pagina10 .container-fluid, .pagina11 .container-fluid, .pagina12 .container-fluid{
-    /*se disminuye la anchura de la tabla de mantenimiento para poder agregar un margen derecho que la separe del borde del navegador*/
-    width:96%;
-}
 .pagina10 .row:nth-child(even), .pagina11 .row:nth-child(even), .pagina12 .row:nth-child(even){
     /*colores pares de la tabla en color salmón*/
     background-color: #FFE4DC;

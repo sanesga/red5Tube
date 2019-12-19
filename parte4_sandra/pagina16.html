@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Detail video</title>
+    <title>Detail audio</title>
     <!--enlace a css-->
     <link rel="stylesheet" href="./css/style.css">
     <!--librería fontawesome-->
@@ -18,7 +18,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
+<!--añado un id a la página para poder usar un css único para todas las páginas sin que se mezclen estilos-->
+<body class="pagina16">
 
     <!--*********************************************************-->
     <!--LEYENDA DE TAMAÑOS RESPONSIVE DE BOOTSTRAP-->
@@ -37,33 +38,35 @@
         <p>Nombre usuario, bienvenido a <span class="text-danger">Red5Tube.</span></p>
     </header>
 
-    <!--DETALLE VÍDEO-->
-    <!--class container-fluid: permite trabajar con una estructura grid responsive, añadiendo cols y rows y adapta el contenido al 100% de width-->
-    <div class="container-fluid">
+    <!--DETALLE AUDIO-->
+    <!--class container: permite trabajar con una estructura grid responsive, añadiendo cols y rows-->
+    <div class="container">
     <!--añade una fila-->
     <div class="row">
-        <!--añade una columna que ocupará en tamaños grandes la mitad del navegador para hacerse más grande en tamaño tablet y móvil-->
+        <!--añade una columna que ocupará 8 partes de 12 en tamaños grandes y el total de la pantalla en tamaño tablet y móvil-->
         <!--class mx-auto: margin left y right auto, para centrar la card-->
-        <div class="col-xl-6 col-lg-10 col-md-12 mx-auto">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mx-auto ">
             <!--utilizamos el formato card, quitándole el borde-->
-            <div class="card  border-0">
-                <!--cabecera de la card que contiene el vídeo, ponemos color de fondo blanco y quitamos el borde-->
+            <div class="card border-0">
+                <!--cabecera de la card que contiene el audio, ponemos color de fondo blanco y quitamos el borde-->
                 <div class="card-header bg-white border-0">
-                    <!--la etiqueta controls, agrega los controles de reproducción-->
-                    <!--la clase card-img-top sitúa el vídeo en la parte superior de la card-->
-                    <video class="card-img-top" src="./multimedia/video.mp4" controls>
-                        <!--Este texto sólo se mostrará si no se puede reproducir el vídeo-->
-                        Your browser does not support the video tag.
-                    </video>
+                    <!--insertamos la imagen del audio, para darle tamaño, le decimos que siempre ocupe el 100% del tamaño de la card-->
+                    <img class="col-xl-12" src="./img/audio.jpg" alt="audio">
+                     <!--la etiqueta controls, agrega los controles de reproducción, le decimos que siempre ocupen el 100% del tamaño de la card-->
+                     <!--insertamos un margen top para separar los controles de la imagen-->
+                    <audio class="col-xl-12 mt-4" src="./multimedia/audio.mp3" controls>
+                        <!--este texto se mostrará si no se puede reproducir el audio-->
+                        Your browser does not support the audio tag.
+                    </audio>
                 </div>
                 <!--contenido-->
                 <div class="card-body">
                     <!--título con el texto en negrita-->
-                    <h4 class="card-title font-weight-bold">City clouds</h4>
+                    <h4 class="card-title font-weight-bold">Raggamuffin</h4>
                     <!--descripción, con un margen inferior-->
-                    <p class="mb-2">When winter meets autumn | Cinematic slow motion | Canon 80D</p>
+                    <p class="mb-2">Selah Sue</p>
                     <!--texto, de color rojo-->
-                    <p class="card-text text-danger">159 visualizaciones</p>
+                    <p class="card-text text-danger">3000 reproducciones</p>
                 </div>
                 <!--fin de la card-->
             </div>
@@ -74,5 +77,4 @@
     <!--fin del container-->
 </div>
 </body>
-
 </html>
