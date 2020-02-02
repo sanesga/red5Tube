@@ -234,6 +234,9 @@ footer {
                        "title1 title2 title3 title4 title5 title6"
                        "item1 item2 item3 item4 item5 item6"
                        "item7 item8 item9 item10 item11 item12"
+                       "item13 item14 item15 item16 item17 item18"
+                       "item19 item20 item21 item22 item23 item24"
+                       "item25 item26 item27 item28 item29 item30"
                        "foot foot foot foot foot foot";
   //damos tamaño a las columnas
   grid-template-columns: auto auto auto auto auto 3.5%;
@@ -545,7 +548,7 @@ footer {
     margin-bottom: 20px;
 }
 //formulario agregar usuario
-#formularioAgregarUsuario{
+#formularioAgregarUsuario, #formularioAgregarVideo{
     text-align: center;
     display: none;
     border: 1px solid gray;
@@ -554,14 +557,14 @@ footer {
 
 }
 //formato de los inputs del formulario de agregar usuario
-.inputsAgregarUsuario{
+.inputsAgregarUsuario, .inputsAgregarVideo{
     margin: 20px 5px 5px 5px;
     border-radius: 5px;
     padding: 10px;
     border: 1px solid grey;
 }
 //estilo del botón agregar y guardar cambios del formulario modificar usuario
-#botonModificarUsuario, #botonAgregarUsuario{
+#botonModificarUsuario, #botonAgregarUsuario, #botonModificarVideo, #botonAgregarVideo{
     margin: 20px auto 20px auto;
     display: none;
     background-color:map-get($colors, azul);

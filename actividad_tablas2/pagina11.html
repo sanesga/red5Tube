@@ -1,199 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Admin vídeos</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/style.css" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./style/img/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./style/img/favicon.png"
+      type="image/x-icon"
+    />
     <!--librería fontawesome-->
-    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <script>
+      //llamamos a la función main cuando la página esté totalmente cargada
+      window.onload = main;
 
-</head>
+      //la función main contiene todo el código javascript
+      function main() {
+        //-------------------ELEMENTOS DEL DOM----------------------------
 
-<body>
+        //boton mostrar formulario para agregar usuario
+        var botonMostrarFormulario = document.getElementById(
+          "mostrarFormulario"
+        );
+        //formulario agregar usuario
+        var formularioAgregarVideo = document.getElementById(
+          "formularioAgregarVideo"
+        );
+        //tabla mantenimiento usuarios
+        var tablaVideos = document.getElementById(
+          "maintenance-grid-container"
+        );
+        //inputs del formulario agregar usuario
+        var inputUsuario = document.getElementById("usuario");
+        var inputNombre = document.getElementById("nombre");
+        var inputTitulo = document.getElementById("titulo");
+        var inputComentarios = document.getElementById("comentarios");
+        var inputCategoria = document.getElementById("categoria");
+
+        //id que utilizamos para añadir elementos a la tabla (empezamos por 7 porque ya hay una fila creada por defecto)
+        var id = 6;
+
+        //boton agregar usuario del formulario agregar usuario
+        var botonAgregarVideo = document.getElementById(
+          "botonAgregarVideo"
+        );
+        //boton modificar datos del usuario
+        var botonModificarVideo = document.getElementById(
+          "botonModificarVideo"
+        );
+        //footer de la tabla
+        var foot = document.getElementById("foot");
+        //botón cancelar del formulario agregar usuarios
+        var botonCancelar = document.getElementById("botonCancelar");
+
+        //------------------------------------------------------------------
+
+        //--------------------------EVENTOS---------------------------------
+        //al hacer click en el botón agregar usuario, se muestra el formulario y se oculta la tabla de mantenimiento o viceversa
+        botonMostrarFormulario.addEventListener("click", mostrarForm);
+        //agregamos una delegación de eventos a la tabla de mantenimiento de usuarios
+        tablaVideos.addEventListener("click", eliminarModificarFila);
+        //añadimos un evento al formulario, al hacer click en el botón submit, se llamará al método indicado (y haremos un prevent default para que no envie los datos al action)
+        formularioAgregarVideo.addEventListener("submit", agregarVideo);
+        //deshabilitamos el enter del formulario para que no haga submit por defecto, ya que utilizamos el mismo formulario para añadir y para modificar
+        window.addEventListener(
+          "keydown",
+          function(e) {
+            if (
+              e.keyIdentifier == "U+000A" ||
+              e.keyIdentifier == "Enter" ||
+              e.keyCode == 13
+            ) {
+              if (e.target.nodeName == "INPUT" && e.target.type == "text") {
+                e.preventDefault();
+                return false;
+              }
+            }
+          },
+          true
+        );
+        //al hacer click en el botón cancelar del formulario agregar usuarios, hará un reset de los inputs y nos mostrará otra vez la tabla
+        botonCancelar.addEventListener("click", ocultarMostrarFormulario);
+        //-------------------------------------------------------------------
+
+        //-----------------------------FUNCIONES-----------------------------
+
+        function mostrarForm() {
+          //como utilizamos el mismo formulario para agregar y modificar, mostramos el botón agregar usuario y ocultamos el botón guardar datos.
+          //el botón de agregar usuario, hará un submit, pero el de guardar datos, no.
+          botonAgregarVideo.style.display = "block";
+          botonModificarVideo.style.display = "none";
+
+          //limpiamos los inputs
+          limpiarInputs();
+
+          //si el formulario está oculto se muestra y al contrario con la tabla de usuarios (incluido el responsive)
+          ocultarMostrarFormulario();
+        }
+
+        function agregarVideo(e) {
+          //recogemos los datos del formulario
+          var usuario = inputUsuario.value;
+          var nombre = inputNombre.value;
+          var titulo = inputTitulo.value;
+          var comentarios = inputComentarios.value;
+          var categoria = inputCategoria.value;
+
+          //llamamos a un método que crea los divs, les añade el texto y los agrega a la tabla
+          crearDivs(usuario);
+          crearDivs(nombre);
+          crearDivs(titulo);
+          crearDivs(comentarios);
+          crearDivs(categoria);
+
+          //creamos la última columna, que contiene los iconos de editar y borrar
+          //creamos el div
+          var div = document.createElement("div");
+          //añadimos los iconos
+          div.innerHTML =
+            "<i class='far fa-edit'></i><i class='far fa-trash-alt'></i>";
+          //incrementamos el id
+          id++;
+          //añadimos el id como atributo
+          div.setAttribute("id", "item" + id);
+
+          //añadimos el div a la tabla, antes del footer de la tabla
+          foot.parentNode.insertBefore(div, foot);
+
+          //ocultamos el formulario y mostramos la tabla
+          ocultarMostrarFormulario();
+
+          //evitamos que el formulario haga el action, al hacer submit
+          e.preventDefault();
+        }
+
+        function crearDivs(campo) {
+          //incrementamos el id
+          id++;
+          //creamos el div
+          var div = document.createElement("div");
+          //añadimos el texto
+          div.innerHTML = campo;
+          //añadimos el id
+          div.setAttribute("id", "item" + id);
+          //añadimos el div a la tabla de usuarios, antes del footer de la tabla
+          foot.parentNode.insertBefore(div, foot);
+        }
+
+        function eliminarModificarFila(e) {
+          //recuperamos el elemento donde hemos hecho click
+          var icono = e.target;
+
+          //si el icono seleccionado es la papelera
+          if (icono.className == "far fa-trash-alt") {
+            //obtenemos todos los elementos de la fila
+            var divIconos = icono.parentNode;
+            var divCategoria = divIconos.previousElementSibling;
+            var divComentarios = divCategoria.previousElementSibling;
+            var divTitulo = divComentarios.previousElementSibling;
+            var divNombre = divTitulo.previousElementSibling;
+            var divUsuario = divNombre.previousElementSibling;
+
+            //los eliminamos
+            tablaVideos.removeChild(divIconos);
+            tablaVideos.removeChild(divCategoria);
+            tablaVideos.removeChild(divComentarios);
+            tablaVideos.removeChild(divTitulo);
+            tablaVideos.removeChild(divNombre);
+            tablaVideos.removeChild(divUsuario);
+          }
+          //si el icono pulsado es el de editar
+          if (icono.className == "far fa-edit") {
+            //mostramos el formulario y ocultamos la tabla
+            ocultarMostrarFormulario();
+
+            //obtenemos el icono donde hemos hecho click
+            var icono = e.target;
+
+            //obtenemos todos los elementos de la fila
+            var divIconos = icono.parentNode;
+            var divCategoria = divIconos.previousElementSibling;
+            var divComentarios = divCategoria.previousElementSibling;
+            var divTitulo = divComentarios.previousElementSibling;
+            var divNombre = divTitulo.previousElementSibling;
+            var divUsuario = divNombre.previousElementSibling;
+
+            //obtenemos el texto de cada campo
+            var textoUsuario = divUsuario.innerHTML;
+            var textoNombre = divNombre.innerHTML;
+            var textoTitulo = divTitulo.innerHTML;
+            var textoComentarios = divComentarios.innerHTML;
+            var textoCategoria = divCategoria.innerHTML;
+
+            //mostramos los datos en el formulario
+            inputUsuario.value = textoUsuario;
+            inputNombre.value = textoNombre;
+            inputTitulo.value = textoTitulo;
+            inputComentarios.value = textoComentarios;
+            inputCategoria.value = textoCategoria;
+
+            //mostramos el botón modificar y ocultamos el boton agregar usuario
+            botonModificarVideo.style.display = "block";
+            botonAgregarVideo.style.display = "none";
+
+            //cuando hagamos click en el botón guardar datos, actualizamos los valores de los campos
+            botonModificarVideo.addEventListener("click", guardar);
+
+            function guardar() {
+              //obtenemos los nuevos datos
+              var usuario = inputUsuario.value;
+              var nombre = inputNombre.value;
+              var titulo= inputTitulo.value;
+              var comentarios = inputComentarios.value;
+              var categoria = inputCategoria.value;
+
+              //los guardamos en sus respectivos divs
+              divUsuario.innerHTML = usuario;
+              divNombre.innerHTML = nombre;
+              divTitulo.innerHTML = titulo;
+              divComentarios.innerHTML = comentarios;
+              divCategoria.innerHTML = categoria;
+
+              //al hacer click en el botón guardar datos, ocultamos el formulario y mostramos la tabla (de manera responsive)
+              var tamaño = window.matchMedia("(max-width: 1048px)");
+              adaptarDisplay(tamaño);
+              tamaño.addListener(adaptarDisplay);
+
+              //eliminamos el evento del botón, ya que cada vez que se haga click en el icono editar, se le asigna el evento y pueden acumularse
+              botonModificarVideo.removeEventListener("click", guardar);
+            }
+          }
+        }
+        function limpiarInputs() {
+          inputUsuario.value = "";
+          inputNombre.value = "";
+          inputTitulo.value = "";
+          inputComentarios.value = "";
+          inputCategoria.value = "";
+        }
+        function ocultarMostrarFormulario() {
+          //si el formulario tiene display none, se pasa a block
+          //si la tabla tiene display none, se pasa a grid en tamaño grande y a flex en mediano y pequeño
+          if (
+            (formularioAgregarVideo.style.display === "") |
+            (formularioAgregarVideo.style.display === "none")
+          ) {
+            formularioAgregarVideo.style.display = "block";
+            tablaVideos.style.display = "none";
+          } else if (formularioAgregarVideo.style.display === "block") {
+            var tamaño = window.matchMedia("(max-width: 1048px)");
+            adaptarDisplay(tamaño);
+            tamaño.addListener(adaptarDisplay);
+          }
+        }
+
+        //adapta el display según el tamaño de la media query definida en el css
+        function adaptarDisplay(tamaño) {
+          if (tamaño.matches) {
+            // If media query matches
+            formularioAgregarVideo.style.display = "none";
+            tablaVideos.style.display = "flex";
+          } else {
+            formularioAgregarVideo.style.display = "none";
+            tablaVideos.style.display = "grid";
+          }
+        }
+      } //fin del método principal main
+      //---------------------------------------------------------------------
+    </script>
+  </head>
+
+  <body>
     <div class="grid-container">
+      <header>
+        <div class="flex-container">
+          <h1 class="logo"><a href="index.html">Home</a></h1>
+          <ul class="navigation">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <section id="navigation_menu">
+        <input type="checkbox" id="menu" />
+        <nav id="superior">
+          <ul>
+            <li>
+              <form action="search.html">
+                <input type="text" placeholder="Search" />
+                <a href="search.html"><i class="fa fa-search"></i></a>
+              </form>
+            </li>
+            <li>
+              <details>
+                <summary
+                  ><i class="fa fa-video"></i><span> See Videos</span></summary
+                >
+                <a href="my_videos.html">Todos</a><br />
+                <a href="my_videos.html">Deportes</a><br />
+                <a href="my_videos.html">Educación</a><br />
+                <a href="my_videos.html">Humor</a><br />
+                <a href="my_videos.html">Noticias</a><br />
+                <a href="my_videos.html">Tiempo Libre</a><br />
+                <a href="my_videos.html">Otros</a><br />
+                <a href="my_videos.html">Aleatorio</a><br />
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary
+                  ><i class="fa fa-video"></i>
+                  <span>Listen Audios</span></summary
+                >
+                <a href="my_audios.html">Todos</a><br />
+                <a href="my_audios.html">Deportes</a><br />
+                <a href="my_audios.html">Educación</a><br />
+                <a href="my_audios.html">Humor</a><br />
+                <a href="my_audios.html">Noticias</a><br />
+                <a href="my_audios.html">Tiempo Libre</a><br />
+                <a href="my_audios.html">Otros</a><br />
+                <a href="my_audios.html">Aleatorio</a><br />
+              </details>
+            </li>
+
+            <li>
+              <i class="fa fa-file-video"></i>
+              <a href="streaming.html">Streaming Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-upload"></i>
+              <a href="upload_video.html">Upload Video</a>
+            </li>
+            <li>
+              <i class="fa fa-upload"></i>
+              <a href="upload_audio.html">Upload Audio</a>
+            </li>
+            <li>
+              <i class="fa fa-video"></i>
+              <a href="my_videos.html">My Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-volume-up"></i>
+              <a href="my_audios.html">My Audios</a>
+            </li>
+            <li>
+              <i class="fa fa-info"></i>
+              <a href="info.html">Info</a>
+            </li>
+            <li>
+              <i class="fa fa-user"></i>
+              <a href="pagina10.html">Administrate Users</a>
+            </li>
+            <li>
+              <i class="fa fa-video"></i>
+              <a href="adm_videos.html">Administrate Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-sound"></i>
+              <a href="pagina12.html">Administrate Audios</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <!--Añadimos un id para añadir estilo por css-->
+      <main id="pagina11">
         <header>
-            <div class="flex-container">
-                <h1 class="logo"><a href="index.html">Home</a></h1>
-                <ul class="navigation">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
-                </ul>
-            </div>
-            <!-- <div class="header">
-                   <div class="bg-logo header1"><a href="index.html">Home</a></div>
-                   <div class="header2"> 
-                       <div class=bg-login>
-                           <form class="header2" action="login.html">
-                               <input type="submit" value="Login" />
-                           </form>
-                       </div>
-                       <div>
-                           <form class="header2" action="register.html">
-                               <input type="submit" value="Register" />
-                           </form>
-                       </div>
-                   </div>
-                       
-               </div> -->
+          <h1>Administración de vídeos</h1>
+          <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
+          <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
         </header>
 
-        <section id="navigation_menu">
-            <input type="checkbox" id="menu">
-            <nav id="superior">
-                <ul>
-                    <li>
-
-                        <form action="search.html">
-                            <input type="text" placeholder="Search">
-                               <a href="search.html"><i class="fa fa-search"></i></a>
-                        </form>
-                    </li>
-                    <li>
-                                
-                                <details>
-                                    <summary><i class="fa fa-video"></i><span> See Videos</span></summary>
-                                    <a href="my_videos.html">Todos</a><br>
-                                    <a href="my_videos.html">Deportes</a><br>
-                                    <a href="my_videos.html">Educación</a><br>
-                                    <a href="my_videos.html">Humor</a><br>
-                                    <a href="my_videos.html">Noticias</a><br>
-                                    <a href="my_videos.html">Tiempo Libre</a><br>
-                                    <a href="my_videos.html">Otros</a><br>
-                                    <a href="my_videos.html">Aleatorio</a><br>
-                                    
-                                </details>
-                            </li>
-                            <li>
-                            
-                            <details>
-                                    <summary><i class="fa fa-video"></i> <span>Listen Audios</span></summary>
-                                    <a href="my_audios.html">Todos</a><br>
-                                    <a href="my_audios.html">Deportes</a><br>
-                                    <a href="my_audios.html">Educación</a><br>
-                                    <a href="my_audios.html">Humor</a><br>
-                                    <a href="my_audios.html">Noticias</a><br>
-                                    <a href="my_audios.html">Tiempo Libre</a><br>
-                                    <a href="my_audios.html">Otros</a><br>
-                                    <a href="my_audios.html">Aleatorio</a><br>
-                                    
-                                </details>
-                        </li>
-                       
-                    <li>
-                        <i class="fa fa-file-video"></i>
-                        <a href="streaming.html">Streaming Videos</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-upload"></i>
-                        <a href="upload_video.html">Upload Video</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-upload"></i>
-                        <a href="upload_audio.html">Upload Audio</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-video"></i>
-                        <a href="my_videos.html">My Videos</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-volume-up"></i>
-                        <a href="my_audios.html">My Audios</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-info"></i>
-                        <a href="info.html">Info</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-user"></i>
-                        <a href="pagina10.html">Administrate Users</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-video"></i>
-                        <a href="adm_videos.html">Administrate Videos</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-sound"></i>
-                        <a href="pagina12.html">Administrate Audios</a>
-                    </li>
-                </ul>
-            </nav>
-
-        </section>
-        <!--Añadimos un id para añadir estilo por css-->
-        <main id="pagina11">
-
-            <header>
-                <h1>Administración de vídeos</h1>
-                <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
-                <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
-            </header>
-
-            <!--tabla administración de usuarios-->
-            <!--utilizamos un grid-->
-            <div id="search-grid-container">
-                <div>Búsqueda de usuario</div>
-                <div>Introduce parte del alias del usuario:</div>
-                <div><input type="text" placeholder=" red5tube"></div>
-                <div><input type="button" value="Buscar"></div>
-            </div>
-
-            <!--tabla mantenimiento de vídeos-->
-            <!--utilizamos un grid-->
-            <div id="maintenance-grid-container">
-
-                <!--cabecera-->
-                <div id="head">Mantenimiento de vídeos<i class="fas fa-video"></i></div>
-
-                <!--títulos-->
-                <div id="title1">Usuario</div>
-                <div id="title2">Nombre</div>
-                <div id="title3">Título</div>
-                <div id="title4">Comentarios</div>
-                <div id="title5">Categoría</div>
-                <div id="title6"></div>
-
-                <!--ítems-->
-                <div id="item1">red5tube</div>
-                <div id="item2">red5tube.mp4</div>
-                <div id="item3">Party</div>
-                <div id="item4">Great!</div>
-                <div id="item5">TIEMPO LIBRE</div>
-                <div id="item6"><i class="far fa-edit"></i></div>
-
-                <div id="item7" class="even">red5tube</div>
-                <div id="item8" class="even">red5tube.mp4</div>
-                <div id="item9" class="even">Party</div>
-                <div id="item10" class="even">A great summer!</div>
-                <div id="item11" class="even">TIEMPO LIBRE</div>
-                <div id="item12" class="even"><i class="far fa-edit"></i></div>
-
-                <!--paginación-->
-                <div id="foot">
-                    <select>
-                        <!--permite seleccionar el número de filas que queremos mostrar-->
-                        <option value="5" selected>5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                    </select>
-
-                    <!--botones de paginación, iconos de fontawesome-->
-                    <button><i class="fas fa-step-backward"></i></button>
-                    <button><i class="fas fa-backward"></i></button>
-                    <span>(1 de 1)</span>
-                    <button><i class="fas fa-forward"></i></button>
-                    <button><i class="fas fa-step-forward"></i></button>
-                </div>
-            </div>
-        </main>
-        <!--Esta página no tiene footer-->
+        <!--tabla administración de usuarios-->
+        <!--utilizamos un grid-->
+        <div id="search-grid-container">
+          <div>Búsqueda de usuario</div>
+          <div>Introduce parte del alias del usuario:</div>
+          <div><input type="text" placeholder=" red5tube" /></div>
+          <div><input type="button" value="Buscar" /></div>
         </div>
-</body>
 
+          <!--Botón agregar vídeo, muestra el formulario y oculta la tabla de mantenimiento-->
+          <div>
+            <input id="mostrarFormulario" type="button" value="Agregar vídeo" />
+          </div>
+
+        <!--tabla mantenimiento de vídeos-->
+        <!--utilizamos un grid-->
+        <div id="maintenance-grid-container">
+          <!--cabecera-->
+          <div id="head">
+            Mantenimiento de vídeos<i class="fas fa-video"></i>
+          </div>
+
+          <!--títulos-->
+          <div id="title1">Usuario</div>
+          <div id="title2">Nombre</div>
+          <div id="title3">Título</div>
+          <div id="title4">Comentarios</div>
+          <div id="title5">Categoría</div>
+          <div id="title6"></div>
+
+          <!--ítems-->
+          <div id="item1">red5tube</div>
+          <div id="item2">red5tube.mp4</div>
+          <div id="item3">Party</div>
+          <div id="item4">Great!</div>
+          <div id="item5">TIEMPO LIBRE</div>
+          <div id="item6"> <i class="far fa-edit"></i><i class="far fa-trash-alt"></i></div>
+
+
+          <!--paginación-->
+          <div id="foot">
+            <select>
+              <!--permite seleccionar el número de filas que queremos mostrar-->
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+
+            <!--botones de paginación, iconos de fontawesome-->
+            <button><i class="fas fa-step-backward"></i></button>
+            <button><i class="fas fa-backward"></i></button>
+            <span>(1 de 1)</span>
+            <button><i class="fas fa-forward"></i></button>
+            <button><i class="fas fa-step-forward"></i></button>
+          </div>
+        </div>
+        <!--Formulario añadir vídeo-->
+        <form id="formularioAgregarVideo" action="#">
+          <label for="usuario"></label>
+          <input
+            required
+            type="text"
+            name="usuario"
+            id="usuario"
+            class="inputsAgregarVideo"
+            placeholder="Introduce el usuario"
+          />
+          <br />
+          <label for="nombre"></label>
+          <input
+            required
+            type="text"
+            name="nombre"
+            id="nombre"
+            class="inputsAgregarVideo"
+            placeholder="Introduce el nombre"
+          />
+          <br />
+          <label for="titulo"></label>
+          <input
+            required
+            type="text"
+            name="titulo"
+            id="titulo"
+            class="inputsAgregarVideo"
+            placeholder="Introduce el título"
+          />
+          <br />
+          <label for="comentarios"></label>
+          <input
+            required
+            type="text"
+            name="comentarios"
+            id="comentarios"
+            class="inputsAgregarVideo"
+            placeholder="Introduce los comentarios"
+          />
+          <br />
+          <label for="categoria"></label>
+          <input
+            required
+            type="text"
+            name="categoria"
+            id="categoria"
+            class="inputsAgregarVideo"
+            placeholder="Introduce la categoría"
+          />
+          <br />
+
+          <input
+            type="submit"
+            id="botonAgregarVideo"
+            value="Agregar vídeo"
+          />
+          <input
+            type="button"
+            value="Guardar cambios"
+            id="botonModificarVideo"
+          />
+          <input
+            type="reset"
+            value="Cancelar"
+            id="botonCancelar"
+          />
+        </form>
+      </main>
+      <!--Esta página no tiene footer-->
+    </div>
+  </body>
 </html>
