@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detail audio</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./style/img/favicon.png" type="image/x-icon">
+    <!--librería fontawesome-->
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="flex-container">
+                <h1 class="logo"><a href="index.html">Home</a></h1>
+                <ul class="navigation">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </div>
+            <!-- <div class="header">
+                       <div class="bg-logo header1"><a href="index.html">Home</a></div>
+                       <div class="header2"> 
+                           <div class=bg-login>
+                               <form class="header2" action="login.html">
+                                   <input type="submit" value="Login" />
+                               </form>
+                           </div>
+                           <div>
+                               <form class="header2" action="register.html">
+                                   <input type="submit" value="Register" />
+                               </form>
+                           </div>
+                       </div>
+                           
+                   </div> -->
+        </header>
+
+        <section id="navigation_menu">
+            <input type="checkbox" id="menu">
+            <nav id="superior">
+                <ul>
+                    <li>
+
+                        <form action="search.html">
+                            <input type="text" placeholder="Search">
+                               <a href="search.html"><i class="fa fa-search"></i></a>
+                        </form>
+                    </li>
+                    <li>
+                                
+                                <details>
+                                    <summary><i class="fa fa-video"></i><span> See Videos</span></summary>
+                                    <a href="my_videos.html">Todos</a><br>
+                                    <a href="my_videos.html">Deportes</a><br>
+                                    <a href="my_videos.html">Educación</a><br>
+                                    <a href="my_videos.html">Humor</a><br>
+                                    <a href="my_videos.html">Noticias</a><br>
+                                    <a href="my_videos.html">Tiempo Libre</a><br>
+                                    <a href="my_videos.html">Otros</a><br>
+                                    <a href="my_videos.html">Aleatorio</a><br>
+                                    
+                                </details>
+                            </li>
+                            <li>
+                            
+                            <details>
+                                    <summary><i class="fa fa-video"></i> <span>Listen Audios</span></summary>
+                                    <a href="my_audios.html">Todos</a><br>
+                                    <a href="my_audios.html">Deportes</a><br>
+                                    <a href="my_audios.html">Educación</a><br>
+                                    <a href="my_audios.html">Humor</a><br>
+                                    <a href="my_audios.html">Noticias</a><br>
+                                    <a href="my_audios.html">Tiempo Libre</a><br>
+                                    <a href="my_audios.html">Otros</a><br>
+                                    <a href="my_audios.html">Aleatorio</a><br>
+                                    
+                                </details>
+                        </li>
+                       
+                    <li>
+                        <i class="fa fa-file-video"></i>
+                        <a href="streaming.html">Streaming Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-upload"></i>
+                        <a href="upload_video.html">Upload Video</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-upload"></i>
+                        <a href="upload_audio.html">Upload Audio</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-video"></i>
+                        <a href="my_videos.html">My Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-volume-up"></i>
+                        <a href="my_audios.html">My Audios</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-info"></i>
+                        <a href="info.html">Info</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-user"></i>
+                        <a href="pagina10.html">Administrate Users</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-video"></i>
+                        <a href="pagina11.html">Administrate Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-sound"></i>
+                        <a href="pagina12.html">Administrate Audios</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </section>
+        <!--Añadimos un id para añadir estilo por css-->
+        <main id="pagina16">
+            <header>
+                <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
+                <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
+            </header>
+
+            <!--tabla detalle de audio-->
+            <!--utilizamos un grid-->
+            <div id="detail-grid-container">
+                <!--portada del disco-->
+                <div> <img src="./style/img/audio.jpg" alt="audio"></div>
+                <div><audio src="./multimedia/audio.mp3" controls>
+                        Your browser does not support the audio tag.
+                    </audio></div>
+                <div id="title">Raggamuffin</div>
+                <div>Selah Sue</div>
+                <div id="views">3000 reproducciones</div>
+            </div>
+        </main>
+        <!--Esta página no tiene footer-->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon"> <!-- Favicon -->
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <section> 
+        <!-- Esta pagina alberga la funcionalidad de registrar nuevos usuarios en la aplicacion -->
+        <!-- Creamos un formulario para poder rellenar los datos como un usuario no registrado -->
+
+            <div id="auth_container">
+                <span id="auth_tittle">Register Form</span>
+                <form id="auth_form" action="#">
+                    <div class="form_item">
+                        <i class="fa fa-user icon"></i>
+                        <input type="text" placeholder="Username" name="usrnm" required>
+                    </div>
+                        
+                    
+                    <div class="form_item">
+                        <i class="fa fa-envelope icon"></i>
+                        <input type="text" placeholder="Email" name="email" required>
+                    </div>
+                        
+                    
+                    <div class="form_item">
+                        <i class="fa fa-key icon"></i>
+                        <input type="password" placeholder="Password" name="psw" required>
+                    </div>
+                        
+                    
+                    <div class="form_item">
+                        <i class="fa fa-key icon"></i>
+                        <input type="password" placeholder="Repeat Pasword" name="rpsw" required>
+                    </div>
+                        
+                    
+                    <div class="form_item">
+                        <i class="fa fa-calendar"></i>
+                        <input type="date" name="date" required>
+                    </div>
+                        
+                    
+                    <div class="form_item">
+                        <i class="fa fa-phone"></i>
+                        <input type="tel" pattern="^[9|8|7|6]\d{8}$">
+                    </div>
+                   <div class="form_item">
+                        <i class="fa fa-briefcase"></i>
+                        <select name="profesion">
+                            <option value="Teacher">---</option>
+                            <option value="Student">Student</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Student">Other</option>
+                        </select>
+                    </div>
+                   <div class="form_item">
+                    <span>Gender</span>
+                    <label>
+                            <i class="fa fa-venus"></i><input name="gender" type="radio">
+                    </label>
+                    <label>
+                            <i class="fa fa-mars"></i><input name="gender" type="radio">
+                    </label>
+                    <label>
+                            <i class="fa fa-neuter"></i><input name="gender" type="radio">
+                    </label>
+                    <label>
+                            <i class="fa fa-transgender-alt"></i><input name="gender" type="radio">
+                    </label>
+                    <label>
+                            <i class="fa fa-genderless"></i><input name="gender" type="radio">
+                    </label>
+                        
+                    </div>
+                   <div class="form_item">
+                        <button type="submit" class="btn">Register</button>
+                        <a href="index.html"><i class="fa fa-arrow-circle-left"><span>Back</span></i></a>
+                    </div>
+                    <div class="error-message">
+                        <span class="error-text">Checkout could not be completed. Please check your login information and try again.</span>
+                    </div>
+                    
+                </form>
+            </div>
+    </section>
+</body>
+</html>
+
+
+
+

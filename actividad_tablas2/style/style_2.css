@@ -1,0 +1,194 @@
+/* asignamos al container todo el espacio disponible  */
+.container {
+  width           : 100%;
+  height          : 100%;
+  margin          : 5px;
+  background-color: white;
+}
+
+/* establecemos el tipo de display para el container,
+   en este caso grid para poder cambiarlo facilmente luego con las media queries */
+.grid-container_fix {
+  display              : grid;
+  grid-template-columns: auto auto;
+
+}
+
+/* para resaltar en rojo algunas palabras del texto */
+.span_fix {
+  color: red;
+}
+
+/* Eliminamos el subrayado en los links */
+a:link {
+  text-decoration: none;
+}
+
+/* El tamaño para cada articulo */
+.videos {
+
+  height: 150px;
+  width : 160px;
+  margin: auto;
+
+}
+
+/* el tamaño para la miniatura del video en cada articulo */
+.video_miniature {
+  margin          : auto;
+  height          : 80px;
+  width           : 150px;
+  background-color: darkgray;
+}
+
+/* El tamaño para cada articulo */
+.audios {
+
+  height: 150px;
+  width : 160px;
+  margin: auto;
+
+}
+
+/* el tamaño para la miniatura del audio en cada articulo */
+.audio_miniature {
+  margin          : auto;
+  height          : 80px;
+  width           : 150px;
+  background-color: darkgray;
+}
+
+
+/* El estilo para el titulo de los videos y audios en miniatura */
+.titulo {
+  color: black;
+
+}
+
+/* El estilo para los detalles de visualizaciones y reproducciones en las miniaturas */
+.visualizaciones {
+  font-size: 0.8em;
+  color    : gray;
+}
+
+
+
+.contenido {
+  display: block;
+}
+
+/* El estilo y tamaño para los headers de las paginas de contenido */
+.content_header {
+  height          : 30px;
+  background-color: lightgray;
+  margin-bottom   : 10px;
+  line-height     : 30px;
+}
+
+/* El estilo y tamaño para los footers de las paginas de contenido */
+.content_footer {
+  height          : 30px;
+  background-color: lightgray;
+  line-height     : 30px;
+}
+
+/* El estilo del div donde ira el video en directo */
+.live_video {
+  margin: auto;
+  height: 300px;
+  width : 300px;
+  border: 1px solid black;
+}
+
+/* El estilo del div de los controladores del video en directo */
+.control_buttons {
+  margin: auto;
+  width : 150px;
+
+
+}
+
+.buscador {
+  width : 70%;
+  margin: auto;
+}
+
+/* El estilo del contenedor donde van las noticias del directo*/
+.noticias {
+  width                : 70%;
+  height               : 200px;
+  margin               : auto;
+  display              : grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap      : 10px;
+}
+
+/* Estilo para los titulares de las noticias */
+.titulo_noticia {
+  border          : 1px solid blue;
+  background-color: cyan;
+  color           : blue;
+  text-align      : center;
+}
+
+/* el estilo del contenido de las noticias */
+.categoria {
+  align-self  : center;
+  justify-self: center;
+  width       : 80%;
+  border      : 1px solid lightgray;
+}
+
+.cuerpo {
+  text-align: center;
+
+}
+
+/* El estilo para los formularios de subida de audio y video */
+.upload_form {
+  display   : block;
+  height    : 50%;
+  padding   : 10px;
+  text-align: center;
+
+}
+
+/* Estilo para los inputs de los formularios, para que se separen unos de otros */
+.upload_form input {
+  margin-top   : 10px;
+  margin-bottom: 10px;
+  width        : 100%;
+}
+
+#file {
+  margin-left: 43%;
+}
+
+#category {
+  margin-bottom: 10px;
+}
+
+/* El estilo para el texto de los headers */
+.menu {
+  text-align   : center;
+  margin-bottom: 3%;
+}
+
+
+/* Aqui estan las media queries para que cuando la pantalla sea mas de 768px de ancho aparezcan 3 columnas en el grid en vez de 2 */
+@media screen and (min-width: 768px) {
+  .grid-container_fix {
+    display              : grid;
+    grid-template-columns: auto auto auto;
+
+  }
+}
+
+/* Aqui estan las media queries para que cuando la pantalla sea mas de 1200px de ancho aparezcan 6 columnas en el grid en vez de 3  */
+@media screen and (min-width: 1200px) {
+  .grid-container_fix {
+    display              : grid;
+    grid-template-columns: auto auto auto auto auto auto;
+
+  }
+}

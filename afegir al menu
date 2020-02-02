@@ -1,6 +1,0 @@
-Afegir aquest li a tots els menús
-
- <li>
-    <i class="fas fa-list"></i>
-    <a href="videos_list.html">Videos List</a>
- </li>

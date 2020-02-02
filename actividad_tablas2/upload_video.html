@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/style_2.css">
+    <link rel="shortcut icon" href="./style/img/favicon.png" type="image/x-icon"> <!-- Favicon -->
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>Upload Videos</title>
+</head>
+<body>
+     <div class="grid-container">
+            <header>
+                <div  class="flex-container">
+                    <h1 class="logo"><a href="index.html">Home</a></h1>
+                    <ul class="navigation">
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="header">
+                    <div class="bg-logo header1"><a href="index.html">Home</a></div>
+                    <div class="header2"> 
+                        <div class=bg-login>
+                            <form class="header2" action="login.html">
+                                <input type="submit" value="Login" />
+                            </form>
+                        </div>
+                        <div>
+                            <form class="header2" action="register.html">
+                                <input type="submit" value="Register" />
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div> -->
+            </header>
+
+           <section id="navigation_menu" > 
+                    <input type="checkbox" id="menu"> 
+                <nav id="superior">
+                    <ul>
+                        <li>
+  
+                            <form action="search.html">
+                                <input type="text" placeholder="Search">
+                                   <a href="search.html"><i class="fa fa-search"></i></a>
+                            </form>
+                        </li>
+                         <li>
+                                
+                                <details>
+                                    <summary><i class="fa fa-video"></i><span> See Videos</span></summary>
+                                    <a href="my_videos.html">Todos</a><br>
+                                    <a href="my_videos.html">Deportes</a><br>
+                                    <a href="my_videos.html">Educación</a><br>
+                                    <a href="my_videos.html">Humor</a><br>
+                                    <a href="my_videos.html">Noticias</a><br>
+                                    <a href="my_videos.html">Tiempo Libre</a><br>
+                                    <a href="my_videos.html">Otros</a><br>
+                                    <a href="my_videos.html">Aleatorio</a><br>
+                                    
+                                </details>
+                            </li>
+                            <li>
+                            
+                            <details>
+                                    <summary><i class="fa fa-video"></i> <span>Listen Audios</span></summary>
+                                    <a href="my_audios.html">Todos</a><br>
+                                    <a href="my_audios.html">Deportes</a><br>
+                                    <a href="my_audios.html">Educación</a><br>
+                                    <a href="my_audios.html">Humor</a><br>
+                                    <a href="my_audios.html">Noticias</a><br>
+                                    <a href="my_audios.html">Tiempo Libre</a><br>
+                                    <a href="my_audios.html">Otros</a><br>
+                                    <a href="my_audios.html">Aleatorio</a><br>
+                                    
+                                </details>
+                        </li>
+                        
+                            <li>
+                            <i class="fa fa-file-video"></i>
+                            <a href="streaming.html">Streaming Videos</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-upload"></i>
+                            <a href="upload_video.html">Upload Video</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-upload"></i>
+                            <a href="upload_audio.html">Upload Audio</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-video"></i>
+                            <a href="my_videos.html">My Videos</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-volume-up"></i>
+                            <a href="my_audios.html">My Audios</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-info"></i>
+                            <a href="info.html">Info</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-user"></i>
+                            <a href="pagina10.html">Administrate Users</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-video"></i>
+                            <a href="pagina11.html">Administrate Videos</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-sound"></i>
+                            <a href="pagina12.html">Administrate Audios</a>
+                        </li>
+                    </ul>
+                </nav>
+            
+            </section>
+            <main>
+                <div class="container">
+                          <!-- Creamos un div para el encabezado de la pagina seleccionada -->
+                    <div class="menu">
+                        Usuario, Bienvenido a <span class="span_fix">Pep</span>. <br>
+                    </div>
+                    <div class="content_header">Subir videos</div>
+                  <!-- Este es el formulario para recoger los datos que necesitamos del video -->
+                        <form class="upload_form">
+                            <label for="title"><strong>Titulo del video</strong></label>
+                            <input type="text" id="title" name="title" placeholder="Introduce el nombre del video...">
+                            <label for="comment"><strong>Titulo del video</strong></label>
+                            <input type="text" id="comment" name="comment" placeholder="Introduce comentarios del video...">
+                            <label for="category"><strong>Categoria:</strong></label>
+                            <select name="category" id="category">
+                                <option value="Deportes">Deportes</option>
+                                <option value="Cine">Cine</option>
+                            </select><br>
+                            <label for="file">Selenciona el fichero: </label>
+                            <input id="file" name="file" required type="file">
+                           
+                            <button type="submit">Enviar</button><button type="reset">Valores por defecto</button>
+                        </form>
+                
+                </div>
+               </main>
+           
+    </div> 
+    
+</body>
+</html>
+
+
+
+
+

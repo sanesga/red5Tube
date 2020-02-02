@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/style_2.css">
+    <link rel="shortcut icon" href="./style/img/favicon.png" type="image/x-icon"> <!-- Favicon -->
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>My Videos</title>
+</head>
+
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="flex-container">
+                <h1 class="logo"><a href="index.html">Home</a></h1>
+                <ul class="navigation">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </div>
+            <!-- <div class="header">
+                    <div class="bg-logo header1"><a href="index.html">Home</a></div>
+                    <div class="header2"> 
+                        <div class=bg-login>
+                            <form class="header2" action="login.html">
+                                <input type="submit" value="Login" />
+                            </form>
+                        </div>
+                        <div>
+                            <form class="header2" action="register.html">
+                                <input type="submit" value="Register" />
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div> -->
+        </header>
+
+        <section id="navigation_menu">
+            <input type="checkbox" id="menu">
+            <nav id="superior">
+                <ul>
+                    <li>
+
+                        <form action="search.html">
+                            <input type="text" placeholder="Search">
+                            <a href="search.html"><i class="fa fa-search"></i></a>
+                        </form>
+                    </li>
+                    <li>
+
+                        <details>
+                            <summary><i class="fa fa-video"></i><span> See Videos</span></summary>
+                            <a href="my_videos.html">Todos</a><br>
+                            <a href="my_videos.html">Deportes</a><br>
+                            <a href="my_videos.html">Educación</a><br>
+                            <a href="my_videos.html">Humor</a><br>
+                            <a href="my_videos.html">Noticias</a><br>
+                            <a href="my_videos.html">Tiempo Libre</a><br>
+                            <a href="my_videos.html">Otros</a><br>
+                            <a href="my_videos.html">Aleatorio</a><br>
+
+                        </details>
+                    </li>
+                    <li>
+
+                        <details>
+                            <summary><i class="fa fa-video"></i> <span>Listen Audios</span></summary>
+                            <a href="my_audios.html">Todos</a><br>
+                            <a href="my_audios.html">Deportes</a><br>
+                            <a href="my_audios.html">Educación</a><br>
+                            <a href="my_audios.html">Humor</a><br>
+                            <a href="my_audios.html">Noticias</a><br>
+                            <a href="my_audios.html">Tiempo Libre</a><br>
+                            <a href="my_audios.html">Otros</a><br>
+                            <a href="my_audios.html">Aleatorio</a><br>
+
+                        </details>
+                    </li>
+
+                    <li>
+                        <i class="fa fa-file-video"></i>
+                        <a href="streaming.html">Streaming Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-upload"></i>
+                        <a href="upload_video.html">Upload Video</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-upload"></i>
+                        <a href="upload_audio.html">Upload Audio</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-video"></i>
+                        <a href="my_videos.html">My Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-volume-up"></i>
+                        <a href="my_audios.html">My Audios</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-info"></i>
+                        <a href="info.html">Info</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-user"></i>
+                        <a href="pagina10.html">Administrate Users</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-video"></i>
+                        <a href="pagina11.html">Administrate Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-sound"></i>
+                        <a href="pagina12.html">Administrate Audios</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </section>
+        <main>
+
+
+            <div class="container">
+                <!-- Creamos un div para el encabezado de la pagina seleccionada -->
+                <div class="menu">
+                    Usuario, Bienvenido a <span class="span_fix">Pep</span>. <br>
+                    Estas viendo <span class="span_fix">la seccion de 'Mis videos'.</span> <br>
+                    Has seleccionado <span class="span_fix">todos los videos</span> ordenados por <span
+                        class="span_fix">los mas recientes.</span>
+                </div>
+                <div class="content_header">Mis Videos</div>
+                <!-- Creamos el contenedor para toda la pagina -->
+                <div class="grid-container_fix" id="video_container">
+                    <!-- Aqui estan todos los articulos que aparecen con sus Titulos y detalles -->
+
+
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+    <script>
+        // Aqui añado el Objeto que simula el JSon recibido de una llamada Ajax
+        var listado = {
+            "videos": [
+                {
+                    "id": 1,
+                    "name": " video 01",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 1
+                },
+                {
+                    "id": 2,
+                    "name": " video 02",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 2
+                },
+                {
+                    "id": 3,
+                    "name": " video 03",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 13
+                },
+                {
+                    "id": 4,
+                    "name": " video 04",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 173
+                },
+                {
+                    "id": 5,
+                    "name": " video 05",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 19
+                },
+                {
+                    "id": 6,
+                    "name": " video 06",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 189
+                },
+                {
+                    "id": 7,
+                    "name": " video 07",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 17
+                },
+                {
+                    "id": 8,
+                    "name": " video 08",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 14
+                },
+                {
+                    "id": 9,
+                    "name": " video 09",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 10,
+                    "name": " video 10",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 100
+                },
+                {
+                    "id": 11,
+                    "name": " video 11",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 12,
+                    "name": " video 12",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 157
+                },
+                {
+                    "id": 13,
+                    "name": " video 13",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 55
+                },
+                {
+                    "id": 14,
+                    "name": " video 14",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 15
+                },
+                {
+                    "id": 15,
+                    "name": " video 15",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 175
+                }
+
+            ],
+            "audios": [
+                {
+                    "id": 1,
+                    "name": " audio 01",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 2,
+                    "name": " audio 02",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 3,
+                    "name": " audio 03",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 4,
+                    "name": " audio 04",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 5,
+                    "name": " audio 05",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 6,
+                    "name": " audio 06",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 7,
+                    "name": " audio 07",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 8,
+                    "name": " audio 08",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 9,
+                    "name": " audio 09",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                },
+                {
+                    "id": 10,
+                    "name": " audio 10",
+                    "image": "style/img/audio.jpg",
+                    "visualizaciones": 155
+                }
+
+
+
+            ]
+        }
+
+        //Aqui Seleccionamos el contenedor de los videos
+        var contenedor = document.getElementById("video_container")
+        //hacemos un bucle por cada video en el Listado y añadimos el HTML para que le de el formato que  queremos
+        listado.videos.forEach(video => {
+            contenedor.innerHTML += `
+                    <div class="videos">
+                        <a href="pagina15.html">
+                            <img class="video_miniature" src="`+ video.image + `" alt="No image">
+                            <div class="titulo">`+ video.name + `</div>
+                            <div class="visualizaciones">`+ video.visualizaciones + ` Reproducciones <br><strong>Hace 0 dias</strong></div>
+                        </a>
+                    </div>`
+        });
+
+    </script>
+</body>
+
+</html>

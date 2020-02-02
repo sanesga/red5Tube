@@ -1,0 +1,230 @@
+///////////////////////////////////////////////
+///Encargado de dar formato y funcionalidad a las clases e ids del menu lateral
+//////////////////////////////////////////////
+@mixin nav-bar {
+    //Creamos el checkbox del menu, asignado a una id llamada menu.
+    input[type=checkbox]#menu {
+        display: none;
+        &:checked { //este checkbox al ser pulsado mostrara el menu, el cual habra desaparecido a causa de una media query
+            & + nav#superior {
+                display: block;
+            }
+        }
+    }
+    // Superior el id que contiene todo el menu.
+    nav#superior {
+        ul { //Damos formato a todas las listas no ordenadas que contenga la id superior
+            list-style-type: none; //le quitamos el estilo a la lista
+            margin: 0px;
+            padding: 0px;
+            font-family: Arial, sans-serif; // Añadimos un familia a la fuente por defecto
+            font-size: 11pt;// Le indicamos un tamaño a la fuente
+            width: 100%;
+            color: black;
+            input{ //Le damos un tamaño y un margen a todos los inputs dentro de la lista
+                width: 60%;
+                margin-right: -12%;
+            }
+            a, span{  //Formatamos todos los links y los spans dentro de la lista
+                color: black;
+                text-decoration: none;
+                text-transform: uppercase; //Hacemos que el texto este capitalizado
+                display: -webkit-inline-box; // Hacemos que el contenido este alineado pero sin desbordar el marco en el que se encuentra
+                padding: 10px 10px 10px 20px;
+                transition: 1s all;
+                margin-left: 30px;
+   
+               
+                &:hover {
+                    background: #000;
+                    border-left: 10px solid #333;
+                    color: #fff;
+                }
+            }
+            i{
+                margin-left: 3%;
+                width: 10px;
+            }
+        }
+        
+    }
+     //Añadimos una media query para hacer desaparecer el menu y hacer aparecer el boton que hace
+     // volver aparecer el menu, el cual habremos hecho cambiar para que se muestre de forma apilada.
+    @media all and (max-width: 769px) {
+        input[type=checkbox]#menu {
+            display: block;
+        }
+        nav#superior {
+            display: none;
+            ul {
+                flex-direction: column;
+                a {
+                    width: 23%;
+                }
+                li,summary{
+                    text-align: center;
+                }
+            }
+        }   
+    }
+}
+///////////////////////////////////////////////
+/// Encargado de dar formato a las zonas de error de la pagina 
+//////////////////////////////////////////////
+@mixin error_zone{
+    .error-message {
+        background-color: #fce4e4;
+        border: 1px solid #fcc2c3;
+        float: left;
+        padding: 20px 30px;
+      }
+     
+      .error-text {
+        color: #cc0033;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 20px;
+        text-shadow: 1px 1px rgba(250,250,250,.3);
+      }
+}
+///////////////////////////////////////////////
+///Encargado de crear y mutar el grid layout principal.
+//////////////////////////////////////////////
+@mixin grid {
+    display: grid;
+    background-color: #fff;
+    color: #444;
+    grid-template-columns: 300px    auto;
+    grid-template-rows: auto;
+    @media all and(min-width:769px) { //Esta grid area se mostrara en los tamaños superiores a 769
+
+        grid-template-areas: "header header header header header header" 
+                             "sidebar content content content content content" 
+                             "sidebar content content content content content" 
+                             "sidebar content content content content content" 
+                             "sidebar content content content content content" 
+                             "sidebar content content content content content" 
+                             "footer footer footer footer footer footer";
+        
+    }
+    @media all and(max-width:768px) {//Esta grid area se mostrara en los tamaños inferiores a 768
+        grid-template-areas: "header header header header"
+                             "sidebar sidebar sidebar sidebar" 
+                             "content content content content" 
+                             "content content content content" 
+                             "content content content content" 
+                             "footer footer footer footer";
+    }
+}
+///////////////////////////////////////////////
+///Encargado de dar formato a los contenedores de nuevo contenido de la pagina de bienvenida
+//////////////////////////////////////////////
+@mixin new_content_container {
+   .new_content_container{
+       margin: 1%;
+       .tittle{
+        margin: 2%;
+        border-bottom: 1px solid;
+       }
+   }
+    
+}
+///////////////////////////////////////////////
+///Encargado de formatar el header de la pagina
+//////////////////////////////////////////////
+@mixin header(){
+    font-family: Arial, Helvetica, sans-serif; //Le daremos una fuente comun
+    * {padding: 3px; margin: 0;}
+
+    .flex-container  { //El contenido del header se encontrara bajo un flexbox
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; // obligaremos al contenido a bajar de linea cuando se toquen
+        //Damos formato al logo y le dotamos de una media query que le obligara a crecer llegados a 768px
+        // lo cual porvocara que el wrap haga que los componentes a su alrededor salten a una nueva linea
+        .logo { 
+         margin: 0 0 0 .45em;
+         a {
+            color: rgb(28, 24, 22);
+          }
+          @media all and(max-width:768px) {
+            width: 100%;
+          }
+        }   
+        .logo, .navigation {
+            list-style: none;
+            text-transform: uppercase;
+            @media all and(max-width:767px) {
+                margin: auto;
+              }
+            
+        }
+    
+        .logo a, .navigation a { //Damos Formato al texto del logo y de los botones de navegacion
+            text-decoration: none;
+            letter-spacing: .45rem;
+        }
+    
+        .navigation  { //Creamos un flexbox el cual contendra los botones de login y register
+            display: flex;
+            a {
+                display: block;
+                padding: 1em;
+                color:black;
+                &:hover{
+                    color:white;
+                    background-color: #000; 
+                }
+            }
+        }
+    }
+
+   
+}
+///////////////////////////////////////////////
+///Encargado de dar formato a la pagina de informacion.
+//////////////////////////////////////////////
+@mixin info_page {
+    #info_container{
+        margin: 5% 10% 0 10%;
+    }
+    .tittle{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: xx-large;
+        color:#4d4d4d;
+    }
+}
+
+
+
+//formato general de las tablas de mantenimiento
+@mixin grid-general-format{
+    display:grid;
+    width: 100%;
+    margin-bottom: 20px;
+}
+//cabecera de las tablas de mantenimiento 
+@mixin grid-header{
+    background-color: map-get($colors, gris);
+    font-weight: bold;
+    text-align: center;
+    grid-area: head;
+}
+//pie de la tablas de mantenimiento
+@mixin grid-foot{
+    grid-area: foot;
+    background-color: map-get($colors, gris);
+    text-align: center;
+}
+//formato del resto de divs de las tablas de mantenimiento
+@mixin grid-items{
+    border: 1px solid map-get($colors, gris-oscuro);
+    padding: 8px;
+}
+//estilo del número de página de las tablas de mantenimiento
+@mixin numero-pagina{
+    font-weight: bold;
+    padding: 5px;
+}

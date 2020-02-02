@@ -1,0 +1,596 @@
+@import "./_mixins";
+
+//variables globales
+$font: #{"Arial"};
+
+//mapas (arrays)
+$colors: (
+    rojo:red,
+    gris:#D5D5D5,
+    gris-oscuro: grey,
+    blanco: white,
+    salmon: #FFE4DC,
+    azul: #7BCBFF
+
+
+);
+/////////////////////////////////////////////////
+
+@import "./_mixins";
+///////////////////////////////////////////////
+///Crea el grid layout de general, el cual abarca el footer, header, navbar lateral y el main
+//////////////////////////////////////////////
+.grid-container {
+    @include grid;
+  }
+///////////////////////////////////////////////
+///Incluimos el mixin encargado de formatear las clases e id del html e indicamos a que area del grid pertenece
+//////////////////////////////////////////////
+#navigation_menu {
+    @include nav-bar;
+  grid-area: sidebar;
+
+}
+///////////////////////////////////////////////
+/// Añadimos un ancho del 100% y un margen automatico para todo el body
+//////////////////////////////////////////////
+body {
+  width: 100%;
+  margin: auto;
+}
+///////////////////////////////////////////////
+/// En el main añadimos el mixin encargado de formatar la pagina de info y el container
+/// de nuevo contenido de la pagina de bienvenida. Ademas de eso establecemos un margin generico
+/// para todos los contenidos que albergara el main, su area en el grid y su altura minima.
+//////////////////////////////////////////////
+main {
+  @include info_page();
+  @include new_content_container();
+  margin: 2% 2% 0% 0%;
+  grid-area: content;
+  min-height: 500px;
+}
+///////////////////////////////////////////////
+/// Incluimos el mixin encargado de formatar el header, le seteamos una altura minima y el
+/// area del grid a la que pertenece
+//////////////////////////////////////////////
+header {
+  @include header();
+  min-height: 50px;
+  grid-area: header;
+}
+///////////////////////////////////////////////
+/// Le damos una altura minima y le indicamos a que area del grid pertenece
+//////////////////////////////////////////////
+footer {
+  min-height: 50px;
+  grid-area: footer;
+  /* background-color: yellow; */
+}
+
+///////////////////////////////////////////////
+/// Esta id es la encargada de formatar los formularios de login y registro
+//////////////////////////////////////////////
+#auth_container{
+  @include error_zone();/// Incluimos el mixin de la zona de error
+  text-align: center;
+  margin: 3%;
+  #auth_tittle{ // establecemos el formato del titulo titulo 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+  }
+  #auth_form{ /// EL formulario estara dispuesto como un flexbox cuya direccion sera en columna
+    display: flex;
+    flex-flow: column;
+    margin: inherit;
+    select{ //le damos formato al select el cual tendra un un borde inferior en gris el cual se volvera negro al pasar por encima
+      margin-bottom: 1em;
+      padding: .25em;
+      border: 0;
+      border-bottom: 1px solid gray;
+      background: none;
+      &:hover{
+        outline: 0;
+        border-bottom-color: black;
+      }
+        
+    }
+    button{ //Damos forma a los botones del formulario
+      border: none;
+      color: rgb(0, 0, 0);
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    input{ //Y de la misma forma que con el select, damos formato al input el cual
+           // cambiara el color de su borde inferior al pasar por encima
+      border: none;
+      border-bottom: 1px solid gray;
+      margin: 10px;
+      &:hover{
+        border-bottom: 1px solid black;
+      }
+    }
+    .form_item{ //Esta clase se encarga de separar, con un margen superior, los componentes del formulario
+      margin-top: 2%;
+    }
+  }
+}
+
+//incluimos todos los border y paddings en el tamaño total de los elementos
+*{
+  box-sizing: border-box;
+}
+//estilo del body
+#pagina10, #pagina11, #pagina12, #pagina15, #pagina16{
+  font-family: $font;
+
+  //estilo del título y subtítulo de las páginas
+  #pagina10 h1, header p span, #pagina11 h1, header p span, #pagina12 h1, header p span, #pagina15 h1, header p span, #pagina16 h1, header p span{
+      color: map-get($colors, rojo); 
+  }
+}
+//grid de búsqueda de usuario (usamos selectores anidados) (pág. 10,11 y 12)
+#search-grid-container{
+  display: grid;
+  border: 1px solid map-get($colors, gris);
+  width: 600px;
+  height: 200px;
+  margin-bottom:20px;
+  
+  //formato del input del cuadro de búsqueda
+  div input[type="text"]{
+      width: 560px;
+      height: 30px;
+      border-radius: 6px;
+      border: 1px solid map-get($colors, gris);
+  }
+  //formato del botón buscar
+  div input[type="button"]{
+      background-color:map-get($colors, rojo);
+      color: map-get($colors, blanco);
+      width: 130px;
+      height: 30px;
+      border-radius: 6px;
+      border: none;
+  }
+  //formato del primer div
+  div:first-child{
+      border: 1px solid map-get($colors, gris-oscuro);
+      font-weight: bold;
+      background-color: map-get($colors, gris); 
+  }
+   //formato del resto de divs
+   //usamos display flex para alinear el contenido
+  div{
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+  }
+} 
+
+//grid de mantenimiento de usuario (página 10)
+#pagina10 #maintenance-grid-container{
+ @include grid-general-format();
+  //establecemos el orden de los ítems
+  grid-template-areas: "head head head head head head"
+                       "title1 title2 title3 title4 title5 title6"
+                       "item1 item2 item3 item4 item5 item6"
+                       "item7 item8 item9 item10 item11 item12"
+                       "item13 item14 item15 item16 item17 item18"
+                       "item19 item20 item21 item22 item23 item24"
+                       "item25 item26 item27 item28 item29 item30"
+                       "foot foot foot foot foot foot";
+  //damos tamaño a las columnas
+  grid-template-columns: auto auto auto auto auto 3.5%;
+  //formato de todos los divs
+  div{
+      @include grid-items();
+  }
+  //cabecera de la tabla
+  #head{
+      @include grid-header();
+  }
+  //pie de la tabla
+  #foot{
+     @include grid-foot();
+  }
+  //asignamos a cada título, su área, mediante un bucle
+  @for $i from 0 to 7{
+      #title#{$i}{
+          background-color: map-get($colors, gris);
+          font-weight: bold;
+          text-align: center;
+          grid-area: title#{$i};
+      }
+  }
+  //asignamos a cada ítem, su área, mediante otro bucle
+  @for $i from 0 to 30{
+      #item#{$i}{
+          grid-area: item#{$i};
+      }
+  }
+  //número de página actual
+  span{
+    @include numero-pagina();
+  }
+  //color salmón para las filas pares
+  .even{
+      background-color: map-get($colors, salmon );
+  }
+}
+//icono vídeo página 11 e icono audio página 12
+.fa-video, .fa-music{
+  margin-left: 10px;
+  }
+
+//grid mantenimiento de vídeos (página 11)
+#pagina11 #maintenance-grid-container{
+  @include grid-general-format();
+  //establecemos el orden de los ítems
+  grid-template-areas: "head head head head head head"
+                       "title1 title2 title3 title4 title5 title6"
+                       "item1 item2 item3 item4 item5 item6"
+                       "item7 item8 item9 item10 item11 item12"
+                       "foot foot foot foot foot foot";
+  //damos tamaño a las columnas
+  grid-template-columns: auto auto auto auto auto 3.5%;
+  //formato de todos los divs
+  div{
+      @include grid-items();
+  }
+  //cabecera de la tabla
+  #head{
+      @include grid-header();
+  }
+  //pie de la tabla
+  #foot{
+      @include grid-foot();
+  }
+  //asignamos a cada título, su área, mediante un bucle
+  @for $i from 0 to 7{
+      #title#{$i}{
+          background-color: map-get($colors, gris);
+          font-weight: bold;
+          text-align: center;
+          grid-area: title#{$i};
+      }
+  }
+  //asignamos a cada ítem, su área, mediante otro bucle
+  @for $i from 0 to 13{
+      #item#{$i}{
+          grid-area: item#{$i};
+      }
+  }
+  //número de página actual
+  span{
+      @include numero-pagina();
+  }
+  //color salmón para las filas pares
+  .even{
+      background-color: map-get($colors, salmon );
+  }
+}
+
+//grid mantenimiento de audios (página 12)
+#pagina12 #maintenance-grid-container{
+  @include grid-general-format();
+  //establecemos el orden de los ítems
+  grid-template-areas: "head head head head head head head"
+                       "title1 title2 title3 title4 title5 title6 title7"
+                       "item1 item2 item3 item4 item5 item6 item7"
+                       "item8 item9 item10 item11 item12 item13 item14"
+                       "foot foot foot foot foot foot foot";
+  //damos tamaño a las columnas
+  grid-template-columns: auto auto auto auto auto auto 3.5%;
+  //formato de todos los divs
+  div{
+      @include grid-items();
+  }
+  //cabecera de la tabla
+  #head{
+      @include grid-header();
+  }
+  //pie de la tabla
+  #foot{
+      @include grid-foot();
+  }
+  //asignamos a cada título, su área, mediante un bucle
+  @for $i from 0 to 8{
+      #title#{$i}{
+          background-color: map-get($colors, gris);
+          font-weight: bold;
+          text-align: center;
+          grid-area: title#{$i};
+      }
+  }
+  //asignamos a cada ítem, su área, mediante otro bucle
+  @for $i from 0 to 15{
+      #item#{$i}{
+          grid-area: item#{$i};
+      }
+  }
+  //número de página actual
+  span{
+      @include numero-pagina();
+  }
+  //color salmón para las filas pares
+  .even{
+      background-color: map-get($colors, salmon );
+  }
+}
+
+//grid detalle vídeo (página 15)
+#pagina15 #detail-grid-container{
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 70%;
+  grid-row-gap: 20px;
+  //centramos el grid en la página horizontal y verticalmente
+  justify-content: center;
+
+  //título
+  #title{
+      font-weight: bold;
+  }
+  //texto de visualizaciones
+  #views{
+      color: map-get($colors, rojo );
+  }
+  //controles de vídeo
+  video{
+      width: 100%;
+      height: auto;
+  }
+}
+//grid detalle audio (página 16)
+#pagina16 #detail-grid-container{
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 40%;
+  grid-row-gap: 20px;
+  //centramos el grid en la página horizontal y verticalmente
+  justify-content: center;
+
+  //título
+  #title{
+      font-weight: bold;
+  }
+  //texto de visualizaciones
+  #views{
+      color: map-get($colors, rojo );
+  }
+  //imagen de portada de disco
+  img{
+      width: 100%;
+      height: auto;
+  }
+  //controles de audio
+  audio{
+      width: 100%; 
+  }
+}
+
+/////////////////////////////////////////////MEDIA QUERYS/////////////////////////////////
+
+//grids búsqueda usuarios (páginas 10, 11 y 12)
+//en resoluciones menores de 768, se adapta el tamaño (para tablet y móvil sirve la misma regla)
+@media screen and (max-width: 920px){
+ #search-grid-container{
+  width: 350px;
+  div input[type="text"]{
+      width: 310px;
+  }
+ }
+}
+
+//tabla de mantenimiento, pasa de horizontal a vertical (página 10) (tablet y móvil sirve la misma regla)
+@media screen and (max-width:1048px){
+  #pagina10 #maintenance-grid-container{
+      //pasamos de display grid a flex
+      display: flex;
+      flex-direction: column;
+
+      //añadimos los títulos a cada ítem
+      div:nth-child(6n+8):before{
+          content: "Alias: ";
+          font-weight: bold;      
+      }
+      div:nth-child(6n+9):before{
+          content: "Email: ";
+          font-weight: bold;      
+      }
+      div:nth-child(6n+10):before{
+          content: "Nombre: ";
+          font-weight: bold;      
+      }
+      div:nth-child(6n+11):before{
+          content: "Apellidos: ";
+          font-weight: bold;      
+      }
+      div:nth-child(6n+12):before{
+          content: "Rol: ";
+          font-weight: bold;      
+      }
+      //eliminamos el contenido sobrante del footer
+      #foot:before{
+          content:none;
+      }
+     //ocultamos los títulos de la cabecera de la tabla
+     @for $i from 0 to 7{
+      #title#{$i}{
+          display: none;
+      }
+  } 
+  }
+}
+//tabla de mantenimiento, pasa de horizontal a vertical (página 11) (para tablet y móvil sirve la misma regla)
+@media screen and (max-width:1048px){
+  #pagina11 #maintenance-grid-container{
+      //pasamos de display grid a flex
+      display: flex;
+      flex-direction: column;
+
+      //añadimos los títulos a cada ítem
+      div:nth-child(6n+8):before{
+          content: "Usuario: ";
+          font-weight: bold;      
+      }
+      div:nth-child(6n+9):before{
+          content: "Nombre: ";
+          font-weight: bold;      
+      }
+      div:nth-child(6n+10):before{
+          content: "Título: ";
+          font-weight: bold;      
+      }
+      div:nth-child(6n+11):before{
+          content: "Comentarios: ";
+          font-weight: bold;      
+      }
+      div:nth-child(6n+12):before{
+          content: "Categoría: ";
+          font-weight: bold;      
+      }
+      //eliminamos el contenido sobrante del footer
+      #foot:before{
+          content:none;
+      }
+     //ocultamos los títulos de la cabecera de la tabla
+     @for $i from 0 to 7{
+      #title#{$i}{
+          display: none;
+      }
+  } 
+  }
+}
+//tabla de mantenimiento, pasamos de horizontal a vertical(página 12) (para tablet y móvil sirve la misma regla)
+@media screen and (max-width:1048px){
+  #pagina12 #maintenance-grid-container{
+      //pasamos de display grid a flex
+      display: flex;
+      flex-direction: column;
+
+      //añadimos los títulos a cada ítem
+      div:nth-child(7n+9):before{
+          content: "Usuario: ";
+          font-weight: bold;      
+      }
+      div:nth-child(7n+10):before{
+          content: "Título: ";
+          font-weight: bold;      
+      }
+      div:nth-child(7n+11):before{
+          content: "Autor: ";
+          font-weight: bold;      
+      }
+      div:nth-child(7n+12):before{
+          content: "Álbum: ";
+          font-weight: bold;      
+      }
+      div:nth-child(7n+13):before{
+          content: "Comentarios: ";
+          font-weight: bold;      
+      }
+      div:nth-child(7n+14):before{
+          content: "Género: ";
+          font-weight: bold;      
+      }
+      //eliminamos el contenido sobrante del footer
+      #foot:before{
+          content:none;
+      }
+     //ocultamos los títulos de la cabecera de la tabla
+     @for $i from 0 to 8{
+      #title#{$i}{
+          display: none;
+      }
+  } 
+  }
+}
+//página 15
+//en resoluciones menores de 1200px, se adapta el tamaño (para tablet y móvil sirve la misma regla)
+@media screen and (max-width: 1200px){
+  #pagina15 #detail-grid-container{
+      grid-template-columns: 80%;
+  }
+}
+//página 16
+//en resoluciones menores de 1200px, se adapta el tamaño (para tablet y móvil sirve la misma regla)
+@media screen and (max-width: 1200px){
+  #pagina16 #detail-grid-container{
+      grid-template-columns: 60%;
+  }
+}
+
+//FORMATO DE LA PRÁCTICA JAVASCRIPT
+
+//---------------PÁGINA 10-----------------
+
+//iconos de editar, añadir y eliminar usuario
+.fa-plus-square, .fa-edit, .fa-trash-alt{
+   margin: 5px;
+    font-size: 20px;
+}
+//boton agregar usuario
+#mostrarFormulario{
+    background-color:map-get($colors, azul);
+    color: map-get($colors, blanco);
+    width: 130px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 20px;
+}
+//formulario agregar usuario
+#formularioAgregarUsuario{
+    text-align: center;
+    display: none;
+    border: 1px solid gray;
+    width: 250px;
+    background-color: lightgray;
+
+}
+//formato de los inputs del formulario de agregar usuario
+.inputsAgregarUsuario{
+    margin: 20px 5px 5px 5px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid grey;
+}
+//estilo del botón guardar cambios (del formulario modificar usuario)
+#botonModificarUsuario{
+    margin: 20px auto 20px auto;
+    display: none;
+    background-color:map-get($colors, rojo);
+    color: map-get($colors, blanco);
+    width: 130px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+}
+//estilo botón agregar usuario
+#botonAgregarUsuario{
+    margin: 20px auto 20px auto;
+    display: none;
+    background-color:map-get($colors, rojo);
+    color: map-get($colors, blanco);
+    width: 130px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+}
+
+
+
+
+
+ 
+
+
+
+
+
+

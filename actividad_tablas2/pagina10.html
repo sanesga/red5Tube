@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Admin usuarios</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="./style/img/favicon.png"
+      type="image/x-icon"
+    />
+    <!--librería fontawesome-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <script>
+      //llamamos a la función main cuando la página esté totalmente cargada
+      window.onload = main;
+
+      //la función main contiene todo el código javascript
+      function main() {
+        //-------------------ELEMENTOS DEL DOM----------------------------
+
+        //boton mostrar formulario para agregar usuario
+        var botonMostrarFormulario = document.getElementById(
+          "mostrarFormulario"
+        );
+        //formulario agregar usuario
+        var formularioAgregarUsuario = document.getElementById(
+          "formularioAgregarUsuario"
+        );
+        //tabla mantenimiento usuarios
+        var tablaUsuarios = document.getElementById(
+          "maintenance-grid-container"
+        );
+        //inputs del formulario agregar usuario
+        var inputAlias = document.getElementById("alias");
+        var inputEmail = document.getElementById("email");
+        var inputNombre = document.getElementById("nombre");
+        var inputApellidos = document.getElementById("apellidos");
+        var inputRol = document.getElementById("rol");
+
+        //id que utilizamos para añadir elementos a la tabla (empezamos por 7 porque ya hay una fila creada por defecto)
+        var id = 6;
+
+        //boton agregar usuario del formulario agregar usuario
+        var botonAgregarUsuario = document.getElementById(
+          "botonAgregarUsuario"
+        );
+        //boton modificar datos del usuario
+        var botonModificarUsuario = document.getElementById(
+          "botonModificarUsuario"
+        );
+        //footer de la tabla
+        var foot = document.getElementById("foot");
+
+        //------------------------------------------------------------------
+
+        //--------------------------EVENTOS---------------------------------
+        //al hacer click en el botón agregar usuario, se muestra el formulario y se oculta la tabla de mantenimiento o viceversa
+        botonMostrarFormulario.addEventListener("click", mostrarForm);
+        //agregamos una delegación de eventos a la tabla de mantenimiento de usuarios
+        tablaUsuarios.addEventListener("click", eliminarModificarFila);
+        //añadimos un evento al formulario, al hacer click en el botón submit, se llamará al método indicado (y haremos un prevent default para que no envie los datos al action)
+        formularioAgregarUsuario.addEventListener("submit", agregarUsuario);
+        //deshabilitamos el enter del formulario para que no haga submit por defecto, ya que utilizamos el mismo formulario para añadir y para modificar
+        window.addEventListener(
+          "keydown",
+          function(e) {
+            if (
+              e.keyIdentifier == "U+000A" ||
+              e.keyIdentifier == "Enter" ||
+              e.keyCode == 13
+            ) {
+              if (e.target.nodeName == "INPUT" && e.target.type == "text") {
+                e.preventDefault();
+                return false;
+              }
+            }
+          },
+          true
+        );
+
+        //-------------------------------------------------------------------
+
+        //-----------------------------FUNCIONES-----------------------------
+
+        function mostrarForm() {
+          //como utilizamos el mismo formulario para agregar y modificar, mostramos el botón agregar usuario y ocultamos el botón guardar datos.
+          //el botón de agregar usuario, hará un submit, pero el de guardar datos, no.
+          botonAgregarUsuario.style.display = "block";
+          botonModificarUsuario.style.display = "none";
+
+          //limpiamos los inputs
+          limpiarInputs();
+
+          //si el formulario está oculto se muestra y al contrario con la tabla de usuarios (incluido el responsive)
+          ocultarMostrarFormulario();
+        }
+
+        function agregarUsuario(e) {
+          //recogemos los datos del formulario
+          var alias = inputAlias.value;
+          var email = inputEmail.value;
+          var nombre = inputNombre.value;
+          var apellidos = inputApellidos.value;
+          var rol = inputRol.value;
+
+          //llamamos a un método que crea los divs, les añade el texto y los agrega a la tabla
+          crearDivs(alias);
+          crearDivs(email);
+          crearDivs(nombre);
+          crearDivs(apellidos);
+          crearDivs(rol);
+
+          //creamos la última columna, que contiene los iconos de editar y borrar
+          //creamos el div
+          var div = document.createElement("div");
+          //añadimos los iconos
+          div.innerHTML =
+            "<i class='far fa-edit'></i><i class='far fa-trash-alt'></i>";
+          //incrementamos el id
+          id++;
+          //añadimos el id como atributo
+          div.setAttribute("id", "item" + id);
+
+          //añadimos el div a la tabla, antes del footer de la tabla
+          foot.parentNode.insertBefore(div, foot);
+
+          //ocultamos el formulario y mostramos la tabla
+          ocultarMostrarFormulario();
+
+          //evitamos que el formulario haga el action, al hacer submit
+          e.preventDefault();
+        }
+
+        function crearDivs(campo) {
+          //incrementamos el id
+          id++;
+          //creamos el div
+          var div = document.createElement("div");
+          //añadimos el texto
+          div.innerHTML = campo;
+          //añadimos el id
+          div.setAttribute("id", "item" + id);
+          //añadimos el div a la tabla de usuarios, antes del footer de la tabla
+          foot.parentNode.insertBefore(div, foot);
+        }
+
+        function eliminarModificarFila(e) {
+          //recuperamos el elemento donde hemos hecho click
+          var icono = e.target;
+
+          //si el icono seleccionado es la papelera
+          if (icono.className == "far fa-trash-alt") {
+            //obtenemos todos los elementos de la fila
+            var divIconos = icono.parentNode;
+            var divRol = divIconos.previousElementSibling;
+            var divApellidos = divRol.previousElementSibling;
+            var divNombre = divApellidos.previousElementSibling;
+            var divEmail = divNombre.previousElementSibling;
+            var divAlias = divEmail.previousElementSibling;
+
+            //los eliminamos
+            tablaUsuarios.removeChild(divIconos);
+            tablaUsuarios.removeChild(divRol);
+            tablaUsuarios.removeChild(divApellidos);
+            tablaUsuarios.removeChild(divNombre);
+            tablaUsuarios.removeChild(divEmail);
+            tablaUsuarios.removeChild(divAlias);
+          }
+          //si el icono pulsado es el de editar
+          if (icono.className == "far fa-edit") {
+            //mostramos el formulario y ocultamos la tabla
+            ocultarMostrarFormulario();
+
+            //obtenemos el icono donde hemos hecho click
+            var icono = e.target;
+
+            //obtenemos todos los elementos de la fila
+            var divIconos = icono.parentNode;
+            var divRol = divIconos.previousElementSibling;
+            var divApellidos = divRol.previousElementSibling;
+            var divNombre = divApellidos.previousElementSibling;
+            var divEmail = divNombre.previousElementSibling;
+            var divAlias = divEmail.previousElementSibling;
+
+            //obtenemos el texto de cada campo
+            var textoAlias = divAlias.innerHTML;
+            var textoEmail = divEmail.innerHTML;
+            var textoNombre = divNombre.innerHTML;
+            var textoApellidos = divApellidos.innerHTML;
+            var textoRol = divRol.innerHTML;
+
+            //mostramos los datos en el formulario
+            inputAlias.value = textoAlias;
+            inputEmail.value = textoEmail;
+            inputNombre.value = textoNombre;
+            inputApellidos.value = textoApellidos;
+            inputRol.value = textoRol;
+
+            //mostramos el botón modificar y ocultamos el boton agregar usuario
+            botonModificarUsuario.style.display = "block";
+            botonAgregarUsuario.style.display = "none";
+
+            //cuando hagamos click en el botón guardar datos, actualizamos los valores de los campos
+            botonModificarUsuario.addEventListener("click", guardar);
+
+            function guardar() {
+              //obtenemos los nuevos datos
+              var alias = inputAlias.value;
+              var email = inputEmail.value;
+              var nombre = inputNombre.value;
+              var apellidos = inputApellidos.value;
+              var rol = inputRol.value;
+
+              //los guardamos en sus respectivos divs
+              divAlias.innerHTML = alias;
+              divEmail.innerHTML = email;
+              divNombre.innerHTML = nombre;
+              divApellidos.innerHTML = apellidos;
+              divRol.innerHTML = rol;
+
+              //al hacer click en el botón guardar datos, ocultamos el formulario y mostramos la tabla (de manera responsive)
+              var tamaño = window.matchMedia("(max-width: 1048px)");
+              adaptarDisplay(tamaño);
+              tamaño.addListener(adaptarDisplay);
+
+              //eliminamos el evento del botón, ya que cada vez que se haga click en el icono editar, se le asigna el evento y pueden acumularse
+              botonModificarUsuario.removeEventListener("click", guardar);
+            }
+          }
+        }
+        function limpiarInputs() {
+          inputAlias.value = "";
+          inputEmail.value = "";
+          inputNombre.value = "";
+          inputApellidos.value = "";
+          inputRol.value = "";
+        }
+        function ocultarMostrarFormulario() {
+          //si el formulario tiene display none, se pasa a block
+          //si la tabla tiene display none, se pasa a grid en tamaño grande y a flex en mediano y pequeño
+          if (
+            (formularioAgregarUsuario.style.display === "") |
+            (formularioAgregarUsuario.style.display === "none")
+          ) {
+            formularioAgregarUsuario.style.display = "block";
+            tablaUsuarios.style.display = "none";
+          } else if (formularioAgregarUsuario.style.display === "block") {
+            var tamaño = window.matchMedia("(max-width: 1048px)");
+            adaptarDisplay(tamaño);
+            tamaño.addListener(adaptarDisplay);
+          }
+        }
+
+        //adapta el display según el tamaño de la media query definida en el css
+        function adaptarDisplay(tamaño) {
+          if (tamaño.matches) {
+            // If media query matches
+            formularioAgregarUsuario.style.display = "none";
+            tablaUsuarios.style.display = "flex";
+          } else {
+            formularioAgregarUsuario.style.display = "none";
+            tablaUsuarios.style.display = "grid";
+          }
+        }
+      } //fin del método principal main
+      //---------------------------------------------------------------------
+    </script>
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <header>
+        <div class="flex-container">
+          <h1 class="logo"><a href="index.html">Home</a></h1>
+          <ul class="navigation">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <section id="navigation_menu">
+        <input type="checkbox" id="menu" />
+        <nav id="superior">
+          <ul>
+            <li>
+              <form action="search.html">
+                <input type="text" placeholder="Search" />
+                <a href="search.html"><i class="fa fa-search"></i></a>
+              </form>
+            </li>
+            <li>
+              <details>
+                <summary
+                  ><i class="fa fa-video"></i><span> See Videos</span></summary
+                >
+                <a href="my_videos.html">Todos</a><br />
+                <a href="my_videos.html">Deportes</a><br />
+                <a href="my_videos.html">Educación</a><br />
+                <a href="my_videos.html">Humor</a><br />
+                <a href="my_videos.html">Noticias</a><br />
+                <a href="my_videos.html">Tiempo Libre</a><br />
+                <a href="my_videos.html">Otros</a><br />
+                <a href="my_videos.html">Aleatorio</a><br />
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary
+                  ><i class="fa fa-video"></i>
+                  <span>Listen Audios</span></summary
+                >
+                <a href="my_audios.html">Todos</a><br />
+                <a href="my_audios.html">Deportes</a><br />
+                <a href="my_audios.html">Educación</a><br />
+                <a href="my_audios.html">Humor</a><br />
+                <a href="my_audios.html">Noticias</a><br />
+                <a href="my_audios.html">Tiempo Libre</a><br />
+                <a href="my_audios.html">Otros</a><br />
+                <a href="my_audios.html">Aleatorio</a><br />
+              </details>
+            </li>
+
+            <li>
+              <i class="fa fa-file-video"></i>
+              <a href="streaming.html">Streaming Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-upload"></i>
+              <a href="upload_video.html">Upload Video</a>
+            </li>
+            <li>
+              <i class="fa fa-upload"></i>
+              <a href="upload_audio.html">Upload Audio</a>
+            </li>
+            <li>
+              <i class="fa fa-video"></i>
+              <a href="my_videos.html">My Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-volume-up"></i>
+              <a href="my_audios.html">My Audios</a>
+            </li>
+            <li>
+              <i class="fa fa-info"></i>
+              <a href="info.html">Info</a>
+            </li>
+            <li>
+              <i class="fa fa-user"></i>
+              <a href="pagina10.html">Administrate Users</a>
+            </li>
+            <li>
+              <i class="fa fa-video"></i>
+              <a href="pagina11.html">Administrate Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-sound"></i>
+              <a href="pagina12.html">Administrate Audios</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <main id="pagina10">
+        <!--Añadimos un id para añadir estilo por css-->
+
+        <header>
+          <h1>Administración de usuarios</h1>
+          <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
+          <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
+        </header>
+
+        <!--tabla administración de usuarios-->
+        <!--utilizamos un grid-->
+        <div id="search-grid-container">
+          <div>Búsqueda de usuario</div>
+          <div>Introduce parte del alias del usuario:</div>
+          <div>
+            <input
+              type="text"
+              placeholder=" Si no introduces nada, se buscan todos los usuarios."
+            />
+          </div>
+          <div><input type="button" value="Buscar" /></div>
+        </div>
+
+        <!--Botón agregar usuario, muestra el formulario y oculta la tabla de mantenimiento-->
+        <div>
+          <input id="mostrarFormulario" type="button" value="Agregar usuario" />
+        </div>
+
+        <!--tabla mantenimiento de usuarios-->
+        <!--utilizamos un grid-->
+        <div id="maintenance-grid-container">
+          <!--cabecera-->
+          <div id="head">Mantenimiento de usuarios</div>
+
+          <!--títulos-->
+          <div id="title1">Alias</div>
+          <div id="title2">Email</div>
+          <div id="title3">Nombre</div>
+          <div id="title4">Apellidos</div>
+          <div id="title5">Rol</div>
+          <div id="title6"></div>
+
+          <!--items-->
+          <div id="item1">admin</div>
+          <div id="item2">jlluch16@alumno.uned.es</div>
+          <div id="item3">Joaquín</div>
+          <div id="item4">Lluch Quilis</div>
+          <div id="item5">ADMIN</div>
+          <div id="item6">
+            <i class="far fa-edit"></i><i class="far fa-trash-alt"></i>
+          </div>
+
+          <!--paginación-->
+          <div id="foot">
+            <select>
+              <!--permite seleccionar el número de filas que queremos mostrar-->
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+
+            <!--botones de paginación, iconos de fontawesome-->
+            <button><i class="fas fa-step-backward"></i></button>
+            <button><i class="fas fa-backward"></i></button>
+            <span>(1 de 2)</span>
+            <button><i class="fas fa-forward"></i></button>
+            <button><i class="fas fa-step-forward"></i></button>
+          </div>
+        </div>
+
+        <!--Formulario añadir usuario-->
+        <form id="formularioAgregarUsuario" action="#">
+          <label for="alias"></label>
+          <input
+            required
+            type="text"
+            name="alias"
+            id="alias"
+            class="inputsAgregarUsuario"
+            placeholder="Introduce el alias"
+          />
+          <br />
+          <label for="email"></label>
+          <input
+            required
+            type="email"
+            name="email"
+            id="email"
+            class="inputsAgregarUsuario"
+            placeholder="Introduce el email"
+          />
+          <br />
+          <label for="nombre"></label>
+          <input
+            required
+            type="text"
+            name="nombre"
+            id="nombre"
+            class="inputsAgregarUsuario"
+            placeholder="Introduce el nombre"
+          />
+          <br />
+          <label for="apellidos"></label>
+          <input
+            required
+            type="text"
+            name="apellidos"
+            id="apellidos"
+            class="inputsAgregarUsuario"
+            placeholder="Introduce los apellidos"
+          />
+          <br />
+          <label for="rol"></label>
+          <input
+            required
+            type="text"
+            name="rol"
+            id="rol"
+            class="inputsAgregarUsuario"
+            placeholder="Introduce el rol"
+          />
+          <br />
+
+          <input
+            type="submit"
+            id="botonAgregarUsuario"
+            class="inputsAgregarModificarUsuario"
+            value="Agregar Usuario"
+          />
+          <input
+            type="button"
+            value="Guardar cambios"
+            class="inputsAgregarModificarUsuario"
+            id="botonModificarUsuario"
+          />
+        </form>
+      </main>
+
+      <!--Esta página no tiene footer-->
+    </div>
+  </body>
+</html>

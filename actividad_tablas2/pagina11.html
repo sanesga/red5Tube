@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin vídeos</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./style/img/favicon.png" type="image/x-icon">
+    <!--librería fontawesome-->
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="flex-container">
+                <h1 class="logo"><a href="index.html">Home</a></h1>
+                <ul class="navigation">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </div>
+            <!-- <div class="header">
+                   <div class="bg-logo header1"><a href="index.html">Home</a></div>
+                   <div class="header2"> 
+                       <div class=bg-login>
+                           <form class="header2" action="login.html">
+                               <input type="submit" value="Login" />
+                           </form>
+                       </div>
+                       <div>
+                           <form class="header2" action="register.html">
+                               <input type="submit" value="Register" />
+                           </form>
+                       </div>
+                   </div>
+                       
+               </div> -->
+        </header>
+
+        <section id="navigation_menu">
+            <input type="checkbox" id="menu">
+            <nav id="superior">
+                <ul>
+                    <li>
+
+                        <form action="search.html">
+                            <input type="text" placeholder="Search">
+                               <a href="search.html"><i class="fa fa-search"></i></a>
+                        </form>
+                    </li>
+                    <li>
+                                
+                                <details>
+                                    <summary><i class="fa fa-video"></i><span> See Videos</span></summary>
+                                    <a href="my_videos.html">Todos</a><br>
+                                    <a href="my_videos.html">Deportes</a><br>
+                                    <a href="my_videos.html">Educación</a><br>
+                                    <a href="my_videos.html">Humor</a><br>
+                                    <a href="my_videos.html">Noticias</a><br>
+                                    <a href="my_videos.html">Tiempo Libre</a><br>
+                                    <a href="my_videos.html">Otros</a><br>
+                                    <a href="my_videos.html">Aleatorio</a><br>
+                                    
+                                </details>
+                            </li>
+                            <li>
+                            
+                            <details>
+                                    <summary><i class="fa fa-video"></i> <span>Listen Audios</span></summary>
+                                    <a href="my_audios.html">Todos</a><br>
+                                    <a href="my_audios.html">Deportes</a><br>
+                                    <a href="my_audios.html">Educación</a><br>
+                                    <a href="my_audios.html">Humor</a><br>
+                                    <a href="my_audios.html">Noticias</a><br>
+                                    <a href="my_audios.html">Tiempo Libre</a><br>
+                                    <a href="my_audios.html">Otros</a><br>
+                                    <a href="my_audios.html">Aleatorio</a><br>
+                                    
+                                </details>
+                        </li>
+                       
+                    <li>
+                        <i class="fa fa-file-video"></i>
+                        <a href="streaming.html">Streaming Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-upload"></i>
+                        <a href="upload_video.html">Upload Video</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-upload"></i>
+                        <a href="upload_audio.html">Upload Audio</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-video"></i>
+                        <a href="my_videos.html">My Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-volume-up"></i>
+                        <a href="my_audios.html">My Audios</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-info"></i>
+                        <a href="info.html">Info</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-user"></i>
+                        <a href="pagina10.html">Administrate Users</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-video"></i>
+                        <a href="adm_videos.html">Administrate Videos</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-sound"></i>
+                        <a href="pagina12.html">Administrate Audios</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </section>
+        <!--Añadimos un id para añadir estilo por css-->
+        <main id="pagina11">
+
+            <header>
+                <h1>Administración de vídeos</h1>
+                <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
+                <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
+            </header>
+
+            <!--tabla administración de usuarios-->
+            <!--utilizamos un grid-->
+            <div id="search-grid-container">
+                <div>Búsqueda de usuario</div>
+                <div>Introduce parte del alias del usuario:</div>
+                <div><input type="text" placeholder=" red5tube"></div>
+                <div><input type="button" value="Buscar"></div>
+            </div>
+
+            <!--tabla mantenimiento de vídeos-->
+            <!--utilizamos un grid-->
+            <div id="maintenance-grid-container">
+
+                <!--cabecera-->
+                <div id="head">Mantenimiento de vídeos<i class="fas fa-video"></i></div>
+
+                <!--títulos-->
+                <div id="title1">Usuario</div>
+                <div id="title2">Nombre</div>
+                <div id="title3">Título</div>
+                <div id="title4">Comentarios</div>
+                <div id="title5">Categoría</div>
+                <div id="title6"></div>
+
+                <!--ítems-->
+                <div id="item1">red5tube</div>
+                <div id="item2">red5tube.mp4</div>
+                <div id="item3">Party</div>
+                <div id="item4">Great!</div>
+                <div id="item5">TIEMPO LIBRE</div>
+                <div id="item6"><i class="far fa-edit"></i></div>
+
+                <div id="item7" class="even">red5tube</div>
+                <div id="item8" class="even">red5tube.mp4</div>
+                <div id="item9" class="even">Party</div>
+                <div id="item10" class="even">A great summer!</div>
+                <div id="item11" class="even">TIEMPO LIBRE</div>
+                <div id="item12" class="even"><i class="far fa-edit"></i></div>
+
+                <!--paginación-->
+                <div id="foot">
+                    <select>
+                        <!--permite seleccionar el número de filas que queremos mostrar-->
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+
+                    <!--botones de paginación, iconos de fontawesome-->
+                    <button><i class="fas fa-step-backward"></i></button>
+                    <button><i class="fas fa-backward"></i></button>
+                    <span>(1 de 1)</span>
+                    <button><i class="fas fa-forward"></i></button>
+                    <button><i class="fas fa-step-forward"></i></button>
+                </div>
+            </div>
+        </main>
+        <!--Esta página no tiene footer-->
+        </div>
+</body>
+
+</html>
