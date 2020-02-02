@@ -315,7 +315,7 @@
         listado.videos.forEach(video => {
             contenedor.innerHTML += `
                     <div class="videos">
-                        <a href="pagina15.html">
+                        <a href="pagina15.html?`+ video.id+`">
                             <img class="video_miniature" src="`+ video.image + `" alt="No image">
                             <div class="titulo">`+ video.name + `</div>
                             <div class="visualizaciones">`+ video.visualizaciones + ` Reproducciones <br><strong>Hace 0 dias</strong></div>

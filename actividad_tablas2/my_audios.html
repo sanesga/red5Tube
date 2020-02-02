@@ -313,7 +313,7 @@
         listado.audios.forEach(audio => {
             contenedor.innerHTML += `
                     <div class="audios">
-                        <a href="pagina16.html">
+                        <a href="pagina16.html?`+ audio.id+`">
                             <img class="audio_miniature" src="`+ audio.image + `" alt="No image">
                             <div class="titulo">`+ audio.name + `</div>
                             <div class="visualizaciones">`+ audio.visualizaciones + ` Reproducciones <br><strong>Hace 0 dias</strong></div>
