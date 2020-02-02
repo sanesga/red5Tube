@@ -285,6 +285,8 @@ footer {
                        "title1 title2 title3 title4 title5 title6 title7"
                        "item1 item2 item3 item4 item5 item6 item7"
                        "item8 item9 item10 item11 item12 item13 item14"
+                       "item15 item16 item17 item18 item19 item20 item21"
+                       "item22 item23 item24 item25 item26 item27 item28"
                        "foot foot foot foot foot foot foot";
   //damos tamaño a las columnas
   grid-template-columns: auto auto auto auto auto auto 3.5%;
@@ -530,14 +532,14 @@ footer {
 
 //FORMATO DE LA PRÁCTICA JAVASCRIPT
 
-//---------------PÁGINA 10-----------------
+//---------------PÁGINAS 10,11 Y 12-----------------
 
-//iconos de editar, añadir y eliminar usuario
+//iconos de editar, añadir y eliminar
 .fa-plus-square, .fa-edit, .fa-trash-alt{
    margin: 5px;
     font-size: 20px;
 }
-//boton agregar usuario
+//boton agregar
 #mostrarFormulario{
     background-color:map-get($colors, azul);
     color: map-get($colors, blanco);
@@ -547,8 +549,8 @@ footer {
     border: none;
     margin-bottom: 20px;
 }
-//formulario agregar usuario
-#formularioAgregarUsuario, #formularioAgregarVideo{
+//formulario agregar
+#formularioAgregarUsuario, #formularioAgregarVideo, #formularioAgregarAudio{
     text-align: center;
     display: none;
     border: 1px solid gray;
@@ -556,15 +558,15 @@ footer {
     background-color: lightgray;
 
 }
-//formato de los inputs del formulario de agregar usuario
-.inputsAgregarUsuario, .inputsAgregarVideo{
+//formato de los inputs del formulario agregar
+.inputsAgregarUsuario, .inputsAgregarVideo, .inputsAgregarAudio{
     margin: 20px 5px 5px 5px;
     border-radius: 5px;
     padding: 10px;
     border: 1px solid grey;
 }
-//estilo del botón agregar y guardar cambios del formulario modificar usuario
-#botonModificarUsuario, #botonAgregarUsuario, #botonModificarVideo, #botonAgregarVideo{
+//estilo del botón agregar y guardar cambios del formulario agregar
+#botonModificarUsuario, #botonAgregarUsuario, #botonModificarVideo, #botonAgregarVideo, #botonAgregarAudio, #botonModificarAudio{
     margin: 20px auto 20px auto;
     display: none;
     background-color:map-get($colors, azul);
@@ -574,7 +576,7 @@ footer {
     border-radius: 6px;
     border: none;
 }
-//estilo botón cancelar del formulario agregar usuarios
+//estilo botón cancelar del formulario agregar 
 #botonCancelar{
     margin: 20px auto 20px auto;
     display: block;

@@ -1,185 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Admin audios</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/style.css" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./style/img/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./style/img/favicon.png"
+      type="image/x-icon"
+    />
     <!--librería fontawesome-->
-    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <script>
+      //llamamos a la función main cuando la página esté totalmente cargada
+      window.onload = main;
 
-</head>
+      //la función main contiene todo el código javascript
+      function main() {
+        //-------------------ELEMENTOS DEL DOM----------------------------
 
-<body>
+        //boton mostrar formulario para agregar audio
+        var botonMostrarFormulario = document.getElementById(
+          "mostrarFormulario"
+        );
+        //formulario agregar audio
+        var formularioAgregarAudio = document.getElementById(
+          "formularioAgregarAudio"
+        );
+        //tabla mantenimiento audios
+        var tablaAudios = document.getElementById("maintenance-grid-container");
+        //inputs del formulario agregar audio
+        var inputUsuario = document.getElementById("usuario");
+        var inputTitulo = document.getElementById("titulo");
+        var inputAutor = document.getElementById("autor");
+        var inputAlbum = document.getElementById("album");
+        var inputComentarios = document.getElementById("comentarios");
+        var inputGenero = document.getElementById("genero");
+
+        //id que utilizamos para añadir elementos a la tabla (empezamos por 8 porque ya hay una fila creada por defecto)
+        var id = 7;
+
+        //boton agregar audio del formulario agregar audio
+        var botonAgregarAudio = document.getElementById("botonAgregarAudio");
+        //boton modificar datos del audio
+        var botonModificarAudio = document.getElementById(
+          "botonModificarAudio"
+        );
+        //footer de la tabla
+        var foot = document.getElementById("foot");
+        //botón cancelar del formulario agregar audios
+        var botonCancelar = document.getElementById("botonCancelar");
+
+        //------------------------------------------------------------------
+
+        //--------------------------EVENTOS---------------------------------
+        //al hacer click en el botón agregar audio, se muestra el formulario y se oculta la tabla de mantenimiento o viceversa
+        botonMostrarFormulario.addEventListener("click", mostrarForm);
+        //agregamos una delegación de eventos a la tabla de mantenimiento de audios
+        tablaAudios.addEventListener("click", eliminarModificarFila);
+        //añadimos un evento al formulario, al hacer click en el botón submit, se llamará al método indicado (y haremos un prevent default para que no envie los datos al action)
+        formularioAgregarAudio.addEventListener("submit", agregarAudio);
+        //deshabilitamos el enter del formulario para que no haga submit por defecto, ya que utilizamos el mismo formulario para añadir y para modificar
+        window.addEventListener(
+          "keydown",
+          function(e) {
+            if (
+              e.keyIdentifier == "U+000A" ||
+              e.keyIdentifier == "Enter" ||
+              e.keyCode == 13
+            ) {
+              if (e.target.nodeName == "INPUT" && e.target.type == "text") {
+                e.preventDefault();
+                return false;
+              }
+            }
+          },
+          true
+        );
+        //al hacer click en el botón cancelar del formulario agregar audios, hará un reset de los inputs y nos mostrará otra vez la tabla
+        botonCancelar.addEventListener("click", ocultarMostrarFormulario);
+        //-------------------------------------------------------------------
+
+        //-----------------------------FUNCIONES-----------------------------
+
+        function mostrarForm() {
+          //como utilizamos el mismo formulario para agregar y modificar, mostramos el botón agregar audio y ocultamos el botón guardar datos.
+          //el botón de agregar audio, hará un submit, pero el de guardar datos, no.
+          botonAgregarAudio.style.display = "block";
+          botonModificarAudio.style.display = "none";
+
+          //limpiamos los inputs
+          limpiarInputs();
+
+          //si el formulario está oculto se muestra y al contrario con la tabla de audios (incluido el responsive)
+          ocultarMostrarFormulario();
+        }
+
+        function agregarAudio(e) {
+          //recogemos los datos del formulario
+          var usuario = inputUsuario.value;
+          var titulo = inputTitulo.value;
+          var autor = inputAutor.value;
+          var album = inputAlbum.value;
+          var comentarios = inputComentarios.value;
+          var genero = inputGenero.value;
+
+          //llamamos a un método que crea los divs, les añade el texto y los agrega a la tabla
+          crearDivs(usuario);
+          crearDivs(titulo);
+          crearDivs(autor);
+          crearDivs(album);
+          crearDivs(comentarios);
+          crearDivs(genero);
+
+          //creamos la última columna, que contiene los iconos de editar y borrar
+          //creamos el div
+          var div = document.createElement("div");
+          //añadimos los iconos
+          div.innerHTML =
+            "<i class='far fa-edit'></i><i class='far fa-trash-alt'></i>";
+          //incrementamos el id
+          id++;
+          //añadimos el id como atributo
+          div.setAttribute("id", "item" + id);
+
+          //añadimos el div a la tabla, antes del footer de la tabla
+          foot.parentNode.insertBefore(div, foot);
+
+          //ocultamos el formulario y mostramos la tabla
+          ocultarMostrarFormulario();
+
+          //evitamos que el formulario haga el action, al hacer submit
+          e.preventDefault();
+        }
+
+        function crearDivs(campo) {
+          //incrementamos el id
+          id++;
+          //creamos el div
+          var div = document.createElement("div");
+          //añadimos el texto
+          div.innerHTML = campo;
+          //añadimos el id
+          div.setAttribute("id", "item" + id);
+          //añadimos el div a la tabla de audios, antes del footer de la tabla
+          foot.parentNode.insertBefore(div, foot);
+        }
+
+        function eliminarModificarFila(e) {
+          //recuperamos el elemento donde hemos hecho click
+          var icono = e.target;
+
+          //si el icono seleccionado es la papelera
+          if (icono.className == "far fa-trash-alt") {
+
+            //obtenemos todos los elementos de la fila
+            var divIconos = icono.parentNode;
+            var divUsuario = divIconos.previousElementSibling;
+            var divTitulo = divUsuario.previousElementSibling;
+            var divAutor = divTitulo.previousElementSibling;
+            var divAlbum = divAutor.previousElementSibling;
+            var divComentarios = divAlbum.previousElementSibling;
+            var divGenero = divComentarios.previousElementSibling;
+
+            //los eliminamos
+            tablaAudios.removeChild(divIconos);
+            tablaAudios.removeChild(divUsuario);
+            tablaAudios.removeChild(divTitulo);
+            tablaAudios.removeChild(divAutor);
+            tablaAudios.removeChild(divAlbum);
+            tablaAudios.removeChild(divComentarios);
+            tablaAudios.removeChild(divGenero);
+          }
+          //si el icono pulsado es el de editar
+          if (icono.className == "far fa-edit") {
+
+            //mostramos el formulario y ocultamos la tabla
+            ocultarMostrarFormulario();
+
+            //obtenemos el icono donde hemos hecho click
+            var icono = e.target;
+
+            //obtenemos todos los elementos de la fila
+            var divIconos = icono.parentNode;
+            var divGenero = divIconos.previousElementSibling;
+            var divComentarios = divGenero.previousElementSibling;
+            var divAlbum = divComentarios.previousElementSibling;
+            var divAutor = divAlbum.previousElementSibling;
+            var divTitulo = divAutor.previousElementSibling;
+            var divUsuario = divTitulo.previousElementSibling;
+
+            //obtenemos el texto de cada campo
+            var textoUsuario = divUsuario.innerHTML;
+            var textoTitulo = divTitulo.innerHTML;
+            var textoAutor = divAutor.innerHTML;
+            var textoAlbum = divAlbum.innerHTML;
+            var textoComentarios= divComentarios.innerHTML;
+            var textoGenero= divGenero.innerHTML;
+
+            //mostramos los datos en el formulario
+            inputUsuario.value = textoUsuario;
+            inputTitulo.value = textoTitulo;
+            inputAutor.value = textoAutor;
+            inputAlbum.value = textoAlbum;
+            inputComentarios.value = textoComentarios;
+            inputGenero.value = textoGenero;
+
+            //mostramos el botón modificar y ocultamos el boton agregar audio
+            botonModificarAudio.style.display = "block";
+            botonAgregarAudio.style.display = "none";
+
+            //cuando hagamos click en el botón guardar datos, actualizamos los valores de los campos
+            botonModificarAudio.addEventListener("click", guardar);
+
+            function guardar() {
+              //obtenemos los nuevos datos
+              var usuario = inputUsuario.value;
+              var titulo = inputTitulo.value;
+              var autor = inputAutor.value;
+              var album = inputAlbum.value;
+              var comentarios = inputComentarios.value;
+              var genero = inputGenero.value;
+
+              //los guardamos en sus respectivos divs
+              divUsuario.innerHTML = usuario;
+              divTitulo.innerHTML = titulo;
+              divAutor.innerHTML = autor;
+              divAlbum.innerHTML = album;
+              divComentarios.innerHTML = comentarios;
+              divGenero.innerHTML= genero;
+
+              //al hacer click en el botón guardar datos, ocultamos el formulario y mostramos la tabla (de manera responsive)
+              var tamaño = window.matchMedia("(max-width: 1048px)");
+              adaptarDisplay(tamaño);
+              tamaño.addListener(adaptarDisplay);
+
+              //eliminamos el evento del botón, ya que cada vez que se haga click en el icono editar, se le asigna el evento y pueden acumularse
+              botonModificarAudio.removeEventListener("click", guardar);
+            }
+          }
+        }
+        function limpiarInputs() {
+          inputUsuario.value = "";
+          inputTitulo.value = "";
+          inputAutor.value = "";
+          inputAlbum.value = "";
+          inputComentarios.value = "";
+          inputGenero.value = "";
+
+        }
+        function ocultarMostrarFormulario() {
+          //si el formulario tiene display none, se pasa a block
+          //si la tabla tiene display none, se pasa a grid en tamaño grande y a flex en mediano y pequeño
+          if (
+            (formularioAgregarAudio.style.display === "") |
+            (formularioAgregarAudio.style.display === "none")
+          ) {
+            formularioAgregarAudio.style.display = "block";
+            tablaAudios.style.display = "none";
+          } else if (formularioAgregarAudio.style.display === "block") {
+            var tamaño = window.matchMedia("(max-width: 1048px)");
+            adaptarDisplay(tamaño);
+            tamaño.addListener(adaptarDisplay);
+          }
+        }
+
+        //adapta el display según el tamaño de la media query definida en el css
+        function adaptarDisplay(tamaño) {
+          if (tamaño.matches) {
+            // If media query matches
+            formularioAgregarAudio.style.display = "none";
+            tablaAudios.style.display = "flex";
+          } else {
+            formularioAgregarAudio.style.display = "none";
+            tablaAudios.style.display = "grid";
+          }
+        }
+      } //fin del método principal main
+      //---------------------------------------------------------------------
+    </script>
+  </head>
+
+  <body>
     <div class="grid-container">
+      <header>
+        <div class="flex-container">
+          <h1 class="logo"><a href="index.html">Home</a></h1>
+          <ul class="navigation">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <section id="navigation_menu">
+        <input type="checkbox" id="menu" />
+        <nav id="superior">
+          <ul>
+            <li>
+              <form action="search.html">
+                <input type="text" placeholder="Search" />
+                <a href="search.html"><i class="fa fa-search"></i></a>
+              </form>
+            </li>
+            <li>
+              <details>
+                <summary
+                  ><i class="fa fa-video"></i><span> See Videos</span></summary
+                >
+                <a href="my_videos.html">Todos</a><br />
+                <a href="my_videos.html">Deportes</a><br />
+                <a href="my_videos.html">Educación</a><br />
+                <a href="my_videos.html">Humor</a><br />
+                <a href="my_videos.html">Noticias</a><br />
+                <a href="my_videos.html">Tiempo Libre</a><br />
+                <a href="my_videos.html">Otros</a><br />
+                <a href="my_videos.html">Aleatorio</a><br />
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary
+                  ><i class="fa fa-video"></i>
+                  <span>Listen Audios</span></summary
+                >
+                <a href="my_audios.html">Todos</a><br />
+                <a href="my_audios.html">Deportes</a><br />
+                <a href="my_audios.html">Educación</a><br />
+                <a href="my_audios.html">Humor</a><br />
+                <a href="my_audios.html">Noticias</a><br />
+                <a href="my_audios.html">Tiempo Libre</a><br />
+                <a href="my_audios.html">Otros</a><br />
+                <a href="my_audios.html">Aleatorio</a><br />
+              </details>
+            </li>
+
+            <li>
+              <i class="fa fa-file-video"></i>
+              <a href="streaming.html">Streaming Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-upload"></i>
+              <a href="upload_video.html">Upload Video</a>
+            </li>
+            <li>
+              <i class="fa fa-upload"></i>
+              <a href="upload_audio.html">Upload Audio</a>
+            </li>
+            <li>
+              <i class="fa fa-video"></i>
+              <a href="my_videos.html">My Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-volume-up"></i>
+              <a href="my_audios.html">My Audios</a>
+            </li>
+            <li>
+              <i class="fa fa-info"></i>
+              <a href="info.html">Info</a>
+            </li>
+            <li>
+              <i class="fa fa-user"></i>
+              <a href="pagina10.html">Administrate Users</a>
+            </li>
+            <li>
+              <i class="fa fa-video"></i>
+              <a href="pagina11.html">Administrate Videos</a>
+            </li>
+            <li>
+              <i class="fa fa-sound"></i>
+              <a href="pagina12.html">Administrate Audios</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <!--Añadimos un id para añadir estilo por css-->
+      <main id="pagina12">
         <header>
-            <div class="flex-container">
-                <h1 class="logo"><a href="index.html">Home</a></h1>
-                <ul class="navigation">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
-                </ul>
-            </div>
+          <h1>Administración de vídeos</h1>
+          <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
+          <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
         </header>
 
-        <section id="navigation_menu">
-            <input type="checkbox" id="menu">
-            <nav id="superior">
-                <ul>
-                    <li>
+        <!--tabla administración de usuarios-->
+        <!--utilizamos un grid-->
+        <div id="search-grid-container">
+          <div>Búsqueda de usuario</div>
+          <div>Introduce parte del alias del usuario:</div>
+          <div><input type="text" placeholder=" red5tube" /></div>
+          <div><input type="button" value="Buscar" /></div>
+        </div>
 
-                        <form action="search.html">
-                            <input type="text" placeholder="Search">
-                               <a href="search.html"><i class="fa fa-search"></i></a>
-                        </form>
-                    </li>
-                    <li>
-                                
-                                <details>
-                                    <summary><i class="fa fa-video"></i><span> See Videos</span></summary>
-                                    <a href="my_videos.html">Todos</a><br>
-                                    <a href="my_videos.html">Deportes</a><br>
-                                    <a href="my_videos.html">Educación</a><br>
-                                    <a href="my_videos.html">Humor</a><br>
-                                    <a href="my_videos.html">Noticias</a><br>
-                                    <a href="my_videos.html">Tiempo Libre</a><br>
-                                    <a href="my_videos.html">Otros</a><br>
-                                    <a href="my_videos.html">Aleatorio</a><br>
-                                    
-                                </details>
-                            </li>
-                            <li>
-                            
-                            <details>
-                                    <summary><i class="fa fa-video"></i> <span>Listen Audios</span></summary>
-                                    <a href="my_audios.html">Todos</a><br>
-                                    <a href="my_audios.html">Deportes</a><br>
-                                    <a href="my_audios.html">Educación</a><br>
-                                    <a href="my_audios.html">Humor</a><br>
-                                    <a href="my_audios.html">Noticias</a><br>
-                                    <a href="my_audios.html">Tiempo Libre</a><br>
-                                    <a href="my_audios.html">Otros</a><br>
-                                    <a href="my_audios.html">Aleatorio</a><br>
-                                    
-                                </details>
-                        </li>
-                       
-                    <li>
-                        <i class="fa fa-file-video"></i>
-                        <a href="streaming.html">Streaming Videos</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-upload"></i>
-                        <a href="upload_video.html">Upload Video</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-upload"></i>
-                        <a href="upload_audio.html">Upload Audio</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-video"></i>
-                        <a href="my_videos.html">My Videos</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-volume-up"></i>
-                        <a href="my_audios.html">My Audios</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-info"></i>
-                        <a href="info.html">Info</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-user"></i>
-                        <a href="pagina10.html">Administrate Users</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-video"></i>
-                        <a href="pagina11.html">Administrate Videos</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-sound"></i>
-                        <a href="pagina12.html">Administrate Audios</a>
-                    </li>
-                </ul>
-            </nav>
+        <!--Botón agregar audio, muestra el formulario y oculta la tabla de mantenimiento-->
+        <div>
+          <input id="mostrarFormulario" type="button" value="Agregar audio" />
+        </div>
 
-        </section>
-        <!--Añadimos un id para añadir estilo por css-->
-        <main id="pagina12">
-            <header>
-                <h1>Administración de vídeos</h1>
-                <!--utilizamos la etiqueta span para darle un color diferente al texto que contiene-->
-                <p>Nombre usuario, bienvenido a <span>Red5Tube.</span></p>
-            </header>
+        <!--tabla mantenimiento de audios-->
+        <!--utilizamos un grid-->
+        <div id="maintenance-grid-container">
+          <!--cabecera-->
+          <div id="head">
+            Mantenimiento de audios<i class="fas fa-music"></i>
+          </div>
 
-            <!--tabla administración de usuarios-->
-            <!--utilizamos un grid-->
-            <div id="search-grid-container">
-                <div>Búsqueda de usuario</div>
-                <div>Introduce parte del alias del usuario:</div>
-                <div><input type="text" placeholder=" red5tube"></div>
-                <div><input type="button" value="Buscar"></div>
-            </div>
+          <!--títulos-->
+          <div id="title1">Usuario</div>
+          <div id="title2">Título</div>
+          <div id="title3">Autor</div>
+          <div id="title4">Álbum</div>
+          <div id="title5">Comentarios</div>
+          <div id="title6">Género</div>
+          <div id="title7"></div>
 
-            <!--tabla mantenimiento de audios-->
-            <!--utilizamos un grid-->
-            <div id="maintenance-grid-container">
+          <!--items-->
+          <div id="item1">red5tube</div>
+          <div id="item2">Let_It_Be.mp3</div>
+          <div id="item3">The Beatles</div>
+          <div id="item4">Let It Be</div>
+          <div id="item5">Awesome!</div>
+          <div id="item6">ROCK</div>
+          <div id="item7"> <i class="far fa-edit"></i><i class="far fa-trash-alt"></i></div>
 
-                <!--cabecera-->
-                <div id="head">Mantenimiento de audios<i class="fas fa-music"></i></div>
+          <!--paginación-->
+          <div id="foot">
+            <select>
+              <!--permite seleccionar el número de filas que queremos mostrar-->
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
 
-                <!--títulos-->
-                <div id="title1">Usuario</div>
-                <div id="title2">Título</div>
-                <div id="title3">Autor</div>
-                <div id="title4">Álbum</div>
-                <div id="title5">Comentarios</div>
-                <div id="title6">Género</div>
-                <div id="title7"></div>
+            <!--botones de paginación, iconos de fontawesome-->
+            <button><i class="fas fa-step-backward"></i></button>
+            <button><i class="fas fa-backward"></i></button>
+            <span>(1 de 1)</span>
+            <button><i class="fas fa-forward"></i></button>
+            <button><i class="fas fa-step-forward"></i></button>
+          </div>
+        </div>
+        <!--Formulario añadir audio-->
+        <form id="formularioAgregarAudio" action="#">
+          <label for="usuario"></label>
+          <input
+            required
+            type="text"
+            name="usuario"
+            id="usuario"
+            class="inputsAgregarAudio"
+            placeholder="Introduce el usuario"
+          />
+          <br />
+          <label for="titulo"></label>
+          <input
+            required
+            type="text"
+            name="titulo"
+            id="titulo"
+            class="inputsAgregarAudio"
+            placeholder="Introduce el título"
+          />
+          <br />
+          <label for="autor"></label>
+          <input
+            required
+            type="text"
+            name="autor"
+            id="autor"
+            class="inputsAgregarAudio"
+            placeholder="Introduce el autor"
+          />
+          <br />
+          <label for="album"></label>
+          <input
+            required
+            type="text"
+            name="album"
+            id="album"
+            class="inputsAgregarAudio"
+            placeholder="Introduce el álbum"
+          />
+          <br />
+          <label for="comentarios"></label>
+          <input
+            required
+            type="text"
+            name="comentarios"
+            id="comentarios"
+            class="inputsAgregarAudio"
+            placeholder="Introduce los comentarios"
+          />
+          <br />
+          <label for="genero"></label>
+          <input
+            required
+            type="text"
+            name="genero"
+            id="genero"
+            class="inputsAgregarAudio"
+            placeholder="Introduce el género"
+          />
+          <br />
 
-                <!--items-->
-                <div id="item1">red5tube</div>
-                <div id="item2">Let_It_Be.mp3</div>
-                <div id="item3">The Beatles</div>
-                <div id="item4">Let It Be</div>
-                <div id="item5">Awesome!</div>
-                <div id="item6">ROCK</div>
-                <div id="item7"><i class="far fa-edit"></i></div>
-
-                <div id="item8" class="even">red5tube</div>
-                <div id="item9" class="even">Toda_la_noche_en_la_calle.mp3</div>
-                <div id="item10" class="even">Amaral</div>
-                <div id="item11" class="even">Estrella de mar</div>
-                <div id="item12" class="even">Good song!</div>
-                <div id="item13" class="even">POP</div>
-                <div id="item14" class="even"><i class="far fa-edit"></i></div>
-
-                <!--paginación-->
-                <div id="foot">
-                    <select>
-                        <!--permite seleccionar el número de filas que queremos mostrar-->
-                        <option value="5" selected>5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                    </select>
-
-                    <!--botones de paginación, iconos de fontawesome-->
-                    <button><i class="fas fa-step-backward"></i></button>
-                    <button><i class="fas fa-backward"></i></button>
-                    <span>(1 de 1)</span>
-                    <button><i class="fas fa-forward"></i></button>
-                    <button><i class="fas fa-step-forward"></i></button>
-                </div>
-            </div>
-        </main>
-        <!--Esta página no tiene footer-->
+          <input type="submit" id="botonAgregarAudio" value="Agregar audio" />
+          <input
+            type="button"
+            value="Guardar cambios"
+            id="botonModificarAudio"
+          />
+          <input type="reset" value="Cancelar" id="botonCancelar" />
+        </form>
+      </main>
+      <!--Esta página no tiene footer-->
     </div>
-</body>
-
+  </body>
 </html>

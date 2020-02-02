@@ -542,7 +542,7 @@ footer {
   display: grid;
   width: 100%;
   margin-bottom: 20px;
-  grid-template-areas: "head head head head head head head" "title1 title2 title3 title4 title5 title6 title7" "item1 item2 item3 item4 item5 item6 item7" "item8 item9 item10 item11 item12 item13 item14" "foot foot foot foot foot foot foot";
+  grid-template-areas: "head head head head head head head" "title1 title2 title3 title4 title5 title6 title7" "item1 item2 item3 item4 item5 item6 item7" "item8 item9 item10 item11 item12 item13 item14" "item15 item16 item17 item18 item19 item20 item21" "item22 item23 item24 item25 item26 item27 item28" "foot foot foot foot foot foot foot";
   grid-template-columns: auto auto auto auto auto auto 3.5%;
 }
 #pagina12 #maintenance-grid-container div {
@@ -890,7 +890,7 @@ footer {
   margin-bottom: 20px;
 }
 
-#formularioAgregarUsuario, #formularioAgregarVideo {
+#formularioAgregarUsuario, #formularioAgregarVideo, #formularioAgregarAudio {
   text-align: center;
   display: none;
   border: 1px solid gray;
@@ -898,14 +898,14 @@ footer {
   background-color: lightgray;
 }
 
-.inputsAgregarUsuario, .inputsAgregarVideo {
+.inputsAgregarUsuario, .inputsAgregarVideo, .inputsAgregarAudio {
   margin: 20px 5px 5px 5px;
   border-radius: 5px;
   padding: 10px;
   border: 1px solid grey;
 }
 
-#botonModificarUsuario, #botonAgregarUsuario, #botonModificarVideo, #botonAgregarVideo {
+#botonModificarUsuario, #botonAgregarUsuario, #botonModificarVideo, #botonAgregarVideo, #botonAgregarAudio, #botonModificarAudio {
   margin: 20px auto 20px auto;
   display: none;
   background-color: #7BCBFF;

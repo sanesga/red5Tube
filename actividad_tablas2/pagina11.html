@@ -28,19 +28,19 @@
       function main() {
         //-------------------ELEMENTOS DEL DOM----------------------------
 
-        //boton mostrar formulario para agregar usuario
+        //boton mostrar formulario para agregar video
         var botonMostrarFormulario = document.getElementById(
           "mostrarFormulario"
         );
-        //formulario agregar usuario
+        //formulario agregar video
         var formularioAgregarVideo = document.getElementById(
           "formularioAgregarVideo"
         );
-        //tabla mantenimiento usuarios
+        //tabla mantenimiento vídeos
         var tablaVideos = document.getElementById(
           "maintenance-grid-container"
         );
-        //inputs del formulario agregar usuario
+        //inputs del formulario agregar video
         var inputUsuario = document.getElementById("usuario");
         var inputNombre = document.getElementById("nombre");
         var inputTitulo = document.getElementById("titulo");
@@ -50,25 +50,25 @@
         //id que utilizamos para añadir elementos a la tabla (empezamos por 7 porque ya hay una fila creada por defecto)
         var id = 6;
 
-        //boton agregar usuario del formulario agregar usuario
+        //boton agregar usuario del formulario agregar video
         var botonAgregarVideo = document.getElementById(
           "botonAgregarVideo"
         );
-        //boton modificar datos del usuario
+        //boton modificar datos del video
         var botonModificarVideo = document.getElementById(
           "botonModificarVideo"
         );
         //footer de la tabla
         var foot = document.getElementById("foot");
-        //botón cancelar del formulario agregar usuarios
+        //botón cancelar del formulario agregar videos
         var botonCancelar = document.getElementById("botonCancelar");
 
         //------------------------------------------------------------------
 
         //--------------------------EVENTOS---------------------------------
-        //al hacer click en el botón agregar usuario, se muestra el formulario y se oculta la tabla de mantenimiento o viceversa
+        //al hacer click en el botón agregar video, se muestra el formulario y se oculta la tabla de mantenimiento o viceversa
         botonMostrarFormulario.addEventListener("click", mostrarForm);
-        //agregamos una delegación de eventos a la tabla de mantenimiento de usuarios
+        //agregamos una delegación de eventos a la tabla de mantenimiento de vídeos
         tablaVideos.addEventListener("click", eliminarModificarFila);
         //añadimos un evento al formulario, al hacer click en el botón submit, se llamará al método indicado (y haremos un prevent default para que no envie los datos al action)
         formularioAgregarVideo.addEventListener("submit", agregarVideo);
@@ -89,22 +89,22 @@
           },
           true
         );
-        //al hacer click en el botón cancelar del formulario agregar usuarios, hará un reset de los inputs y nos mostrará otra vez la tabla
+        //al hacer click en el botón cancelar del formulario agregar vídeos, hará un reset de los inputs y nos mostrará otra vez la tabla
         botonCancelar.addEventListener("click", ocultarMostrarFormulario);
         //-------------------------------------------------------------------
 
         //-----------------------------FUNCIONES-----------------------------
 
         function mostrarForm() {
-          //como utilizamos el mismo formulario para agregar y modificar, mostramos el botón agregar usuario y ocultamos el botón guardar datos.
-          //el botón de agregar usuario, hará un submit, pero el de guardar datos, no.
+          //como utilizamos el mismo formulario para agregar y modificar, mostramos el botón agregar vídeo y ocultamos el botón guardar datos.
+          //el botón de agregar video, hará un submit, pero el de guardar datos, no.
           botonAgregarVideo.style.display = "block";
           botonModificarVideo.style.display = "none";
 
           //limpiamos los inputs
           limpiarInputs();
 
-          //si el formulario está oculto se muestra y al contrario con la tabla de usuarios (incluido el responsive)
+          //si el formulario está oculto se muestra y al contrario con la tabla de vídeos (incluido el responsive)
           ocultarMostrarFormulario();
         }
 
@@ -153,7 +153,7 @@
           div.innerHTML = campo;
           //añadimos el id
           div.setAttribute("id", "item" + id);
-          //añadimos el div a la tabla de usuarios, antes del footer de la tabla
+          //añadimos el div a la tabla de vídeos, antes del footer de la tabla
           foot.parentNode.insertBefore(div, foot);
         }
 
@@ -209,7 +209,7 @@
             inputComentarios.value = textoComentarios;
             inputCategoria.value = textoCategoria;
 
-            //mostramos el botón modificar y ocultamos el boton agregar usuario
+            //mostramos el botón modificar y ocultamos el boton agregar video
             botonModificarVideo.style.display = "block";
             botonAgregarVideo.style.display = "none";
 
