@@ -60,6 +60,8 @@
         );
         //footer de la tabla
         var foot = document.getElementById("foot");
+        //botón cancelar del formulario agregar usuarios
+        var botonCancelar=document.getElementById("botonCancelar");
 
         //------------------------------------------------------------------
 
@@ -87,7 +89,8 @@
           },
           true
         );
-
+        //al hacer click en el botón cancelar del formulario agregar usuarios, hará un reset de los inputs y nos mostrará otra vez la tabla
+        botonCancelar.addEventListener("click", ocultarMostrarFormulario);
         //-------------------------------------------------------------------
 
         //-----------------------------FUNCIONES-----------------------------
@@ -506,6 +509,12 @@
             class="inputsAgregarModificarUsuario"
             id="botonModificarUsuario"
           />
+          <input
+          type="reset"
+          value="Cancelar"
+          class="inputsAgregarModificarUsuario"
+          id="botonCancelar"
+        />
         </form>
       </main>
 

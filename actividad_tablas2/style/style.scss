@@ -560,21 +560,21 @@ footer {
     padding: 10px;
     border: 1px solid grey;
 }
-//estilo del botón guardar cambios (del formulario modificar usuario)
-#botonModificarUsuario{
+//estilo del botón agregar y guardar cambios del formulario modificar usuario
+#botonModificarUsuario, #botonAgregarUsuario{
     margin: 20px auto 20px auto;
     display: none;
-    background-color:map-get($colors, rojo);
+    background-color:map-get($colors, azul);
     color: map-get($colors, blanco);
     width: 130px;
     height: 30px;
     border-radius: 6px;
     border: none;
 }
-//estilo botón agregar usuario
-#botonAgregarUsuario{
+//estilo botón cancelar del formulario agregar usuarios
+#botonCancelar{
     margin: 20px auto 20px auto;
-    display: none;
+    display: block;
     background-color:map-get($colors, rojo);
     color: map-get($colors, blanco);
     width: 130px;
