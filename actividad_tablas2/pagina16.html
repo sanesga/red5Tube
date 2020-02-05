@@ -137,63 +137,84 @@
           audios: [
             {
               id: 1,
-              name: " audio 01",
-              image: "style/img/audio.jpg",
-              visualizaciones: 0
+              cancion: "./multimedia/audio1.ogg",
+              titulo: "Raggamuffin",
+              portada: "style/img/audio1.jpg",
+              visualizaciones: 0,
+              autor: "Selah Sue"
             },
             {
               id: 2,
-              name: " audio 02",
-              image: "style/img/audio.jpg",
-              visualizaciones: 38
+              cancion: "./multimedia/audio2.ogg",
+              titulo: "Musica Background",
+              portada: "style/img/audio2.jpg",
+              visualizaciones: 38,
+              autor: "Classic autor"
             },
             {
               id: 3,
-              name: " audio 03",
-              image: "style/img/audio.jpg",
-              visualizaciones: 12
+              cancion: "./multimedia/audio3.ogg",
+              titulo: "Acoustic Guitar",
+              portada: "style/img/audio3.jpg",
+              visualizaciones: 12,
+              autor: "Paco de Lucía"
             },
             {
               id: 4,
-              name: " audio 04",
-              image: "style/img/audio.jpg",
-              visualizaciones: 24
+              cancion: "./multimedia/audio4.ogg",
+              titulo: "Musical Elements",
+              portada: "style/img/audio4.jpg",
+              visualizaciones: 24,
+              autor: "2020"
             },
             {
               id: 5,
-              name: " audio 05",
-              image: "style/img/audio.jpg",
-              visualizaciones: 5
+              cancion: "./multimedia/audio5.ogg",
+              titulo: "Live concert",
+              portada: "style/img/audio5.jpg",
+              visualizaciones: 5,
+              autor: "U2"
             },
             {
               id: 6,
-              name: " audio 06",
-              image: "style/img/audio.jpg",
-              visualizaciones: 9
+              cancion: "./multimedia/audio6.ogg",
+              titulo: "Classic song",
+              portada: "style/img/audio6.jpg",
+              visualizaciones: 9,
+              autor: "Mozart"
             },
             {
               id: 7,
-              name: " audio 07",
-              image: "style/img/audio.jpg",
-              visualizaciones: 95
+              cancion: "./multimedia/audio7.ogg",
+              titulo: "DJ Session",
+              portada: "style/img/audio7.jpg",
+              visualizaciones: 35,
+              autor: "David Guetta"
             },
             {
               id: 8,
-              name: " audio 08",
-              image: "style/img/audio.jpg",
-              visualizaciones: 35
+              cancion: "./multimedia/audio8.ogg",
+              titulo: "Por mi tripa",
+              portada: "style/img/audio8.jpg",
+              visualizaciones: 75,
+              autor: "Pereza"
             },
             {
               id: 9,
-              name: " audio 09",
-              image: "style/img/audio.jpg",
-              visualizaciones: 155
+              cancion: "./multimedia/audio9.ogg",
+              titulo: "Fireworks",
+              portada: "style/img/audio9.jpg",
+              visualizaciones: 155,
+              autor: "Katy Perry"
             },
+           
             {
               id: 10,
-              name: " audio 10",
-              image: "style/img/audio.jpg",
-              visualizaciones: 75
+              cancion: "./multimedia/audio10.ogg",
+              titulo: "Sonidos de la naturaleza",
+              portada: "style/img/audio10.jpg",
+              visualizaciones: 95,
+              autor: "2017"
             }
           ]
         };
@@ -203,12 +224,24 @@
         //hacemos un bucle por cada audio en el Listado y buscamos la id del que queremos imprimir
         listado.audios.forEach(audio => {
           if (audio.id == id) {
-              //añadimos los datos del audio a los elementos del dom
-              console.log(portada);
-              console.log(cancion);
-              console.log(title);
-              console.log(views);
-              console.log(autor);
+
+            //añadimos los datos del audio a los elementos del dom
+            //portada
+            var portada = document.getElementById("portada");
+            portada.setAttribute("src", audio.portada);
+            //cancion
+            var cancion = document.getElementById("cancion");
+            cancion.setAttribute("src", audio.cancion);
+            //titulo
+            var titulo = document.getElementById("titulo");
+            titulo.innerHTML = audio.titulo;
+            //autor
+            var autor = document.getElementById("autor");
+            autor.innerHTML = audio.autor;
+            //visualizaciones
+            var visualizaciones = document.getElementById("visualizaciones");
+            visualizaciones.innerHTML =
+              audio.visualizaciones + " visualizaciones";
           }
         });
       }
@@ -320,16 +353,18 @@
         <div id="detail-grid-container">
           <!--portada del disco-->
           <div>
-            <img id="portada" src="./style/img/audio.jpg" alt="audio" />
+            <img id="portada" alt="audio" />
           </div>
           <div>
-            <audio id="cancion" src="./multimedia/audio.mp3" controls>
+            <!-- controles de audio -->
+            <audio id="cancion" controls>
               Your browser does not support the audio tag.
             </audio>
           </div>
-          <div id="title">Raggamuffin</div>
-          <div id="autor">Selah Sue</div>
-          <div id="views">3000 reproducciones</div>
+          <!--titulo, autor y visualizaciones-->
+          <div id="titulo"></div>
+          <div id="autor"></div>
+          <div id="visualizaciones"></div>
         </div>
       </main>
       <!--Esta página no tiene footer-->
