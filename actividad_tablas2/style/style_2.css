@@ -1,3 +1,6 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
 /* asignamos al container todo el espacio disponible  */
 .container {
   width           : 100%;
@@ -68,7 +71,7 @@ a:link {
 /* El estilo para los detalles de visualizaciones y reproducciones en las miniaturas */
 .visualizaciones {
   font-size: 0.8em;
-  color    : gray;
+  color    :red;
 }
 
 

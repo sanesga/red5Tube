@@ -12,7 +12,251 @@
     <!--librería fontawesome-->
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+        <script>
+            //llamamos a la función main cuando la página esté totalmente cargada
+            window.onload = main;
+      
+            //la función main contiene todo el código javascript
+            function main() {
+              //---------------------------ELEMENTOS DEL DOM-----------------------------
+              var archivo = document.getElementById("archivo");
+              var portada = document.getElementById("portada");
+              var titulo = document.getElementById("titulo");
+              var descripcion = document.getElementById("descripcion");
+              var visualizaciones = document.getElementById("visualizaciones");
+              //---------------------------------------------------------------------------
+      
+              //recogemos la url del vídeo enviado
+              var href = window.location.href;
+      
+              //recogemos el id enviado por la url
+              var id = href.substring(href.indexOf("?") + 1, href.length);
+      
+              // Aqui añado el Objeto que simula el JSon recibido de una llamada Ajax
+              var listado = {
+                videos: [
+                  {
+                    id: 1,
+                    video: "./multimedia/video1.mp4",
+                    portada: "style/img/video1.jpg",
+                    titulo: "Paisaje slow motion",
+                    descripcion:"Vídeo 1",
+                    visualizaciones: 100
+                  },
+                  {
+                    id: 2,
+                    video: "./multimedia/video2.mp4",
+                    portada: "style/img/video2.jpg",
+                    titulo: "Corto animado",
+                    descripcion:"Vídeo 2",
+                    visualizaciones: 102
+                  },
+                  {
+                    id: 3,
+                    video: "./multimedia/video3.mp4",
+                    portada: "style/img/video3.jpg",
+                    titulo: "Animación 3D",
+                    descripcion:"Vídeo 3",
+                    visualizaciones: 10
+                  },
+                  {
+                    id: 4,
+                    video: "./multimedia/video1.mp4",
+                    portada: "style/img/video1.jpg",
+                    titulo: "Paisaje slow motion",
+                    descripcion:"Vídeo 4",
+                    visualizaciones: 5
+                  },
+                  {
+                    id: 5,
+                    video: "./multimedia/video2.mp4",
+                    portada: "style/img/video2.jpg",
+                    titulo: "Corto animado",
+                    descripcion:"Vídeo 5",
+                    visualizaciones: 76
+                  },
+                  {
+                    id: 6,
+                    video: "./multimedia/video3.mp4",
+                    portada: "style/img/video3.jpg",
+                    titulo: "Animación 3D",
+                    descripcion:"Vídeo 6",
+                    visualizaciones: 1098
+                  },
+                  {
+                    id: 7,
+                    video: "./multimedia/video1.mp4",
+                    portada: "style/img/video1.jpg",
+                    titulo: "Paisaje slow motion",
+                    descripcion:"Vídeo 7",
+                    visualizaciones: 34500
+                  },
+                  {
+                    id: 8,
+                    video: "./multimedia/video2.mp4",
+                    portada: "style/img/video2.jpg",
+                    titulo: "Corto animado",
+                    descripcion:"Vídeo 8",
+                    visualizaciones: 432
+                  },
+                  {
+                    id: 9,
+                    video: "./multimedia/video3.mp4",
+                    portada: "style/img/video3.jpg",
+                    titulo: "Animación 3D",
+                    descripcion:"Vídeo 9",
+                    visualizaciones: 23
+                  },
+                  {
+                    id: 10,
+                    video: "./multimedia/video1.mp4",
+                    portada: "style/img/video1.jpg",
+                    titulo: "Vídeo 10",
+                    descripcion:"2020",
+                    visualizaciones: 3
+                  },
+                  {
+                    id: 11,
+                    video: "./multimedia/video2.mp4",
+                    portada: "style/img/video2.jpg",
+                    titulo: "Corto animado",
+                    descripcion:"Vídeo 11",
+                    visualizaciones: 9888
+                  },
+                  {
+                    id: 12,
+                    video: "./multimedia/video3.mp4",
+                    portada: "style/img/video3.jpg",
+                    titulo: "Animación 3D",
+                    descripcion:"Vídeo 12",
+                    visualizaciones: 87
+                  },
+                  {
+                    id: 13,
+                    video: "./multimedia/video1.mp4",
+                    portada: "style/img/video1.jpg",
+                    titulo: "Paisaje slow motion",
+                    descripcion:"Vídeo 13",
+                    visualizaciones: 675
+                  },
+                  {
+                    id: 14,
+                    video: "./multimedia/video2.mp4",
+                    portada: "style/img/video2.jpg",
+                    titulo: "Corto animado",
+                    descripcion:"Vídeo 14",
+                    visualizaciones: 453
+                  },
+                  {
+                    id: 15,
+                    video: "./multimedia/video3.mp4",
+                    portada: "style/img/video3.jpg",
+                    titulo: "Animación 3D",
+                    descripcion:"Vídeo 15",
+                    visualizaciones: 34
+                  }
+                ],
+                audios: [
+                  {
+                    id: 1,
+                    cancion: "./multimedia/audio1.ogg",
+                    titulo: "Raggamuffin",
+                    portada: "style/img/image1.jpg",
+                    visualizaciones: 0,
+                    autor: "Selah Sue"
+                  },
+                  {
+                    id: 2,
+                    cancion: "./multimedia/audio2.ogg",
+                    titulo: "Musica Background",
+                    portada: "style/img/image2.jpg",
+                    visualizaciones: 38,
+                    autor: "Classic autor"
+                  },
+                  {
+                    id: 3,
+                    cancion: "./multimedia/audio3.ogg",
+                    titulo: "Acoustic Guitar",
+                    portada: "style/img/image3.jpg",
+                    visualizaciones: 12,
+                    autor: "Paco de Lucía"
+                  },
+                  {
+                    id: 4,
+                    cancion: "./multimedia/audio4.ogg",
+                    titulo: "Musical Elements",
+                    portada: "style/img/image4.jpg",
+                    visualizaciones: 24,
+                    autor: "2020"
+                  },
+                  {
+                    id: 5,
+                    cancion: "./multimedia/audio5.ogg",
+                    titulo: "Live concert",
+                    portada: "style/img/image5.jpg",
+                    visualizaciones: 5,
+                    autor: "U2"
+                  },
+                  {
+                    id: 6,
+                    cancion: "./multimedia/audio6.ogg",
+                    titulo: "Classic song",
+                    portada: "style/img/image6.jpg",
+                    visualizaciones: 9,
+                    autor: "Mozart"
+                  },
+                  {
+                    id: 7,
+                    cancion: "./multimedia/audio7.ogg",
+                    titulo: "DJ Session",
+                    portada: "style/img/image7.jpg",
+                    visualizaciones: 35,
+                    autor: "David Guetta"
+                  },
+                  {
+                    id: 8,
+                    cancion: "./multimedia/audio8.ogg",
+                    titulo: "Por mi tripa",
+                    portada: "style/img/image8.jpg",
+                    visualizaciones: 75,
+                    autor: "Pereza"
+                  },
+                  {
+                    id: 9,
+                    cancion: "./multimedia/audio9.ogg",
+                    titulo: "Fireworks",
+                    portada: "style/img/image9.jpg",
+                    visualizaciones: 155,
+                    autor: "Katy Perry"
+                  },
+                 
+                  {
+                    id: 10,
+                    cancion: "./multimedia/audio10.ogg",
+                    titulo: "Sonidos de la naturaleza",
+                    portada: "style/img/image10.jpg",
+                    visualizaciones: 95,
+                    autor: "2017"
+                  }
+                ]
+              };
+      
+              //hacemos un bucle por cada video en el Listado y buscamos la id del que queremos imprimir
+              listado.videos.forEach(video => {
+                if (video.id == id) {
+                  //añadimos los datos del video a los elementos del dom
+                  //archivo
+                  archivo.setAttribute("src", video.video);
+                  //titulo
+                  titulo.innerHTML = video.titulo;
+                  //descripcion
+                  descripcion.innerHTML = video.descripcion;
+                  //visualizaciones
+                  visualizaciones.innerHTML = video.visualizaciones + " visualizaciones";
+                }
+              });
+            }
+          </script>
 </head>
 
 <body>
@@ -120,12 +364,12 @@
             <!--tabla detalle de vídeo-->
             <!--utilizamos un grid-->
             <div id="detail-grid-container">
-                <div><video src="./multimedia/video.mp4" controls>
+                <div><video id="archivo" controls>
                         Your browser does not support the video tag.
                     </video></div>
-                <div id="title">City clouds</div>
-                <div>When winter meets autumn | Cinematic slow motion | Canon 80D</div>
-                <div id="views">159 visualizaciones</div>
+                <div id="titulo"></div>
+                <div id="descripcion"></div>
+                <div id="visualizaciones"></div>
             </div>
         </main>
         <!--Esta página no tiene footer-->
